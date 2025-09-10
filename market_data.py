@@ -200,7 +200,7 @@ class MarketDataCollector:
                 if seconds_to_wait == 0:
                     time.sleep(60)
                 else:
-                    time.sleep(seconds_to_wait + 2)
+                    time.sleep(seconds_to_wait + 0.02)
 
                 latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
                 
