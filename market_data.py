@@ -10,7 +10,7 @@ from rich.table import Table
 # --- Configuration ---
 DB_NAME = 'market_data.db'
 TABLE_NAME = 'gold'
-SYMBOL = 'GOLD#'
+SYMBOL = 'GOLDm#'
 INITIAL_CANDLES_COUNT = 20000
 TIMEFRAME = mt5.TIMEFRAME_M1
 
