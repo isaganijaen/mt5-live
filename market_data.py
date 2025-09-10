@@ -3,15 +3,10 @@ import pandas as pd
 import sqlite3
 import time
 from datetime import datetime, timedelta
-from rich.console import Console
-from rich.live import Live
-from rich.panel import Panel
-from rich.table import Table
-from rich.spinner import Spinner
-from rich.layout import Layout
-from rich.text import Text
-from rich import box
 import threading
+from rich.console import Console
+from rich.table import Table
+import pytz
 
 # --- Configuration ---
 DB_NAME = 'market_data.db'
@@ -19,6 +14,7 @@ TABLE_NAME = 'gold'
 SYMBOL = 'GOLD#'
 INITIAL_CANDLES_COUNT = 20000
 TIMEFRAME = mt5.TIMEFRAME_M1
+CYPRUS_TIMEZONE = pytz.timezone('Asia/Nicosia')
 
 console = Console()
 
@@ -27,8 +23,6 @@ class MarketDataCollector:
         self.conn = None
         self.last_record = None
         self.status_message = "Initializing..."
-        self.countdown = 60
-        self.is_counting = False
         
     def create_connection(self):
         """Create a SQLite database connection and return the connection object."""
@@ -86,11 +80,13 @@ class MarketDataCollector:
     def populate_initial_data(self, symbol, timeframe, count):
         """Populates the database with the initial set of historical data."""
         self.status_message = f"Populating initial data for {symbol}..."
+        console.print(f"[bold white]{self.status_message}[/bold white]")
         
         rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, count)
 
         if rates is None or len(rates) == 0:
             self.status_message = "No historical data received from MT5"
+            console.print(f"[red]{self.status_message}[/red]")
             return False
 
         rates_frame = pd.DataFrame(rates)
@@ -99,9 +95,11 @@ class MarketDataCollector:
         try:
             rates_frame.to_sql(TABLE_NAME, self.conn, if_exists='replace', index=False)
             self.status_message = f"Successfully populated {len(rates_frame)} records"
+            console.print(f"[green]✓ {self.status_message}[/green]")
             return True
         except sqlite3.Error as e:
             self.status_message = f"Error inserting initial data: {e}"
+            console.print(f"[red]{self.status_message}[/red]")
             return False
 
     def check_and_fill_gaps(self, symbol, timeframe, last_db_timestamp):
@@ -124,14 +122,17 @@ class MarketDataCollector:
 
         if not new_data.empty:
             self.status_message = f"Found and filling a gap of {len(new_data)} missing records"
+            console.print(f"[yellow]{self.status_message}[/yellow]")
             try:
                 new_data.to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
                 self.status_message = "Successfully filled the gap"
+                console.print(f"[green]✓ {self.status_message}[/green]")
             except sqlite3.Error as e:
                 self.status_message = f"Error filling gap: {e}"
+                console.print(f"[red]{self.status_message}[/red]")
 
-    def get_latest_candlestick(self, symbol, timeframe):
-        """Get the latest candlestick from MT5 and format it properly."""
+    def get_latest_completed_candlestick(self, symbol, timeframe):
+        """Get the latest completed candlestick from MT5 and format it properly."""
         rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, 1)
         
         if rates is None or len(rates) == 0:
@@ -168,149 +169,99 @@ class MarketDataCollector:
             return True
         except sqlite3.Error as e:
             self.status_message = f"Error inserting candlestick: {e}"
+            console.print(f"[red]{self.status_message}[/red]")
             return False
 
-    def countdown_timer(self):
-        """Run countdown timer in a separate thread."""
-        self.is_counting = True
-        self.countdown = 60
-        
-        while self.countdown > 0 and self.is_counting:
-            time.sleep(1)
-            self.countdown -= 1
-        
-        self.is_counting = False
+    def display_all_data(self):
+        """Reads all data from the database, sorts by time, and prints to console."""
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(f"SELECT * FROM {TABLE_NAME} ORDER BY time ASC")
+            all_data = cursor.fetchall()
 
-    def create_display_layout(self):
-        """Create the Rich display layout."""
-        # Status panel
-        status_text = Text(self.status_message, style="bold white")
-        status_panel = Panel(status_text, title="Status", border_style="blue")
-        
-        # Countdown panel
-        if self.is_counting:
-            spinner = Spinner("dots2", text=f"Next update in {self.countdown:02d} seconds")
-            countdown_panel = Panel(spinner, title="Countdown", border_style="yellow")
-        else:
-            countdown_panel = Panel("Ready", title="Countdown", border_style="green")
-        
-        # Last record panel
-        if self.last_record:
-            record_table = Table(show_header=True, header_style="bold magenta", box=box.ROUNDED)
-            record_table.add_column("Time", style="cyan")
-            record_table.add_column("Open", style="green")
-            record_table.add_column("High", style="bright_green")
-            record_table.add_column("Low", style="red")
-            record_table.add_column("Close", style="yellow")
-            
-            timestamp = datetime.fromtimestamp(self.last_record['time'])
-            record_table.add_row(
-                timestamp.strftime("%Y-%m-%d %H:%M:%S"),
-                f"{self.last_record['open']:.5f}",
-                f"{self.last_record['high']:.5f}",
-                f"{self.last_record['low']:.5f}",
-                f"{self.last_record['close']:.5f}"
-            )
-            
-            record_panel = Panel(record_table, title="Latest Candlestick", border_style="cyan")
-        else:
-            record_panel = Panel("No data available", title="Latest Candlestick", border_style="dim")
-        
-        # Combine all panels
-        layout = Layout()
-        layout.split_column(
-            Layout(status_panel, size=3),
-            Layout(countdown_panel, size=3),
-            Layout(record_panel)
-        )
-        
-        return layout
+            if not all_data:
+                console.print("[dim]No data to display.[/dim]")
+                return
 
+            table = Table(title="Captured Market Data (Cyprus Time)", style="bold magenta")
+            table.add_column("Time", style="cyan")
+            table.add_column("Open", style="green")
+            table.add_column("High", style="bright_green")
+            table.add_column("Low", style="red")
+            table.add_column("Close", style="yellow")
+            
+            for row in all_data:
+                timestamp = datetime.fromtimestamp(row[0], tz=pytz.utc).astimezone(CYPRUS_TIMEZONE)
+                table.add_row(
+                    timestamp.strftime("%Y-%m-%d %H:%M:%S"),
+                    f"{row[1]:.5f}",
+                    f"{row[2]:.5f}",
+                    f"{row[3]:.5f}",
+                    f"{row[4]:.5f}"
+                )
+            
+            console.print(table)
+        except sqlite3.Error as e:
+            console.print(f"[red]Error displaying data: {e}[/red]")
+        
     def update_data_realtime(self, symbol, timeframe):
         """Continuously updates the database with new M1 candlesticks every minute."""
-        with Live(self.create_display_layout(), refresh_per_second=4, screen=True) as live:
-            while True:
-                try:
-                    # Get the timestamp of the last entry in the database
-                    last_db_timestamp = self.get_last_db_timestamp()
+        while True:
+            try:
+                # Get the timestamp of the last entry in the database
+                last_db_timestamp = self.get_last_db_timestamp()
 
-                    # Check for and fill any gaps before appending new data
-                    self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
+                # Check for and fill any gaps before appending new data
+                self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
 
-                    # Calculate wait time to next exact minute boundary (e.g., 1:01, 1:02, etc.)
-                    now = datetime.now()
-                    current_minute = now.minute
-                    current_second = now.second
-                    
-                    # Calculate how many minutes until the next minute boundary
-                    if current_second == 0:
-                        # We're exactly at the minute boundary, wait for next one
-                        minutes_to_next = 1
-                    else:
-                        # We're in the middle of a minute, wait until the next boundary
-                        minutes_to_next = 1
-                    
-                    if minutes_to_next == 1 and now.second == 0:
-                        wait_seconds = 60
-                    else:
-                        next_candle = now.replace(second=0, microsecond=0) + timedelta(minutes=minutes_to_next)
-                        wait_seconds = (next_candle - now).total_seconds()
-                    
-                    if wait_seconds > 0:
-                        next_time = now + timedelta(seconds=wait_seconds)
-                        self.status_message = f"Waiting for next minute boundary: {next_time.strftime('%H:%M:%S')}"
+                # Wait for the next minute boundary in Cyprus time
+                now_cyprus = datetime.now(CYPRUS_TIMEZONE)
+                seconds_remaining = 60 - now_cyprus.second - (now_cyprus.microsecond / 1000000.0)
+                
+                if seconds_remaining > 0:
+                    console.print(f"[dim]Next update in {seconds_remaining:.1f} seconds...[/dim]", end='\r')
+                    time.sleep(seconds_remaining)
+
+                # Add a small delay to ensure the minute has fully passed and candle is completed
+                time.sleep(3)
+
+                # Get the latest COMPLETED candlestick
+                self.status_message = "Fetching latest completed candlestick..."
+                console.print(f"[dim]{self.status_message}[/dim]")
+                
+                latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
+
+                if latest_candlestick is None:
+                    self.status_message = "No data received from MT5. Retrying at next minute."
+                    console.print(f"[red]{self.status_message}[/red]")
+                    continue
+
+                latest_timestamp = latest_candlestick['time']
+
+                # Check if this candlestick is new before inserting
+                if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
+                    if self.insert_candlestick(latest_candlestick):
+                        self.last_record = latest_candlestick
+                        self.status_message = f"Added new record: {latest_timestamp}"
                         
-                        # Start countdown timer in separate thread
-                        self.countdown = int(wait_seconds)
-                        timer_thread = threading.Thread(target=self.countdown_timer)
-                        timer_thread.start()
-                        
-                        # Update display while waiting
-                        while self.is_counting:
-                            live.update(self.create_display_layout())
-                            time.sleep(0.25)
-                        
-                        timer_thread.join()
-
-                    # Add a small delay to ensure the minute has fully passed and candle is completed
-                    time.sleep(2)
-
-                    # Get the latest COMPLETED candlestick (not the currently forming one)
-                    self.status_message = "Fetching latest completed candlestick..."
-                    live.update(self.create_display_layout())
-                    
-                    latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
-
-                    if latest_candlestick is None:
-                        self.status_message = "No data received from MT5. Retrying at next minute."
-                        live.update(self.create_display_layout())
-                        continue
-
-                    latest_timestamp = latest_candlestick['time']
-
-                    # Check if this candlestick is new before inserting
-                    if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
-                        if self.insert_candlestick(latest_candlestick):
-                            self.last_record = latest_candlestick
-                            timestamp_str = datetime.fromtimestamp(latest_timestamp).strftime("%Y-%m-%d %H:%M:%S")
-                            self.status_message = f"Added new record: {timestamp_str}"
-                            console.print(f"[green]✓ New completed candle added: {timestamp_str}[/green]")
-                        else:
-                            self.status_message = "Failed to insert new record"
+                        cyprus_dt = datetime.fromtimestamp(latest_timestamp, tz=pytz.utc).astimezone(CYPRUS_TIMEZONE)
+                        console.print(f"[green]✓ New completed candle added: {cyprus_dt.strftime('%Y-%m-%d %H:%M:%S')}[/green]")
                     else:
-                        self.status_message = f"Latest completed candle already in database: {datetime.fromtimestamp(latest_timestamp).strftime('%Y-%m-%d %H:%M:%S')}"
+                        self.status_message = "Failed to insert new record"
+                        console.print(f"[red]{self.status_message}[/red]")
+                else:
+                    self.status_message = f"Latest completed candle already in database: {latest_timestamp}"
+                    cyprus_dt = datetime.fromtimestamp(latest_timestamp, tz=pytz.utc).astimezone(CYPRUS_TIMEZONE)
+                    console.print(f"[yellow]Latest completed candle already in database: {cyprus_dt.strftime('%Y-%m-%d %H:%M:%S')}[/yellow]")
 
-                    live.update(self.create_display_layout())
-
-                except KeyboardInterrupt:
-                    self.status_message = "Real-time update interrupted by user. Exiting."
-                    live.update(self.create_display_layout())
-                    console.print("\n[yellow]Real-time update interrupted by user. Exiting.[/yellow]")
-                    break
-                except Exception as e:
-                    self.status_message = f"Error occurred: {e}. Retrying at next minute."
-                    live.update(self.create_display_layout())
-                    console.print(f"[red]An error occurred: {e}. Retrying at next minute.[/red]")
+            except KeyboardInterrupt:
+                self.status_message = "Real-time update interrupted by user. Exiting."
+                console.print("\n[yellow]Real-time update interrupted by user. Exiting.[/yellow]")
+                break
+            except Exception as e:
+                self.status_message = f"Error occurred: {e}. Retrying at next minute."
+                console.print(f"[red]An error occurred: {e}. Retrying at next minute.[/red]")
+                time.sleep(10) # Wait a bit before retrying to avoid spamming on a persistent error
 
 def main():
     """Main function to run the market data collection process."""
@@ -351,6 +302,9 @@ def main():
                 console.print("[red]Failed to populate initial data. Exiting.[/red]")
                 return
             console.print("[green]✓ Initial data population completed[/green]")
+        
+        # Display the data after initial population or upon starting
+        collector.display_all_data()
 
         # Start the real-time update loop
         console.print("\n[bold green]Starting real-time data collection. Press Ctrl+C to exit.[/bold green]")
