@@ -17,9 +17,9 @@ del /F /Q "*.log" 2>nul
 REM Start a new terminal for each script
 start "App" cmd /k "python app.py"
 start "Database" cmd /k "python database_live.py"  
-REM Market Data Could be run if needed. Real Time data is not suitable for live trading because of latency issues
+REM Increased interval from 1 minute to 17 minutes. Real Time data is not suitable for live trading because of latency issues
 REM and frequent gaps in data. Will use this as initial data then append with broker data during live trading.
-REM start "Market Data" cmd /k "python market_data.py"
+start "Market Data" cmd /k "python market_data.py"
 start "Strategy 01" cmd /k "python strategy_01.py"        
 start "Strategy 02" cmd /k "python strategy_02.py"           
 start "Strategy 03" cmd /k "python strategy_03.py"      

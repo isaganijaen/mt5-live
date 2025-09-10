@@ -13,6 +13,9 @@ SYMBOL = 'GOLDm#'
 INITIAL_CANDLES_COUNT = 20000
 TIMEFRAME = mt5.TIMEFRAME_M1
 
+# The new interval in seconds (17 minutes)
+UPDATE_INTERVAL_SECONDS = 17 * 60
+
 console = Console()
 
 class MarketDataCollector:
@@ -189,35 +192,31 @@ class MarketDataCollector:
             return False
 
     def update_data_realtime(self, symbol, timeframe):
-        """Continuously updates the database with new M1 candlesticks every minute."""
-        last_db_timestamp = self.get_last_db_timestamp()
+        """Continuously updates the database with new M1 candlesticks on a fixed interval."""
+        last_update_time = 0
         
         while True:
             try:
-                now = datetime.now()
-                seconds_to_wait = (60 - now.second) % 60
+                now_timestamp = time.time()
                 
-                if seconds_to_wait == 0:
-                    time.sleep(60)
-                else:
-                    time.sleep(seconds_to_wait + 0.02)
+                # Wait until the specified interval has passed since the last update
+                if now_timestamp - last_update_time < UPDATE_INTERVAL_SECONDS:
+                    time_to_wait = UPDATE_INTERVAL_SECONDS - (now_timestamp - last_update_time)
+                    console.print(f"[dim]Waiting {int(time_to_wait)} seconds until next update...[/dim]")
+                    time.sleep(time_to_wait)
+                    continue
 
-                latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
+                last_db_timestamp = self.get_last_db_timestamp()
                 
-                if latest_candlestick:
-                    latest_timestamp = latest_candlestick['time']
-                    
-                    if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
-                        self.insert_candlestick(latest_candlestick)
-                        last_db_timestamp = latest_timestamp
-                        
-                        dt = datetime.fromtimestamp(latest_timestamp)
-                        console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Close: {latest_candlestick['close']:.5f}[/green]")
-                    else:
-                        console.print(f"[dim]No new completed candles to add.[/dim]")
+                if last_db_timestamp is None:
+                    console.print("[red]Database is empty, re-populating initial data.[/red]")
+                    self.populate_initial_data(symbol, timeframe, INITIAL_CANDLES_COUNT)
                 else:
-                    console.print(f"[red]Failed to fetch latest completed candle. Retrying...[/red]")
+                    self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
                 
+                last_update_time = time.time()
+                console.print(f"[green]✓ Update cycle completed at {datetime.fromtimestamp(last_update_time).strftime('%Y-%m-%d %H:%M:%S')}.[/green]")
+
             except KeyboardInterrupt:
                 self.status_message = "Real-time update interrupted by user. Exiting."
                 console.print("\n[yellow]Real-time update interrupted by user. Exiting.[/yellow]")
