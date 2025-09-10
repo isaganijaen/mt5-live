@@ -3,7 +3,6 @@ import pandas as pd
 import sqlite3
 import time
 from datetime import datetime
-import threading
 from rich.console import Console
 from rich.table import Table
 
@@ -60,16 +59,7 @@ class MarketDataCollector:
             if result[0] is None:
                 return None
             
-            if isinstance(result[0], int):
-                return result[0]
-            
-            if isinstance(result[0], str):
-                try:
-                    dt_object = datetime.strptime(result[0], '%Y-%m-%d %H:%M:%S')
-                    return int(dt_object.timestamp())
-                except ValueError:
-                    console.print(f"[yellow]Warning: Could not convert database timestamp string '{result[0]}'.[/yellow]")
-                    return None
+            return result[0]
                     
         except sqlite3.Error as e:
             console.print(f"[red]Error getting last timestamp: {e}[/red]")
@@ -104,50 +94,8 @@ class MarketDataCollector:
             console.print(f"[red]{self.status_message}[/red]")
             return False
 
-    def check_and_fill_gaps(self, symbol, timeframe, last_db_timestamp):
-        """Checks for and fills any time gaps in the data since the last database entry."""
-        if last_db_timestamp is None:
-            return
-
-        from_time = datetime.fromtimestamp(last_db_timestamp)
-        now = datetime.now()
-
-        # Fetch all candles since the last DB timestamp, plus one to discard the open candle
-        rates = mt5.copy_rates_range(symbol, timeframe, from_time, now)
-
-        if rates is None or len(rates) <= 1:
-            console.print("[dim]No new completed candles to add.[/dim]")
-            return 0
-
-        # Convert to DataFrame and drop the last (open) candle
-        rates_frame = pd.DataFrame(rates)[:-1]
-        
-        # Keep the raw integer timestamp
-        rates_frame['time'] = pd.to_datetime(rates_frame['time'], unit='s').astype('int64') // 10**9
-        
-        new_data = rates_frame[rates_frame['time'] > last_db_timestamp]
-
-        if not new_data.empty:
-            num_new_records = len(new_data)
-            self.status_message = f"Found and filling a gap of {num_new_records} missing records"
-            console.print(f"[yellow]{self.status_message}[/yellow]")
-            try:
-                new_data[['time', 'open', 'high', 'low', 'close']].to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
-                self.status_message = f"Successfully filled the gap with {num_new_records} records"
-                console.print(f"[green]✓ {self.status_message}[/green]")
-                return num_new_records
-            except sqlite3.Error as e:
-                self.status_message = f"Error filling gap: {e}"
-                console.print(f"[red]{self.status_message}[/red]")
-                return 0
-        
-        console.print("[dim]No new completed candles to add.[/dim]")
-        return 0
-
     def get_latest_completed_candlestick(self, symbol, timeframe):
         """Get the latest completed candlestick from MT5 and format it properly."""
-        # Get the second to last candle, which is the last completed one.
-        # This is more robust than fetching the last candle and checking its time.
         rates = mt5.copy_rates_from_pos(symbol, timeframe, 1, 1) 
         
         if rates is None or len(rates) == 0:
@@ -155,10 +103,8 @@ class MarketDataCollector:
             
         latest_rate = rates[0]
         
-        # Get the raw timestamp
         original_time = datetime.fromtimestamp(latest_rate['time'])
         
-        # Convert numpy array to proper dictionary format
         candlestick_data = {
             'time': int(original_time.timestamp()),
             'open': float(latest_rate['open']),
@@ -169,6 +115,58 @@ class MarketDataCollector:
         
         return candlestick_data
 
+    def get_latest_completed_candlestick_timestamp(self, symbol, timeframe):
+        """Get the timestamp of the latest completed candlestick from MT5."""
+        rates = mt5.copy_rates_from_pos(symbol, timeframe, 1, 1)
+        if rates is None or len(rates) == 0:
+            return None
+        return int(rates[0]['time'])
+
+    def check_and_fill_gaps(self, symbol, timeframe, last_db_timestamp):
+        """Checks for and fills any time gaps in the data since the last database entry."""
+        if last_db_timestamp is None:
+            return 0
+
+        latest_mt5_timestamp = self.get_latest_completed_candlestick_timestamp(symbol, timeframe)
+        
+        if latest_mt5_timestamp is None:
+            console.print("[dim]Could not retrieve latest MT5 timestamp. Cannot check for gaps.[/dim]")
+            return 0
+
+        if last_db_timestamp >= latest_mt5_timestamp:
+            console.print("[dim]Database is up to date. No gaps to fill.[/dim]")
+            return 0
+            
+        console.print(f"[yellow]Gap detected: last DB record at {datetime.fromtimestamp(last_db_timestamp).strftime('%Y-%m-%d %H:%M:%S')} vs latest MT5 candle at {datetime.fromtimestamp(latest_mt5_timestamp).strftime('%Y-%m-%d %H:%M:%S')}.[/yellow]")
+
+        # Fetch candles from the timestamp AFTER the last record up to the latest MT5 candle
+        from_time = datetime.fromtimestamp(last_db_timestamp + 60)
+        to_time = datetime.fromtimestamp(latest_mt5_timestamp)
+        
+        rates = mt5.copy_rates_range(symbol, timeframe, from_time, to_time)
+
+        if rates is None or len(rates) == 0:
+            console.print("[dim]No new completed candles to add for the gap.[/dim]")
+            return 0
+
+        rates_frame = pd.DataFrame(rates)
+        
+        # Keep the raw integer timestamp
+        rates_frame['time'] = pd.to_datetime(rates_frame['time'], unit='s').astype('int64') // 10**9
+        
+        try:
+            num_new_records = len(rates_frame)
+            self.status_message = f"Found and filling a gap of {num_new_records} missing records"
+            console.print(f"[yellow]{self.status_message}[/yellow]")
+            rates_frame[['time', 'open', 'high', 'low', 'close']].to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
+            self.status_message = f"Successfully filled the gap with {num_new_records} records"
+            console.print(f"[green]✓ {self.status_message}[/green]")
+            return num_new_records
+        except sqlite3.Error as e:
+            self.status_message = f"Error filling gap: {e}"
+            console.print(f"[red]{self.status_message}[/red]")
+            return 0
+        
     def insert_candlestick(self, candlestick_data):
         """Insert a single candlestick into the database."""
         try:
@@ -190,65 +188,35 @@ class MarketDataCollector:
             console.print(f"[red]{self.status_message}[/red]")
             return False
 
-    def display_all_data(self):
-        """Reads all data from the database, sorts by time, and prints to console."""
-        try:
-            cursor = self.conn.cursor()
-            cursor.execute(f"SELECT * FROM {TABLE_NAME} ORDER BY time ASC")
-            all_data = cursor.fetchall()
-
-            if not all_data:
-                console.print("[dim]No data to display.[/dim]")
-                return
-
-            table = Table(title="Captured Market Data", style="bold magenta")
-            table.add_column("Time", style="cyan")
-            table.add_column("Open", style="green")
-            table.add_column("High", style="bright_green")
-            table.add_column("Low", style="red")
-            table.add_column("Close", style="yellow")
-            
-            for row in all_data:
-                timestamp = datetime.fromtimestamp(row[0])
-                table.add_row(
-                    timestamp.strftime("%Y-%m-%d %H:%M:%S"),
-                    f"{row[1]:.5f}",
-                    f"{row[2]:.5f}",
-                    f"{row[3]:.5f}",
-                    f"{row[4]:.5f}"
-                )
-            
-            console.print(table)
-        except sqlite3.Error as e:
-            console.print(f"[red]Error displaying data: {e}[/red]")
-        
     def update_data_realtime(self, symbol, timeframe):
         """Continuously updates the database with new M1 candlesticks every minute."""
         last_db_timestamp = self.get_last_db_timestamp()
         
         while True:
             try:
-                # Fetch the latest completed candle
+                now = datetime.now()
+                seconds_to_wait = (60 - now.second) % 60
+                
+                if seconds_to_wait == 0:
+                    time.sleep(60)
+                else:
+                    time.sleep(seconds_to_wait + 2)
+
                 latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
                 
                 if latest_candlestick:
                     latest_timestamp = latest_candlestick['time']
                     
-                    # Check if the new candle is more recent than the last one in the database
                     if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
                         self.insert_candlestick(latest_candlestick)
-                        self.last_record = latest_candlestick
                         last_db_timestamp = latest_timestamp
                         
                         dt = datetime.fromtimestamp(latest_timestamp)
                         console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Close: {latest_candlestick['close']:.5f}[/green]")
                     else:
-                        console.print(f"[dim]No new completed candles to add.[/dim]", end='\r')
+                        console.print(f"[dim]No new completed candles to add.[/dim]")
                 else:
                     console.print(f"[red]Failed to fetch latest completed candle. Retrying...[/red]")
-                
-                # Add a 0.02 second delay to prevent excessive polling
-                time.sleep(0.02)
                 
             except KeyboardInterrupt:
                 self.status_message = "Real-time update interrupted by user. Exiting."
@@ -265,7 +233,6 @@ def main():
     
     console.print("[bold cyan]Market Data Collector Starting...[/bold cyan]")
     
-    # Initialize connection to MT5
     if not mt5.initialize():
         console.print(f"[red]MT5 initialize() failed, error code = {mt5.last_error()}[/red]")
         mt5.shutdown()
@@ -273,14 +240,12 @@ def main():
 
     console.print("[green]✓ MT5 connection established[/green]")
 
-    # Create a database connection
     if not collector.create_connection():
         console.print("[red]Failed to create database connection[/red]")
         return
 
     console.print("[green]✓ Database connection established[/green]")
 
-    # Create the table if it doesn't exist
     if not collector.create_table():
         console.print("[red]Failed to create database table[/red]")
         return
@@ -288,7 +253,6 @@ def main():
     console.print("[green]✓ Database table ready[/green]")
 
     try:
-        # Check if the table has any data
         last_db_timestamp = collector.get_last_db_timestamp()
         
         if last_db_timestamp is None:
@@ -298,14 +262,15 @@ def main():
                 console.print("[red]Failed to populate initial data. Exiting.[/red]")
                 return
             console.print("[green]✓ Initial data population completed[/green]")
+        else:
+            console.print(f"[yellow]Table is not empty. Checking for data gaps since {datetime.fromtimestamp(last_db_timestamp).strftime('%Y-%m-%d %H:%M:%S')}...[/yellow]")
+            collector.check_and_fill_gaps(SYMBOL, TIMEFRAME, last_db_timestamp)
         
-        # Start the real-time update loop
         console.print("\n[bold green]Starting real-time data collection. Press Ctrl+C to exit.[/bold green]")
-        time.sleep(1)  # Give user time to read the message
+        time.sleep(1)
         collector.update_data_realtime(SYMBOL, TIMEFRAME)
 
     finally:
-        # Clean up connections
         if collector.conn:
             collector.conn.close()
         mt5.shutdown()
