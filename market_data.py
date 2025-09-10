@@ -116,7 +116,8 @@ class MarketDataCollector:
         rates = mt5.copy_rates_range(symbol, timeframe, from_time, now)
 
         if rates is None or len(rates) <= 1:
-            return
+            console.print("[dim]No new completed candles to add.[/dim]")
+            return 0
 
         # Convert to DataFrame and drop the last (open) candle
         rates_frame = pd.DataFrame(rates)[:-1]
@@ -127,15 +128,21 @@ class MarketDataCollector:
         new_data = rates_frame[rates_frame['time'] > last_db_timestamp]
 
         if not new_data.empty:
-            self.status_message = f"Found and filling a gap of {len(new_data)} missing records"
+            num_new_records = len(new_data)
+            self.status_message = f"Found and filling a gap of {num_new_records} missing records"
             console.print(f"[yellow]{self.status_message}[/yellow]")
             try:
                 new_data[['time', 'open', 'high', 'low', 'close']].to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
-                self.status_message = "Successfully filled the gap"
+                self.status_message = f"Successfully filled the gap with {num_new_records} records"
                 console.print(f"[green]✓ {self.status_message}[/green]")
+                return num_new_records
             except sqlite3.Error as e:
                 self.status_message = f"Error filling gap: {e}"
                 console.print(f"[red]{self.status_message}[/red]")
+                return 0
+        
+        console.print("[dim]No new completed candles to add.[/dim]")
+        return 0
 
     def get_latest_completed_candlestick(self, symbol, timeframe):
         """Get the latest completed candlestick from MT5 and format it properly."""
@@ -217,64 +224,40 @@ class MarketDataCollector:
         
     def update_data_realtime(self, symbol, timeframe):
         """Continuously updates the database with new M1 candlesticks every minute."""
+        last_db_timestamp = self.get_last_db_timestamp()
+        
         while True:
             try:
-                # Get the timestamp of the last entry in the database
-                last_db_timestamp = self.get_last_db_timestamp()
-
-                # Check for and fill any gaps before appending new data
-                self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
-
-                # Wait for the next minute boundary + 2 seconds for a total delay of 5 seconds
-                now = datetime.now()
-                seconds_remaining = 60 - now.second - (now.microsecond / 1000000.0)
+                # Fetch the latest completed candle
+                latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
                 
-                # We need to wait for the next minute boundary plus the 2-second delay.
-                delay_needed = seconds_remaining + 2
-                
-                if delay_needed > 0:
-                    console.print(f"[dim]Next update in {delay_needed:.1f} seconds...[/dim]", end='\r')
-                    time.sleep(delay_needed)
-                
-                # Get the latest COMPLETED candlestick
-                self.status_message = "Fetching latest completed candlestick..."
-                console.print(f"[dim]{self.status_message}[/dim]")
-                
-                # Get the last completed candlestick by starting from position 1, which is the second-to-last candle.
-                latest_candlestick = self.get_latest_completed_candlestick(SYMBOL, TIMEFRAME)
-
-                if latest_candlestick is None:
-                    self.status_message = "No data received from MT5. Retrying at next minute."
-                    console.print(f"[red]{self.status_message}[/red]")
-                    continue
-
-                latest_timestamp = latest_candlestick['time']
-
-                # Check if this candlestick is new before inserting
-                if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
-                    if self.insert_candlestick(latest_candlestick):
+                if latest_candlestick:
+                    latest_timestamp = latest_candlestick['time']
+                    
+                    # Check if the new candle is more recent than the last one in the database
+                    if last_db_timestamp is None or latest_timestamp > last_db_timestamp:
+                        self.insert_candlestick(latest_candlestick)
                         self.last_record = latest_candlestick
-                        self.status_message = f"Added new record: {latest_timestamp}"
+                        last_db_timestamp = latest_timestamp
                         
                         dt = datetime.fromtimestamp(latest_timestamp)
-                        # Print only the newly added candle
-                        console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Open: {latest_candlestick['open']:.5f}, High: {latest_candlestick['high']:.5f}, Low: {latest_candlestick['low']:.5f}, Close: {latest_candlestick['close']:.5f}[/green]")
+                        console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Close: {latest_candlestick['close']:.5f}[/green]")
                     else:
-                        self.status_message = "Failed to insert new record"
-                        console.print(f"[red]{self.status_message}[/red]")
+                        console.print(f"[dim]No new completed candles to add.[/dim]", end='\r')
                 else:
-                    self.status_message = f"Latest completed candle already in database: {latest_timestamp}"
-                    dt = datetime.fromtimestamp(latest_timestamp)
-                    console.print(f"[yellow]Latest completed candle already in database: {dt.strftime('%Y-%m-%d %H:%M:%S')}[/yellow]")
-
+                    console.print(f"[red]Failed to fetch latest completed candle. Retrying...[/red]")
+                
+                # Add a 0.02 second delay to prevent excessive polling
+                time.sleep(0.02)
+                
             except KeyboardInterrupt:
                 self.status_message = "Real-time update interrupted by user. Exiting."
                 console.print("\n[yellow]Real-time update interrupted by user. Exiting.[/yellow]")
                 break
             except Exception as e:
-                self.status_message = f"Error occurred: {e}. Retrying at next minute."
-                console.print(f"[red]An error occurred: {e}. Retrying at next minute.[/red]")
-                time.sleep(10) # Wait a bit before retrying to avoid spamming on a persistent error
+                self.status_message = f"Error occurred: {e}. Retrying..."
+                console.print(f"[red]An error occurred: {e}. Retrying...[/red]")
+                time.sleep(10)
 
 def main():
     """Main function to run the market data collection process."""
@@ -318,7 +301,7 @@ def main():
         
         # Start the real-time update loop
         console.print("\n[bold green]Starting real-time data collection. Press Ctrl+C to exit.[/bold green]")
-        time.sleep(2)  # Give user time to read the message
+        time.sleep(1)  # Give user time to read the message
         collector.update_data_realtime(SYMBOL, TIMEFRAME)
 
     finally:
