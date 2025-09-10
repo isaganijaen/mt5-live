@@ -1,0 +1,36 @@
+2025-09-10 13:15:50,338 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-10 13:15:50,341 - INFO - Table 'entries' checked/created successfully.
+2025-09-10 13:15:50,465 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-10 13:15:50,466 - INFO - Table 'entries' checked/created successfully.
+2025-09-10 13:15:50,467 - INFO - ==================================================
+2025-09-10 13:15:50,467 - INFO - Starting M2 EMA Trading Bot (Magic: 1)
+2025-09-10 13:15:50,468 - INFO - Symbol: GOLDm#
+2025-09-10 13:15:50,468 - INFO - SL: 300 points, TP: 2700 points
+2025-09-10 13:15:50,468 - INFO - Max positions: 1
+2025-09-10 13:15:50,469 - INFO - Trading hours: 20:00-12:00
+2025-09-10 13:15:50,469 - INFO - ==================================================
+2025-09-10 13:15:50,469 - INFO - Connecting to MetaTrader 5...
+2025-09-10 13:15:50,485 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-10 13:15:50,487 - INFO - Trailing stop thread started
+2025-09-10 13:15:50,487 - INFO - Starting main trading loop...
+2025-09-10 13:15:50,487 - INFO - Outside trading hours (20:00-12:00)
+2025-09-10 13:15:50,855 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-10 13:15:50,857 - INFO - Table 'entries' checked/created successfully.
+2025-09-10 13:15:50,957 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-10 13:15:50,959 - INFO - Table 'entries' checked/created successfully.
+2025-09-10 13:15:50,961 - INFO - ==================================================
+2025-09-10 13:15:50,961 - INFO - Starting M2 EMA Trading Bot (Magic: 2)
+2025-09-10 13:15:50,961 - INFO - Symbol: GOLDm#
+2025-09-10 13:15:50,962 - INFO - SL: 300 points, TP: 600 points
+2025-09-10 13:15:50,962 - INFO - Max positions: 1
+2025-09-10 13:15:50,962 - INFO - Trading hours: 20:00-12:00
+2025-09-10 13:15:50,962 - INFO - ==================================================
+2025-09-10 13:15:50,962 - INFO - Connecting to MetaTrader 5...
+2025-09-10 13:15:50,978 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-10 13:15:50,979 - INFO - Trailing stop thread started
+2025-09-10 13:15:50,979 - INFO - Starting main trading loop...
+2025-09-10 13:15:50,980 - INFO - Outside trading hours (20:00-12:00)
+2025-09-10 13:15:57,888 - INFO - Script terminated by user
+2025-09-10 13:15:59,295 - INFO - Script terminated by user
+2025-09-10 13:16:00,487 - INFO - Trailing stop thread stopped
+2025-09-10 13:16:00,979 - INFO - Trailing stop thread stopped
