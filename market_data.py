@@ -226,7 +226,7 @@ class MarketDataCollector:
                 # Check for and fill any gaps before appending new data
                 self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
 
-                # Wait for the next minute boundary
+                # Wait for the next minute boundary in Cyprus time
                 now = datetime.now()
                 seconds_remaining = 60 - now.second - (now.microsecond / 1000000.0)
                 
@@ -241,7 +241,7 @@ class MarketDataCollector:
                 self.status_message = "Fetching latest completed candlestick..."
                 console.print(f"[dim]{self.status_message}[/dim]")
                 
-                latest_candlestick = self.get_latest_completed_candlestick(symbol, timeframe)
+                latest_candlestick = self.get_latest_completed_candlestick(SYMBOL, TIMEFRAME)
 
                 if latest_candlestick is None:
                     self.status_message = "No data received from MT5. Retrying at next minute."
