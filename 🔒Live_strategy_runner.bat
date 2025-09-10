@@ -17,6 +17,7 @@ del /F /Q "*.log" 2>nul
 REM Start a new terminal for each script
 start "App" cmd /k "python app.py"
 start "Database" cmd /k "python database_live.py"  
+start "Market Data" cmd /k "python market_data.py"
 start "Strategy 01" cmd /k "python strategy_01.py"        
 start "Strategy 02" cmd /k "python strategy_02.py"           
 start "Strategy 03" cmd /k "python strategy_03.py"      
