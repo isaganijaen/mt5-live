@@ -2,7 +2,7 @@ import MetaTrader5 as mt5
 import pandas as pd
 import sqlite3
 import time
-from datetime import datetime, timedelta
+from datetime import datetime
 import threading
 from rich.console import Console
 from rich.table import Table
@@ -32,7 +32,7 @@ class MarketDataCollector:
             return False
 
     def create_table(self):
-        """Creates the 'gold' table with columns for time, open, high, low, close, and time_string."""
+        """Creates the 'gold' table with columns for time, open, high, low, and close."""
         try:
             cursor = self.conn.cursor()
             cursor.execute(f"""
@@ -41,8 +41,7 @@ class MarketDataCollector:
                     open REAL,
                     high REAL,
                     low REAL,
-                    close REAL,
-                    time_string TEXT
+                    close REAL
                 );
             """)
             self.conn.commit()
@@ -81,21 +80,22 @@ class MarketDataCollector:
         self.status_message = f"Populating initial data for {symbol}..."
         console.print(f"[bold white]{self.status_message}[/bold white]")
         
-        rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, count)
-
-        if rates is None or len(rates) == 0:
-            self.status_message = "No historical data received from MT5"
+        # We fetch one more than required to discard the open candle
+        rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, count + 1)
+        
+        if rates is None or len(rates) <= 1:
+            self.status_message = "No historical data received from MT5 or not enough data to get completed candles"
             console.print(f"[red]{self.status_message}[/red]")
             return False
 
-        rates_frame = pd.DataFrame(rates)
+        # Drop the last (open) candle
+        rates_frame = pd.DataFrame(rates)[:-1]
         
-        # Use the raw timestamp from MT5 and create a formatted string from it.
-        rates_frame['time_string'] = pd.to_datetime(rates_frame['time'], unit='s').dt.strftime('%Y-%m-%d %H:%M')
+        # Keep the raw integer timestamp
         rates_frame['time'] = pd.to_datetime(rates_frame['time'], unit='s').astype('int64') // 10**9
 
         try:
-            rates_frame[['time', 'open', 'high', 'low', 'close', 'time_string']].to_sql(TABLE_NAME, self.conn, if_exists='replace', index=False)
+            rates_frame[['time', 'open', 'high', 'low', 'close']].to_sql(TABLE_NAME, self.conn, if_exists='replace', index=False)
             self.status_message = f"Successfully populated {len(rates_frame)} records"
             console.print(f"[green]✓ {self.status_message}[/green]")
             return True
@@ -112,15 +112,16 @@ class MarketDataCollector:
         from_time = datetime.fromtimestamp(last_db_timestamp)
         now = datetime.now()
 
+        # Fetch all candles since the last DB timestamp, plus one to discard the open candle
         rates = mt5.copy_rates_range(symbol, timeframe, from_time, now)
 
         if rates is None or len(rates) <= 1:
             return
 
-        rates_frame = pd.DataFrame(rates)
+        # Convert to DataFrame and drop the last (open) candle
+        rates_frame = pd.DataFrame(rates)[:-1]
         
-        # Use the raw timestamp from MT5 and create a formatted string from it.
-        rates_frame['time_string'] = pd.to_datetime(rates_frame['time'], unit='s').dt.strftime('%Y-%m-%d %H:%M')
+        # Keep the raw integer timestamp
         rates_frame['time'] = pd.to_datetime(rates_frame['time'], unit='s').astype('int64') // 10**9
         
         new_data = rates_frame[rates_frame['time'] > last_db_timestamp]
@@ -129,7 +130,7 @@ class MarketDataCollector:
             self.status_message = f"Found and filling a gap of {len(new_data)} missing records"
             console.print(f"[yellow]{self.status_message}[/yellow]")
             try:
-                new_data[['time', 'open', 'high', 'low', 'close', 'time_string']].to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
+                new_data[['time', 'open', 'high', 'low', 'close']].to_sql(TABLE_NAME, self.conn, if_exists='append', index=False)
                 self.status_message = "Successfully filled the gap"
                 console.print(f"[green]✓ {self.status_message}[/green]")
             except sqlite3.Error as e:
@@ -138,14 +139,16 @@ class MarketDataCollector:
 
     def get_latest_completed_candlestick(self, symbol, timeframe):
         """Get the latest completed candlestick from MT5 and format it properly."""
-        rates = mt5.copy_rates_from_pos(symbol, timeframe, 0, 1)
+        # Get the second to last candle, which is the last completed one.
+        # This is more robust than fetching the last candle and checking its time.
+        rates = mt5.copy_rates_from_pos(symbol, timeframe, 1, 1) 
         
         if rates is None or len(rates) == 0:
             return None
             
         latest_rate = rates[0]
         
-        # Get the raw timestamp and create the time string from it.
+        # Get the raw timestamp
         original_time = datetime.fromtimestamp(latest_rate['time'])
         
         # Convert numpy array to proper dictionary format
@@ -154,8 +157,7 @@ class MarketDataCollector:
             'open': float(latest_rate['open']),
             'high': float(latest_rate['high']),
             'low': float(latest_rate['low']),
-            'close': float(latest_rate['close']),
-            'time_string': original_time.strftime('%Y-%m-%d %H:%M')
+            'close': float(latest_rate['close'])
         }
         
         return candlestick_data
@@ -165,15 +167,14 @@ class MarketDataCollector:
         try:
             cursor = self.conn.cursor()
             cursor.execute(f"""
-                INSERT OR REPLACE INTO {TABLE_NAME} (time, open, high, low, close, time_string)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT OR REPLACE INTO {TABLE_NAME} (time, open, high, low, close)
+                VALUES (?, ?, ?, ?, ?)
             """, (
                 candlestick_data['time'],
                 candlestick_data['open'],
                 candlestick_data['high'],
                 candlestick_data['low'],
-                candlestick_data['close'],
-                candlestick_data['time_string']
+                candlestick_data['close']
             ))
             self.conn.commit()
             return True
@@ -199,7 +200,6 @@ class MarketDataCollector:
             table.add_column("High", style="bright_green")
             table.add_column("Low", style="red")
             table.add_column("Close", style="yellow")
-            table.add_column("Time String", style="dim")
             
             for row in all_data:
                 timestamp = datetime.fromtimestamp(row[0])
@@ -208,8 +208,7 @@ class MarketDataCollector:
                     f"{row[1]:.5f}",
                     f"{row[2]:.5f}",
                     f"{row[3]:.5f}",
-                    f"{row[4]:.5f}",
-                    f"{row[5]}"
+                    f"{row[4]:.5f}"
                 )
             
             console.print(table)
@@ -226,21 +225,22 @@ class MarketDataCollector:
                 # Check for and fill any gaps before appending new data
                 self.check_and_fill_gaps(symbol, timeframe, last_db_timestamp)
 
-                # Wait for the next minute boundary in Cyprus time
+                # Wait for the next minute boundary + 2 seconds for a total delay of 5 seconds
                 now = datetime.now()
                 seconds_remaining = 60 - now.second - (now.microsecond / 1000000.0)
                 
-                if seconds_remaining > 0:
-                    console.print(f"[dim]Next update in {seconds_remaining:.1f} seconds...[/dim]", end='\r')
-                    time.sleep(seconds_remaining)
-
-                # Add a small delay to ensure the minute has fully passed and candle is completed
-                time.sleep(3)
-
+                # We need to wait for the next minute boundary plus the 2-second delay.
+                delay_needed = seconds_remaining + 2
+                
+                if delay_needed > 0:
+                    console.print(f"[dim]Next update in {delay_needed:.1f} seconds...[/dim]", end='\r')
+                    time.sleep(delay_needed)
+                
                 # Get the latest COMPLETED candlestick
                 self.status_message = "Fetching latest completed candlestick..."
                 console.print(f"[dim]{self.status_message}[/dim]")
                 
+                # Get the last completed candlestick by starting from position 1, which is the second-to-last candle.
                 latest_candlestick = self.get_latest_completed_candlestick(SYMBOL, TIMEFRAME)
 
                 if latest_candlestick is None:
@@ -258,7 +258,7 @@ class MarketDataCollector:
                         
                         dt = datetime.fromtimestamp(latest_timestamp)
                         # Print only the newly added candle
-                        console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Open: {latest_candlestick['open']:.5f}, High: {latest_candlestick['high']:.5f}, Low: {latest_candlestick['low']:.5f}, Close: {latest_candlestick['close']:.5f}, Time String: {latest_candlestick['time_string']}[/green]")
+                        console.print(f"[green]✓ New completed candle added: Time: {dt.strftime('%Y-%m-%d %H:%M:%S')}, Open: {latest_candlestick['open']:.5f}, High: {latest_candlestick['high']:.5f}, Low: {latest_candlestick['low']:.5f}, Close: {latest_candlestick['close']:.5f}[/green]")
                     else:
                         self.status_message = "Failed to insert new record"
                         console.print(f"[red]{self.status_message}[/red]")
