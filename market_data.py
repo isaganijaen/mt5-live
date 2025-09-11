@@ -127,11 +127,20 @@ class MarketDataCollector:
 
     def check_and_fill_gaps(self, symbol, timeframe, last_db_timestamp):
         """Checks for and fills any time gaps in the data since the last database entry."""
+
+        # Override symbol based on the active account
+        account_info = mt5.account_info()
+        if account_info and account_info.login == 166322367:
+            symbol = 'GOLD#'
+        elif account_info and account_info.login == 301457236:
+            symbol = 'GOLDm#'
+        # The 'symbol' parameter passed to the function is now effectively an optional default.
+
         if last_db_timestamp is None:
             return 0
 
         latest_mt5_timestamp = self.get_latest_completed_candlestick_timestamp(symbol, timeframe)
-        
+
         if latest_mt5_timestamp is None:
             console.print("[dim]Could not retrieve latest MT5 timestamp. Cannot check for gaps.[/dim]")
             return 0
@@ -139,13 +148,13 @@ class MarketDataCollector:
         if last_db_timestamp >= latest_mt5_timestamp:
             console.print("[dim]Database is up to date. No gaps to fill.[/dim]")
             return 0
-            
+
         console.print(f"[yellow]Gap detected: last DB record at {datetime.fromtimestamp(last_db_timestamp).strftime('%Y-%m-%d %H:%M:%S')} vs latest MT5 candle at {datetime.fromtimestamp(latest_mt5_timestamp).strftime('%Y-%m-%d %H:%M:%S')}.[/yellow]")
 
         # Fetch candles from the timestamp AFTER the last record up to the latest MT5 candle
         from_time = datetime.fromtimestamp(last_db_timestamp + 60)
         to_time = datetime.fromtimestamp(latest_mt5_timestamp)
-        
+
         rates = mt5.copy_rates_range(symbol, timeframe, from_time, to_time)
 
         if rates is None or len(rates) == 0:
@@ -228,6 +237,7 @@ class MarketDataCollector:
 
 def main():
     """Main function to run the market data collection process."""
+    global SYMBOL
     collector = MarketDataCollector()
     
     console.print("[bold cyan]Market Data Collector Starting...[/bold cyan]")
@@ -237,7 +247,19 @@ def main():
         mt5.shutdown()
         return
 
-    console.print("[green]✓ MT5 connection established[/green]")
+    account_info = mt5.account_info()
+    account_login = account_info.login
+    if account_login == 166322367:
+        SYMBOL = 'GOLD#'
+     
+    else:
+        SYMBOL = 'GOLDm#'
+
+    console.print("[green]✓ MT5 connection established[/green]")    
+    console.print(f"[green]✓ Account: {mt5.account_info().login}, Server: {mt5.account_info().server}[/green]")    
+    
+    
+
 
     if not collector.create_connection():
         console.print("[red]Failed to create database connection[/red]")
