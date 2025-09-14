@@ -33,7 +33,7 @@ class MT5TradingApp:
         master.geometry("800x600")
         master.protocol("WM_DELETE_WINDOW", self.on_closing)
 
-        self.symbols = ["OTHER", "GOLD#", "BTCUSD#", "EURUSD#", "GBPJPY#", "USDJPY#", "USDGBP#"]
+        self.symbols = ["OTHER", "GOLD#", "BTCUSD#", "ETHUSD#", "EURUSD#", "GBPJPY#", "USDJPY#", "USDGBP#"]
 
         self.create_widgets()
         self.update_open_trades_thread = threading.Thread(target=self.update_open_trades_periodically, daemon=True)
@@ -83,9 +83,15 @@ class MT5TradingApp:
         self.tp_entry = ttk.Entry(input_frame)
         self.tp_entry.grid(row=4, column=1, padx=5, pady=5, sticky="ew")
 
+        # Magic Number Input - Added for dynamic magic number
+        ttk.Label(input_frame, text="Magic Number:").grid(row=5, column=0, padx=5, pady=5, sticky="w")
+        self.magic_number_entry = ttk.Entry(input_frame)
+        self.magic_number_entry.insert(0, "777") # Default value to match the original code
+        self.magic_number_entry.grid(row=5, column=1, padx=5, pady=5, sticky="ew")
+        
         # Buy/Sell Buttons
         button_frame = ttk.Frame(input_frame)
-        button_frame.grid(row=5, column=0, columnspan=3, pady=10)
+        button_frame.grid(row=6, column=0, columnspan=3, pady=10)
         ttk.Button(button_frame, text="BUY", command=lambda: self.place_order(mt5.ORDER_TYPE_BUY)).pack(side="left", padx=5)
         ttk.Button(button_frame, text="SELL", command=lambda: self.place_order(mt5.ORDER_TYPE_SELL)).pack(side="left", padx=5)
         ttk.Button(button_frame, text="CLOSE ALL TRADES", command=self.close_all_trades).pack(side="left", padx=5)
@@ -149,8 +155,10 @@ class MT5TradingApp:
         try:
             volume = float(self.volume_entry.get())
             order_count = int(self.order_count_entry.get())
+            # Get the dynamic magic number from the new input box
+            magic_number = int(self.magic_number_entry.get())
         except ValueError:
-            messagebox.showerror("Input Error", "Volume and Order Count must be numbers.")
+            messagebox.showerror("Input Error", "Volume, Order Count, and Magic Number must be numbers.")
             return
 
         if volume <= 0 or order_count <= 0:
@@ -185,7 +193,7 @@ class MT5TradingApp:
                 "type": order_type,
                 "price": current_price,
                 "deviation": 10,
-                "magic": 777,
+                "magic": magic_number, # Use the dynamic magic number
                 "comment": "Python script order",
                 "type_time": mt5.ORDER_TIME_GTC,
                 "type_filling": mt5.ORDER_FILLING_IOC,
@@ -348,4 +356,3 @@ if __name__ == "__main__":
     else:
         messagebox.showerror("Initialization Failed", "MT5 could not be initialized. Exiting application.")
         root.destroy()
-
