@@ -23,6 +23,7 @@ start "Market Data" cmd /k "python market_data.py"
 start "Strategy 01" cmd /k "python strategy_01.py"        
 start "Strategy 02" cmd /k "python strategy_02.py"           
 start "Strategy 03" cmd /k "python strategy_03.py"      
+start "Strategy 07" cmd /k "python strategy_07.py" 
 
 echo All Live Trading Strategies have been launched in separate terminal windows.
 pause
