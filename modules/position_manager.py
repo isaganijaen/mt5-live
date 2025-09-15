@@ -49,17 +49,29 @@ class PositionManager(threading.Thread):
         if symbol_info is None:
             log_error(f"Failed to get symbol info for {self.config.symbol}")
             return
-            
+
         point = symbol_info.point
-        current_profit = position.profit
+        current_profit_currency = position.profit # This is the profit in the account's currency, e.g., USD
+        current_profit_points = 0
         
-        log_info(f"Checking position {position.ticket}. Current profit: {current_profit:.2f}")
-        log_info(f"Activation Point: {(self.config.trailing_activation_points * point)*point:.3f}")
-        # Check if the profit is high enough to activate trailing stop
-        if current_profit >= ((self.config.trailing_activation_points * point)*point):
-            log_info(f"Current Profit Points: {current_profit} | Trailing Act. Pnt: {(self.config.trailing_activation_points * point):.3f}")
+        # Calculate profit in points
+        if position.type == mt5.ORDER_TYPE_BUY:
+            current_price = mt5.symbol_info_tick(self.config.symbol).ask
+            current_profit_points = (current_price - position.price_open) / point
+        elif position.type == mt5.ORDER_TYPE_SELL:
+            current_price = mt5.symbol_info_tick(self.config.symbol).bid
+            current_profit_points = (position.price_open - current_price) / point
+
+        log_info(f"Checking position {position.ticket}.")
+        log_info(f"Current profit in currency: {current_profit_currency:.2f}")
+        log_info(f"Activation Point: {self.config.trailing_activation_points} | Current profit in points: {current_profit_points:.2f} ")
+
+        # Check if the profit in points is high enough to activate the trailing stop
+        if current_profit_points >= self.config.trailing_activation_points:
+            log_info(f"Current Profit Points: {current_profit_points:.2f} | Trailing Activation Points: {self.config.trailing_activation_points}")
             log_info("Trailing stop activation threshold reached. Activating trailing stop.")
-            
+
+            # The rest of the logic remains the same
             # Fetch data for EMA calculation
             rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M1, 0, 1000)
             if rates is None:

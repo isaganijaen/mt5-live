@@ -7,12 +7,13 @@ from rich.console import Console
 console = Console()
 
 class TradingConfig:
-    def __init__(self, symbol, strategy_id, volume, deviation,  
+    def __init__(self,  symbol, filename, strategy_id, volume, deviation,  
                  sl_points, tp_points, trailing_activation_points, trailing_stop_distance,
                  ema_trailing_period,
                  ema_20_period_high,ema_20_period_low,ema_20_period_distance_threshold,ema_50_period,ema_200_period,max_candle_range_1h_allowed,max_candle_range_4h_allowed):
 
         self.symbol = symbol
+        self.filename = filename
         self.strategy_id = strategy_id
         self.volume = volume
         self.deviation = deviation
@@ -41,10 +42,11 @@ class TradingConfig:
         """Displays the configuration in a structured table."""
         config_table = Table(title="⚙️ Trading Configuration", box=box.ROUNDED, show_header=True)
         config_table.add_column("Setting", style="cyan", width=20)
-        config_table.add_column("Value", style="green", width=15)
+        config_table.add_column("Value", style="green", width=17)
         config_table.add_column("Description", style="dim")
         
         config_table.add_row("Trading Symbol", self.symbol, "Primary trading instrument")
+        config_table.add_row("Filename", self.filename, "Filename")
         config_table.add_row("Strategy ID", str(self.strategy_id), "Unique identifier for the strategy")
         # config_table.add_row("Risk Per Trade", f"{self.risk_percent}%", "Percentage of account risked")
         config_table.add_row("Stop Loss", f"{self.sl_points} points", "Fixed stop loss distance")

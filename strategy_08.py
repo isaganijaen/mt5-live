@@ -116,8 +116,7 @@ class M1AverageZone:
             "comment": self.config.filename,
             "type_time": mt5.ORDER_TIME_GTC,
             "type_filling": mt5.ORDER_FILLING_IOC,
-            "sl": sl,
-            "tp": tp,
+            "sl": sl 
         }
 
         result = mt5.order_send(request)
@@ -352,8 +351,7 @@ def start_strategy():
 
     production_status = "DEMO" 
     filename = os.path.basename(__file__)
-    description = '1R M1 Average Zone Trading'
-    
+    description = 'Full Trailing Stop -  M1 Average Zone Trading'
 
 
     log_info("Initializing Strategy 07 System.")
@@ -362,7 +360,7 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#",
         filename=filename,
-        strategy_id=40 if production_status == 'DEMO' else 7, # if live
+        strategy_id=43 if production_status == 'DEMO' else 8, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=150,
