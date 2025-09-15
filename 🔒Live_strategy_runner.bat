@@ -22,7 +22,7 @@ REM and frequent gaps in data. Will use this as initial data then append with br
 start "Market Data" cmd /k "python market_data.py"
 REM start "Strategy 01" cmd /k "python strategy_01.py"        
 REM start "Strategy 02" cmd /k "python strategy_02.py"           
-REM start "Strategy 03" cmd /k "python strategy_03.py"      
+start "Strategy 03" cmd /k "python strategy_03.py"      
 start "Strategy 07" cmd /k "python strategy_07.py" 
 REM start "Strategy 08 - FULL TS" cmd /k "python strategy_08.py" 
 
