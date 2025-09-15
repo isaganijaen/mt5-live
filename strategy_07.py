@@ -350,7 +350,7 @@ class M1AverageZone:
 def start_strategy():
     """Main function to start the bot."""
 
-    production_status = "DEMO" 
+    production_status = "LIVE" 
     filename = os.path.basename(__file__)
     description = '1R M1 Average Zone Trading'
     
@@ -360,7 +360,7 @@ def start_strategy():
     
     # 1. Define configuration settings, can be from env variables
     config_settings = TradingConfig(
-        symbol="GOLD#",
+        symbol="GOLDm#",
         filename=filename,
         strategy_id=40 if production_status == 'DEMO' else 7, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
