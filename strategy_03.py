@@ -169,7 +169,7 @@ class PerformanceMonitor:
         table.add_column("Metric", style="cyan", no_wrap=True)
         table.add_column("Value", style="magenta")
         
-        table.add_row("⏱️  Uptime", stats["uptime"])
+        table.add_row("⏱️ Uptime", stats["uptime"])
         table.add_row("📈 Total Trades", str(stats["total_trades"]))
         table.add_row("✅ Success Rate", stats["success_rate"])
         table.add_row("⚡ Avg Response", f"{stats['avg_response_ms']}ms")
