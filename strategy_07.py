@@ -352,11 +352,11 @@ def start_strategy():
 
     production_status = "LIVE" 
     filename = os.path.basename(__file__)
-    description = '1R M1 Average Zone Trading'
+    description = 'M1 Average Zone Trading (2R)'
     
 
 
-    log_info("Initializing Strategy 07 System.")
+    log_info(f"Initializing {description} System.")
     
     # 1. Define configuration settings, can be from env variables
     config_settings = TradingConfig(

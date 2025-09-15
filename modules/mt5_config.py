@@ -41,14 +41,15 @@ class TradingConfig:
     def display(self):
         """Displays the configuration in a structured table."""
         config_table = Table(title="⚙️ Trading Configuration", box=box.ROUNDED, show_header=True)
-        config_table.add_column("Setting", style="cyan", width=20)
-        config_table.add_column("Value", style="green", width=17)
+        config_table.add_column("Setting", style="cyan")
+        config_table.add_column("Value", style="green")
         config_table.add_column("Description", style="dim")
         
         config_table.add_row("Trading Symbol", self.symbol, "Primary trading instrument")
         config_table.add_row("Filename", self.filename, "Filename")
         config_table.add_row("Strategy ID", str(self.strategy_id), "Unique identifier for the strategy")
-        # config_table.add_row("Risk Per Trade", f"{self.risk_percent}%", "Percentage of account risked")
+        config_table.add_row("RRR", f"{self.reward_ratio}", "Risk to Reward Ratio")
+        config_table.add_row("Volume", f"{self.volume}%", "Volume")
         config_table.add_row("Stop Loss", f"{self.sl_points} points", "Fixed stop loss distance")
         config_table.add_row("Take Profit", f"{self.tp_points} points", "Enhanced take profit target")
         config_table.add_row("Trailing Stop", f"{self.trailing_stop_distance} pts", "Distance for trailing stop")

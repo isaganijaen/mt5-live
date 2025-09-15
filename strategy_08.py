@@ -354,7 +354,7 @@ def start_strategy():
     description = 'Full Trailing Stop -  M1 Average Zone Trading'
 
 
-    log_info("Initializing Strategy 07 System.")
+    log_info(f"Initializing {description} System.")
     
     # 1. Define configuration settings, can be from env variables
     config_settings = TradingConfig(
