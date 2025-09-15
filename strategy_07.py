@@ -280,23 +280,23 @@ class M1AverageZone:
             # Candle Range Volatility
             if candle_1h_range <= self.config.max_candle_range_1h_allowed:
                 h1_within_range = True
-                candle_1h_range_status = 'Allowed 🟢'
+                candle_1h_range_status = 'Within Threshold 🟢'
             else:
                 h1_within_range = False    
-                candle_1h_range_status = 'Not Allowed 🔴'
+                candle_1h_range_status = 'Outside Threshold 🔴'
 
 
             if candle_4h_range <= self.config.max_candle_range_4h_allowed:
                 h4_within_range = True
-                candle_4h_range_status = 'Allowed 🟢'
+                candle_4h_range_status = 'Within Threshold 🟢'
             else:
                 h4_within_range = False    
-                candle_4h_range_status = 'Not Allowed 🔴'                
+                candle_4h_range_status = 'Outside Threshold 🔴'                
 
 
             print(f"Trend: {trend}")
-            print(f"H1 Candle Range Tradeable: {candle_1h_range_status}")  
-            print(f"H4 Candle Range Tradeable: {candle_4h_range_status}\n")     
+            print(f"H1 Candle Range: {candle_1h_range_status}")  
+            print(f"H4 Candle Range: {candle_4h_range_status}\n")     
 
             
             # The threshold is now a fixed point value, no need to multiply by point
