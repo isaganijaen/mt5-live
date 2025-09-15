@@ -294,8 +294,8 @@ class M1AverageZone:
 
 
             print(f"Trend: {trend}")
-            print(f"H1 Candle Range Tradeable: {candle_1h_range_status}")  
-            print(f"H4 Candle Range Tradeable: {candle_4h_range_status}\n")     
+            print(f"H1 Candle Range: {candle_1h_range_status}")  
+            print(f"H4 Candle Range: {candle_4h_range_status}\n")     
 
             
             # The threshold is now a fixed point value, no need to multiply by point
