@@ -366,14 +366,14 @@ def start_strategy():
         strategy_id=40 if production_status == 'DEMO' else 7, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
-        sl_points=150,
-        tp_points=300,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        sl_points=300,
+        tp_points=450,
+        trailing_activation_points=200, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         ema_trailing_period=7,
         ema_20_period_high=20,
         ema_20_period_low=20,
-        ema_20_period_distance_threshold=70,
+        ema_20_period_distance_threshold=90,
         ema_50_period=50,
         ema_200_period=200,
         max_candle_range_1h_allowed=1100,
