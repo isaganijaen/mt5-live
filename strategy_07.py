@@ -14,7 +14,7 @@ from rich.table import Table
 from rich import box
 import modules.mt5_config as mt5_config
 from account_list import account_type
-from modules.trading_hours_24 import is_trading_hours
+from modules.trading_hours import is_trading_hours
 
 #-----------------------------------
 # Utilities and Global Variables
