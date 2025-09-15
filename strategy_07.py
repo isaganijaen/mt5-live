@@ -302,14 +302,15 @@ class M1AverageZone:
             # The threshold is now a fixed point value, no need to multiply by point
             distance_threshold_in_points = self.config.ema_20_period_distance_threshold
            
-
-
-            if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points and h1_within_range and h4_within_range:
+            # Disabling Candle Range threshold for now as trades would be limited on a trending market.
+            # if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points and h1_within_range and h4_within_range:
+            if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points: 
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is close to 20 EMA Low. Placing BUY order.")
-                self.execute_trade(mt5.ORDER_TYPE_BUY)                
-            elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points and h1_within_range and h4_within_range:
+                self.execute_trade(mt5.ORDER_TYPE_BUY)
+            # elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
+            elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points:
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is close to 20 EMA High. Placing SELL order.")
@@ -322,17 +323,17 @@ class M1AverageZone:
                     log_info(f"No valid trading signal detected.")
                     log_info(f"Bullish trend but price's distance is too far from 20 EMA Low ({points_distance_vs_20_low:.2f} points)")
                     if not h1_within_range:
-                        log_info(f"1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}. Not tradeable")
+                        log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
-                        log_info(f"1H candle range {candle_4h_range} outide the treshold {self.config.max_candle_range_4h_allowed}. Not tradeable")                        
+                        log_info(f"Note: 4H candle range {candle_4h_range} outide the treshold {self.config.max_candle_range_4h_allowed}.")                        
                 elif trend == 'bearish 🟡':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
                     log_info(f"Bearish trend but price's distance is too far from 20 EMA High ({points_distance_vs_20_high:.2f} points).")
                     if not h1_within_range:
-                        log_info(f"1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}. Not tradeable")
+                        log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
-                        log_info(f"1H candle range {candle_4h_range} outide the treshold {self.config.max_candle_range_4h_allowed}. Not tradeable")                         
+                        log_info(f"Note: 4H candle range {candle_4h_range} outide the treshold {self.config.max_candle_range_4h_allowed}.")                         
                 else:
                     log_info(f"Signal: {signal}")
                     log_info("No clear trend. Potential consolidation or reversal.")
@@ -367,7 +368,7 @@ def start_strategy():
         deviation=20,
         sl_points=150,
         tp_points=300,
-        trailing_activation_points=100, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         ema_trailing_period=7,
         ema_20_period_high=20,
