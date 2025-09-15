@@ -25,6 +25,6 @@ REM start "Strategy 02" cmd /k "python strategy_02.py"
 start "Strategy 03" cmd /k "python strategy_03.py"      
 start "Strategy 07" cmd /k "python strategy_07.py" 
 REM start "Strategy 08 - FULL TS" cmd /k "python strategy_08.py" 
-
+ 
 echo All Live Trading Strategies have been launched in separate terminal windows.
 pause
