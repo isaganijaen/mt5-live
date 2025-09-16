@@ -398,7 +398,7 @@ class M1AverageZone:
 def start_strategy():
     """Main function to start the bot."""
 
-    production_status = "LIVE" # DEMO or LIVE
+    production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
     description = 'M1 Average Zone Trading (2R)'
     
@@ -411,12 +411,12 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=44 if production_status == 'DEMO' else 9, # if live
+        strategy_id=45 if production_status == 'DEMO' else 10, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
-        sl_points=150,
-        tp_points=150,
-        trailing_activation_points=130, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        sl_points=300,
+        tp_points=300,
+        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=7,
