@@ -9,8 +9,8 @@ console = Console()
 class TradingConfig:
     def __init__(self,  symbol, filename, strategy_id, volume, deviation,  
                  sl_points, tp_points, trailing_activation_points, trailing_stop_distance,
-                 ema_trailing_period,
-                 ema_20_period_high,ema_20_period_low,ema_20_period_distance_threshold,ema_50_period,ema_200_period,max_candle_range_1h_allowed,max_candle_range_4h_allowed):
+                 trailing_period,
+                 ema_resistance,ema_support,support_resistance_distance_threshold,consolidation_filter,long_term_trend,max_candle_range_1h_allowed,max_candle_range_4h_allowed):
 
         self.symbol = symbol
         self.filename = filename
@@ -29,12 +29,12 @@ class TradingConfig:
         self.trailing_stop_distance = trailing_stop_distance
 
         # Indicators
-        self.ema_trailing_period = ema_trailing_period
-        self.ema_20_period_high = ema_20_period_high
-        self.ema_20_period_low = ema_20_period_low
-        self.ema_20_period_distance_threshold = ema_20_period_distance_threshold
-        self.ema_50_period = ema_50_period
-        self.ema_200_period = ema_200_period
+        self.trailing_period = trailing_period
+        self.ema_resistance = ema_resistance
+        self.ema_support = ema_support
+        self.support_resistance_distance_threshold = support_resistance_distance_threshold
+        self.consolidation_filter = consolidation_filter
+        self.long_term_trend = long_term_trend
         self.max_candle_range_1h_allowed = max_candle_range_1h_allowed
         self.max_candle_range_4h_allowed = max_candle_range_4h_allowed
 
@@ -54,12 +54,12 @@ class TradingConfig:
         config_table.add_row("Take Profit", f"{self.tp_points} points", "Enhanced take profit target")
         config_table.add_row("Trailing Stop", f"{self.trailing_stop_distance} pts", "Distance for trailing stop")
         config_table.add_row("Trail Activation", f"{self.trailing_activation_points} pts", "Profit needed to activate trailing")
-        config_table.add_row("Fast Period EMA Low",f"{self.ema_20_period_low}","Buy Zone")
-        config_table.add_row("Fast Period EMA High",f"{self.ema_20_period_high}","Sell Zone")
-        config_table.add_row("Trail Indicator EMA",f"{self.ema_trailing_period}","EMA Trailing Indicator (Close)")
-        config_table.add_row("Price Distance Tresh",f"{self.ema_20_period_distance_threshold}","Minimum Price Distance Threshold vs 20 EMA")
-        config_table.add_row("Medium Period EMA",f"{self.ema_50_period}","Consolidation Filter (close)")
-        config_table.add_row("Slow Period EMA",f"{self.ema_200_period}","Major Trend Indicator (Close)")
+        config_table.add_row("Fast Period EMA Low",f"{self.ema_support}","Buy Zone")
+        config_table.add_row("Fast Period EMA High",f"{self.ema_resistance}","Sell Zone")
+        config_table.add_row("Trail Indicator EMA",f"{self.trailing_period}","EMA Trailing Indicator (Close)")
+        config_table.add_row("Price Distance Tresh",f"{self.support_resistance_distance_threshold}","Minimum Price Distance Threshold vs 20 EMA")
+        config_table.add_row("Medium Period EMA",f"{self.consolidation_filter}","Consolidation Filter (close)")
+        config_table.add_row("Slow Period EMA",f"{self.long_term_trend}","Major Trend Indicator (Close)")
         config_table.add_row("1H Candle Range",f"{self.max_candle_range_1h_allowed}","Max. Alowed 1 Hour Candle Range")
         config_table.add_row("4H Candle Range",f"{self.max_candle_range_4h_allowed}","Max. Alowed 4 Hour Candle Range")
 

@@ -171,7 +171,7 @@ class M1AverageZone:
 
             # Get new data
             rates_df = self.get_data()
-            if rates_df is None or len(rates_df) < self.config.ema_200_period + 10:
+            if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
                 log_warning("Not enough data to run indicators. Waiting...")
                 continue
 
@@ -195,38 +195,38 @@ class M1AverageZone:
             # Check Indicators' Values
             current_price = indicator_tools.get_current_price()
 
-            ema_20_high = indicator_tools.get_last_ema_value(
-                period=self.config.ema_20_period_high,
+            ema_resistance_high = indicator_tools.get_last_ema_value(
+                period=self.config.ema_resistance,
                 price_type='high'
             )        
 
-            ema_20_low = indicator_tools.get_last_ema_value(
-                period=self.config.ema_20_period_low,
+            ema_resistance_low = indicator_tools.get_last_ema_value(
+                period=self.config.ema_support,
                 price_type='low'
             )     
 
-            ema_7_close = indicator_tools.get_last_ema_value(
-                period=self.config.ema_trailing_period,
+            ema_trailing_period = indicator_tools.get_last_ema_value(
+                period=self.config.trailing_period,
                 price_type='close'
             )                                  
             
-            ema_50_close = indicator_tools.get_last_ema_value(
-                period=self.config.ema_50_period,
+            ema_consolidation_filter = indicator_tools.get_last_ema_value(
+                period=self.config.consolidation_filter,
                 price_type='close'
             )   
 
-            ema_200_close = indicator_tools.get_last_ema_value(
-                period=self.config.ema_200_period,
+            ema_long_term_trend = indicator_tools.get_last_ema_value(
+                period=self.config.long_term_trend,
                 price_type='close'
             )               
 
 
             # Calculate all distances in points
-            points_distance_vs_20_high = abs(current_price - ema_20_high) / point
-            points_distance_vs_20_low = abs(current_price - ema_20_low) / point
-            points_distance_vs_7_ema_close = abs(current_price - ema_7_close) / point
-            points_distance_vs_50_ema_close = abs(current_price - ema_50_close) / point
-            points_distance_vs_200_ema_close = abs(current_price - ema_200_close) / point
+            points_distance_vs_20_high = abs(current_price - ema_resistance_high) / point
+            points_distance_vs_20_low = abs(current_price - ema_resistance_low) / point
+            points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
+            points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
+            points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
 
 
             # Calculate Candle Ranges
@@ -242,22 +242,24 @@ class M1AverageZone:
             print(f"=============================================")
             print(f"Indicators")
             print(f"=============================================")
-            print(f"Symbol:          {self.config.symbol}")
-            print(f"20 EMA High:     {ema_20_high}")
-            print(f"20 EMA Low:      {ema_20_low}")
-            print(f"7 EMA Close:     {ema_7_close}")
-            print(f"50 EMA Close:    {ema_50_close}")
-            print(f"200 EMA Close:   {ema_200_close}")
+            print(f"Symbol: {self.config.symbol}")
+            print(f"{self.config.ema_resistance} EMA Resistance: {ema_resistance_high}")
+            print(f"{self.config.ema_support} EMA Support: {ema_resistance_low}")
+            print(f"{self.config.trailing_period} EMA Close (TrP): {ema_trailing_period}")
+            print(f"{self.config.consolidation_filter} EMA Close (CF): {ema_consolidation_filter}")
+            print(f"{self.config.long_term_trend} EMA Close (LTT): {ema_long_term_trend}")
             
+                
+
             print("\n")
             print(f"=============================================")
             print(f"Metrics")
             print(f"=============================================")            
-            print(f"Distance vs 7 EMA Close:      {points_distance_vs_7_ema_close:.2f} Points")
-            print(f"Distance vs 20 EMA High:      {points_distance_vs_20_high:.2f} Points")
-            print(f"Distance vs 20 EMA Low:       {points_distance_vs_20_low:.2f} Points")
-            print(f"Distance vs 50 EMA Close:     {points_distance_vs_50_ema_close:.2f} Points")
-            print(f"Distance vs 200 EMA Close:    {points_distance_vs_200_ema_close:.2f} Points")
+            print(f"Distance vs 7 EMA Close:      {points_distance_vs_trailing_guide:.2f} Points")
+            print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_20_high:.2f} Points")
+            print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_20_low:.2f} Points")
+            print(f"Distance vs 50 EMA Close:     {points_distance_vs_consolidation_guide:.2f} Points")
+            print(f"Distance vs 200 EMA Close:    {points_distance_vs_long_term_trend_guide:.2f} Points")
             print(f"H1 Candle Range:              {candle_1h_range} Points")
             print(f"H4 Candle Range:              {candle_4h_range} Points")
 
@@ -266,9 +268,9 @@ class M1AverageZone:
             
 
             # Identifying Trend
-            if current_price > ema_20_low and ema_20_low > ema_50_close and ema_50_close > ema_200_close:
+            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
                 trend = 'bullish 🟢'
-            elif current_price < ema_20_high and ema_20_high < ema_50_close and ema_50_close < ema_200_close:    
+            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:    
                 trend = 'bearish 🟡'
             else:
                 trend = 'consolidation 🔵'    
@@ -300,17 +302,15 @@ class M1AverageZone:
 
             
             # The threshold is now a fixed point value, no need to multiply by point
-            distance_threshold_in_points = self.config.ema_20_period_distance_threshold
+            distance_threshold_in_points = self.config.support_resistance_distance_threshold
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
-            # if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points and h1_within_range and h4_within_range:
-            if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points: 
+            if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points and h1_within_range and h4_within_range:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is close to 20 EMA Low. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY)
-            # elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
-            elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points:
+            elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is close to 20 EMA High. Placing SELL order.")
@@ -370,12 +370,12 @@ def start_strategy():
         tp_points=300,
         trailing_activation_points=200, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
-        ema_trailing_period=7,
-        ema_20_period_high=7,
-        ema_20_period_low=7,
-        ema_20_period_distance_threshold=70,
-        ema_50_period=50,
-        ema_200_period=200,
+        trailing_period=7,
+        ema_resistance=7,
+        ema_support=7,
+        support_resistance_distance_threshold=31,
+        consolidation_filter=20,
+        long_term_trend=200,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
