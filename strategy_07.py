@@ -222,8 +222,8 @@ class M1AverageZone:
 
 
             # Calculate all distances in points
-            points_distance_vs_20_high = abs(current_price - ema_resistance_high) / point
-            points_distance_vs_20_low = abs(current_price - ema_resistance_low) / point
+            points_distance_vs_ema_resistance = abs(current_price - ema_resistance_high) / point
+            points_distance_vs_ema_support = abs(current_price - ema_resistance_low) / point
             points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
             points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
             points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
@@ -239,25 +239,30 @@ class M1AverageZone:
             
 
             print("\n")
-            print(f"=============================================")
-            print(f"Indicators")
-            print(f"=============================================")
-            print(f"Symbol: {self.config.symbol}")
-            print(f"{self.config.ema_resistance} EMA Resistance: {ema_resistance_high}")
-            print(f"{self.config.ema_support} EMA Support: {ema_resistance_low}")
-            print(f"{self.config.trailing_period} EMA Close (TrP): {ema_trailing_period}")
-            print(f"{self.config.consolidation_filter} EMA Close (CF): {ema_consolidation_filter}")
-            print(f"{self.config.long_term_trend} EMA Close (LTT): {ema_long_term_trend}")
+            #------------------------------------------
+            # INDICATORS TABLE
+            #------------------------------------------
             
-                
+            config_indicators_table = Table(title="Indicators", box=box.ROUNDED, show_header=True)
+            config_indicators_table.add_column("Setting", style="cyan")
+            config_indicators_table.add_column("Value", style="green")
+            config_indicators_table.add_column("Description", style="dim")           
+
+            config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
+            config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
+            config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
+            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_resistance_low,3)), "Consolidation Filter" ) 
+            config_indicators_table.add_row(f"{self.config.long_term_trend} Period EMA Close", str(round(ema_long_term_trend,3)), "Long Term Trend" ) 
+
+            console.print(config_indicators_table)
 
             print("\n")
             print(f"=============================================")
             print(f"Metrics")
             print(f"=============================================")            
             print(f"Distance vs 7 EMA Close:      {points_distance_vs_trailing_guide:.2f} Points")
-            print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_20_high:.2f} Points")
-            print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_20_low:.2f} Points")
+            print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_ema_resistance:.2f} Points")
+            print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_ema_support:.2f} Points")
             print(f"Distance vs 50 EMA Close:     {points_distance_vs_consolidation_guide:.2f} Points")
             print(f"Distance vs 200 EMA Close:    {points_distance_vs_long_term_trend_guide:.2f} Points")
             print(f"H1 Candle Range:              {candle_1h_range} Points")
@@ -305,12 +310,12 @@ class M1AverageZone:
             distance_threshold_in_points = self.config.support_resistance_distance_threshold
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
-            if trend == 'bullish 🟢' and points_distance_vs_20_low <= distance_threshold_in_points and h1_within_range and h4_within_range:            
+            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points and h1_within_range and h4_within_range:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is close to 20 EMA Low. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY)
-            elif trend == 'bearish 🟡' and points_distance_vs_20_high <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
+            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is close to 20 EMA High. Placing SELL order.")
@@ -321,7 +326,7 @@ class M1AverageZone:
                 if trend == 'bullish 🟢':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bullish trend but price's distance is too far from 20 EMA Low ({points_distance_vs_20_low:.2f} points)")
+                    log_info(f"Bullish trend but price's distance is too far from 20 EMA Low ({points_distance_vs_ema_support:.2f} points)")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -329,7 +334,7 @@ class M1AverageZone:
                 elif trend == 'bearish 🟡':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bearish trend but price's distance is too far from 20 EMA High ({points_distance_vs_20_high:.2f} points).")
+                    log_info(f"Bearish trend but price's distance is too far from 20 EMA High ({points_distance_vs_ema_resistance:.2f} points).")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -368,7 +373,7 @@ def start_strategy():
         deviation=20,
         sl_points=150,
         tp_points=300,
-        trailing_activation_points=200, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=7,

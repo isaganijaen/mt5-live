@@ -81,8 +81,8 @@ class PositionManager(threading.Thread):
             rates_df['time'] = pd.to_datetime(rates_df['time'], unit='s')
             
             indicator_tools = Indicators(rates_df)
-            ema_value = indicator_tools.get_last_ema_value(self.config.ema_trailing_period, 'close')
-            log_info(f"Current 7 EMA value: {ema_value}")
+            ema_value = indicator_tools.get_last_ema_value(self.config.trailing_period, 'close')
+            log_info(f"Current {self.config.trailing_period} EMA value: {ema_value}")
             
             if pd.isna(ema_value):
                 log_warning("EMA value is NaN. Skipping stop loss update.")
