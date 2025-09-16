@@ -384,7 +384,7 @@ def start_strategy():
 
     production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
-    description = 'M1  7/20/21 EMA Zone Trend Trading Strategy(2R)'
+    description = 'M1 Average Zone Trading (2R)'
     
 
 
@@ -394,7 +394,7 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=40 if production_status == 'DEMO' else 7, # if live
+        strategy_id=44 if production_status == 'DEMO' else 9, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=150,
@@ -405,8 +405,8 @@ def start_strategy():
         ema_resistance=7,
         ema_support=7,
         support_resistance_distance_threshold=40,
-        consolidation_filter=21,
-        long_term_trend=200,
+        consolidation_filter=20,
+        long_term_trend=21,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
