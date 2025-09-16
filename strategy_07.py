@@ -239,10 +239,10 @@ class M1AverageZone:
             
 
             print("\n")
+
             #------------------------------------------
             # INDICATORS TABLE
             #------------------------------------------
-            
             config_indicators_table = Table(title="Indicators", box=box.ROUNDED, show_header=True)
             config_indicators_table.add_column("Setting", style="cyan")
             config_indicators_table.add_column("Value", style="green")
@@ -257,18 +257,39 @@ class M1AverageZone:
             console.print(config_indicators_table)
 
             print("\n")
-            print(f"=============================================")
-            print(f"Metrics")
-            print(f"=============================================")            
-            print(f"Distance vs 7 EMA Close:      {points_distance_vs_trailing_guide:.2f} Points")
-            print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_ema_resistance:.2f} Points")
-            print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_ema_support:.2f} Points")
-            print(f"Distance vs 50 EMA Close:     {points_distance_vs_consolidation_guide:.2f} Points")
-            print(f"Distance vs 200 EMA Close:    {points_distance_vs_long_term_trend_guide:.2f} Points")
-            print(f"H1 Candle Range:              {candle_1h_range} Points")
-            print(f"H4 Candle Range:              {candle_4h_range} Points")
+
+            #------------------------------------------
+            # METRICS TABLE
+            #------------------------------------------            
+
+            # print(f"=============================================")
+            # print(f"Metrics")
+            # print(f"=============================================")            
+            # print(f"Distance vs 7 EMA Close:      {points_distance_vs_trailing_guide:.2f} Points")
+            # print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_ema_resistance:.2f} Points")
+            # print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_ema_support:.2f} Points")
+            # print(f"Distance vs 50 EMA Close:     {points_distance_vs_consolidation_guide:.2f} Points")
+            # print(f"Distance vs 200 EMA Close:    {points_distance_vs_long_term_trend_guide:.2f} Points")
+            # print(f"H1 Candle Range:              {candle_1h_range} Points")
+            # print(f"H4 Candle Range:              {candle_4h_range} Points")
 
 
+
+            config_metrics_table = Table(title="Metrics", box=box.ROUNDED, show_header=True)
+            config_metrics_table.add_column("Metrics", style="cyan")
+            config_metrics_table.add_column("Value", style="green")
+            config_metrics_table.add_column("Status", style="dim")  
+
+            config_metrics_table.add_row(f"Distance vs Trailing Guide ", f"{points_distance_vs_trailing_guide:.2f} Points", "🟢" )
+            config_metrics_table.add_row(f"Distance vs Support ", f"{points_distance_vs_ema_support:.2f} Points", str("🟢" if points_distance_vs_ema_support < self.config.support_resistance_distance_threshold else "🔴"))
+            config_metrics_table.add_row(f"Distance vs Resistance ", f"{points_distance_vs_ema_resistance:.2f} Points" )
+            config_metrics_table.add_row(f"Distance vs Consolidation Filter ", f"{points_distance_vs_consolidation_guide:.2f} Points" )
+            config_metrics_table.add_row(f"Distance vs Long Term Trend ", f"{points_distance_vs_long_term_trend_guide:.2f} Points" )
+            config_metrics_table.add_row(f"H1 Candle Range", f"{candle_1h_range:.2f} Points" )
+            config_metrics_table.add_row(f"H4 Candle Range", f"{candle_4h_range:.2f} Points" ) 
+
+            console.print(config_metrics_table)
+   
             print("\n")
             
 
@@ -305,6 +326,12 @@ class M1AverageZone:
             print(f"H1 Candle Range: {candle_1h_range_status}")  
             print(f"H4 Candle Range: {candle_4h_range_status}\n")     
 
+
+
+
+            #-----------------------------------------------------------------------------
+            # METRIC EVALUATION | TRADE EXECUTION 
+            #-----------------------------------------------------------------------------
             
             # The threshold is now a fixed point value, no need to multiply by point
             distance_threshold_in_points = self.config.support_resistance_distance_threshold
