@@ -14,7 +14,7 @@ from rich.table import Table
 from rich import box
 import modules.mt5_config as mt5_config
 from account_list import account_type
-from modules.trading_hours import is_trading_hours
+from modules.trading_hours_24 import is_trading_hours
 
 #-----------------------------------
 # Utilities and Global Variables
@@ -135,6 +135,7 @@ class M1AverageZone:
         order_table.add_row("Order Type", f"{'Buy' if request['type'] == mt5.ORDER_TYPE_BUY else 'Sell'}")
         order_table.add_row("SL", f"{request['sl'] if 'sl' in request and request['sl'] != 0.0 else 'N/A'}")
         order_table.add_row("TP", f"{request['tp'] if 'tp' in request and request['tp'] != 0.0 else 'N/A'}")
+        
 
         console.print(order_table)
         print("\n")
@@ -147,7 +148,7 @@ class M1AverageZone:
         """
         Main loop for the strategy.
         """
-        log_info(f"Starting {self.config.symbol} M1 Average Zone Strategy.")
+        log_info(f"Starting {self.config.symbol} M1 Average Zone Strategy.\n")
         
         # Display the configuration
         self.config.display()
@@ -258,39 +259,7 @@ class M1AverageZone:
 
             print("\n")
 
-            #------------------------------------------
-            # METRICS TABLE
-            #------------------------------------------            
 
-            # print(f"=============================================")
-            # print(f"Metrics")
-            # print(f"=============================================")            
-            # print(f"Distance vs 7 EMA Close:      {points_distance_vs_trailing_guide:.2f} Points")
-            # print(f"Distance vs {self.config.ema_resistance} EMA Resistance:      {points_distance_vs_ema_resistance:.2f} Points")
-            # print(f"Distance vs {self.config.ema_support} EMA Support:       {points_distance_vs_ema_support:.2f} Points")
-            # print(f"Distance vs 50 EMA Close:     {points_distance_vs_consolidation_guide:.2f} Points")
-            # print(f"Distance vs 200 EMA Close:    {points_distance_vs_long_term_trend_guide:.2f} Points")
-            # print(f"H1 Candle Range:              {candle_1h_range} Points")
-            # print(f"H4 Candle Range:              {candle_4h_range} Points")
-
-
-
-            config_metrics_table = Table(title="Metrics", box=box.ROUNDED, show_header=True)
-            config_metrics_table.add_column("Metrics", style="cyan")
-            config_metrics_table.add_column("Value", style="green")
-            config_metrics_table.add_column("Status", style="dim")  
-
-            config_metrics_table.add_row(f"Distance vs Trailing Guide ", f"{points_distance_vs_trailing_guide:.2f} Points", "🟢" )
-            config_metrics_table.add_row(f"Distance vs Support ", f"{points_distance_vs_ema_support:.2f} Points", str("🟢" if points_distance_vs_ema_support < self.config.support_resistance_distance_threshold else "🔴"))
-            config_metrics_table.add_row(f"Distance vs Resistance ", f"{points_distance_vs_ema_resistance:.2f} Points" )
-            config_metrics_table.add_row(f"Distance vs Consolidation Filter ", f"{points_distance_vs_consolidation_guide:.2f} Points" )
-            config_metrics_table.add_row(f"Distance vs Long Term Trend ", f"{points_distance_vs_long_term_trend_guide:.2f} Points" )
-            config_metrics_table.add_row(f"H1 Candle Range", f"{candle_1h_range:.2f} Points" )
-            config_metrics_table.add_row(f"H4 Candle Range", f"{candle_4h_range:.2f} Points" ) 
-
-            console.print(config_metrics_table)
-   
-            print("\n")
             
 
             # Identifying Trend
@@ -319,7 +288,30 @@ class M1AverageZone:
                 candle_4h_range_status = 'Within Threshold 🟢'
             else:
                 h4_within_range = False    
-                candle_4h_range_status = 'Outside Threshold 🔴'                
+                candle_4h_range_status = 'Outside Threshold 🔴'     
+
+
+            #------------------------------------------
+            # METRICS TABLE
+            #------------------------------------------            
+
+
+            config_metrics_table = Table(title="Metrics", box=box.ROUNDED, show_header=True)
+            config_metrics_table.add_column("Metrics", style="cyan")
+            config_metrics_table.add_column("Value", style="green")
+ 
+            config_metrics_table.add_row(f"Trend", str("Bullish" if trend == 'bullish 🟢' else "Bearish" if trend == 'bearish 🟡' else "Consolidation") ) 
+            config_metrics_table.add_row(f"Distance vs Trailing Guide ", f"{points_distance_vs_trailing_guide:.2f} Points")
+            config_metrics_table.add_row(f"Distance vs Support ", f"{points_distance_vs_ema_support:.2f} Points")
+            config_metrics_table.add_row(f"Distance vs Resistance ", f"{points_distance_vs_ema_resistance:.2f} Points" )
+            config_metrics_table.add_row(f"Distance vs Consolidation Filter ", f"{points_distance_vs_consolidation_guide:.2f} Points" )
+            config_metrics_table.add_row(f"Distance vs Long Term Trend ", f"{points_distance_vs_long_term_trend_guide:.2f} Points" )
+            config_metrics_table.add_row(f"H1 Candle Range", f"{candle_1h_range:.2f} Points" )
+            config_metrics_table.add_row(f"H4 Candle Range", f"{candle_4h_range:.2f} Points" )             
+
+            console.print(config_metrics_table)
+   
+            print("\n")                           
 
 
             print(f"Trend: {trend}")
@@ -340,12 +332,12 @@ class M1AverageZone:
             if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points and h1_within_range and h4_within_range:            
                 print("Buying!")
                 signal = 'buy'
-                log_info("Bullish signal and price is close to 20 EMA Low. Placing BUY order.")
+                log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY)
             elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
-                log_info("Bearish signal and price is close to 20 EMA High. Placing SELL order.")
+                log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
                 self.execute_trade(mt5.ORDER_TYPE_SELL)                
             else:
                 # print("Hold!")
@@ -383,7 +375,7 @@ class M1AverageZone:
 def start_strategy():
     """Main function to start the bot."""
 
-    production_status = "LIVE" 
+    production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
     description = 'M1 Average Zone Trading (2R)'
     
@@ -393,7 +385,7 @@ def start_strategy():
     
     # 1. Define configuration settings, can be from env variables
     config_settings = TradingConfig(
-        symbol="GOLDm#",
+        symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
         strategy_id=40 if production_status == 'DEMO' else 7, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
@@ -405,7 +397,7 @@ def start_strategy():
         trailing_period=7,
         ema_resistance=7,
         ema_support=7,
-        support_resistance_distance_threshold=31,
+        support_resistance_distance_threshold=40,
         consolidation_filter=20,
         long_term_trend=200,
         max_candle_range_1h_allowed=1100,
