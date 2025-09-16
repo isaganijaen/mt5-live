@@ -322,11 +322,15 @@ class M1AverageZone:
 
 
             print(f"Trend: {trend}")
-            print(f"H1 Candle Range: {candle_1h_range_status}")  
-            print(f"H4 Candle Range: {candle_4h_range_status}\n")     
-            print(f"Note: This {self.config.filename} uses uses 7 ema HIGH and LOW as its Support and Resistance.")
+            print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
+            print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
+            print(f"Note: This {self.config.filename} uses Trailing Guide 7 ema CLOSE acts as the S&R")
+            print(f"while its predecessor `strategy_09.py` uses 7 ema HIGH and LOW as its S&R.")
             print("20/21 EMA Close act as Consolidation Filters.")
-            print(f"H1 and H4 Candle Ranges were being used as overbought and oversold indicators.")
+            print(f"H1 and H4 Candles are not considered as they limit the while potential profits.\n")
+            
+            
+
 
 
 
@@ -338,12 +342,15 @@ class M1AverageZone:
             distance_threshold_in_points = self.config.support_resistance_distance_threshold
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
-            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points and h1_within_range and h4_within_range:            
+            #if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range: 
+            if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY)
-            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
+            # Disabling Candle Range threshold for now as trades would be limited on a trending market.
+            #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
+            elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
@@ -354,7 +361,7 @@ class M1AverageZone:
                 if trend == 'bullish 🟢':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bullish trend but price's distance is too far from 20 EMA Low ({points_distance_vs_ema_support:.2f} points)")
+                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_trailing_guide:.2f} points)")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -362,7 +369,7 @@ class M1AverageZone:
                 elif trend == 'bearish 🟡':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bearish trend but price's distance is too far from 20 EMA High ({points_distance_vs_ema_resistance:.2f} points).")
+                    log_info(f"Bearish trend but price's distance is too far from Resistance Zone/Trailing Guide ({points_distance_vs_ema_resistance:.2f} points).")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -408,13 +415,13 @@ def start_strategy():
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=150,
-        tp_points=300,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        tp_points=150,
+        trailing_activation_points=130, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=7,
         ema_support=7,
-        support_resistance_distance_threshold=40,
+        support_resistance_distance_threshold=20,
         consolidation_filter=20,
         long_term_trend=21,
         max_candle_range_1h_allowed=1100,
