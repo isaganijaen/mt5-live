@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import pandas as pd
 import time
+import math
 from datetime import datetime, timedelta
 import threading # Import threading module
 
@@ -35,27 +36,33 @@ load_dotenv()
 
 
 
-def wait_until_next_minute():
+def wait_until_next_interval(interval_seconds: int = 10):
     """
-    Calculates the time until the start of the next minute and sleeps.
-    This ensures the script runs exactly at the top of each minute.
+    Calculates the time until the start of the next exact interval
+    and sleeps. This ensures the script runs at the top of each interval.
+
+    Args:
+        interval_seconds (int): The desired interval in seconds (e.g., 60 for 1 minute).
     """
     now = datetime.now()
-    default_waiting_minute = 1
-    # Calculate the time for the next full minute
-    next_minute = now.replace(second=0, microsecond=0) + timedelta(minutes=default_waiting_minute)
+    
+    # Get total seconds from the start of the current day
+    total_seconds_today = (now - now.replace(hour=0, minute=0, second=0, microsecond=0)).total_seconds()
+    
+    # Calculate the next timestamp divisible by the interval
+    next_timestamp_seconds = math.ceil(total_seconds_today / interval_seconds) * interval_seconds
+    
+    # Calculate the time for the next interval
+    next_interval = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(seconds=next_timestamp_seconds)
     
     # Calculate the sleep duration
-    sleep_duration = (next_minute - now).total_seconds()
+    sleep_duration = (next_interval - now).total_seconds()
     
     if sleep_duration > 0:
-        log_info(f"Sleeping for {sleep_duration:.2f} seconds to align with the next minute.")
+        log_info(f"Sleeping for {sleep_duration:.2f} seconds to align with the next interval.")
         time.sleep(sleep_duration)
     else:
-        # If the sleep duration is negative or zero, we've already passed the minute mark.
-        # This can happen if the execution takes more than 60 seconds.
-        # We just wait for a second and check again.
-        log_warning("Execution took longer than a minute. Skipping wait and continuing.")
+        log_warning(f"Execution took longer than {interval_seconds} seconds. Skipping wait and continuing.")
         time.sleep(1)
 
 
@@ -156,7 +163,7 @@ class M1AverageZone:
         # Main trading loop
         while True:
             # Use the new precise timing function
-            wait_until_next_minute()
+            wait_until_next_interval()
 
             # Check for existing positions
             positions = mt5.positions_get(symbol=self.config.symbol)
