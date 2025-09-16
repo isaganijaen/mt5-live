@@ -23,8 +23,7 @@ start "Market Data" cmd /k "python market_data.py"
 REM start "Strategy 01" cmd /k "python strategy_01.py"        
 REM start "Strategy 02" cmd /k "python strategy_02.py"           
 start "2M o 15M-Strategy 03" cmd /k "python strategy_03.py"      
-start "Strategy 07" cmd /k "python strategy_07.py" 
-REM start "Strategy 08 - FULL TS" cmd /k "python strategy_08.py" 
+REM start "Strategy 07" cmd /k "python strategy_07.py" 
 start "HFT-Strategy 09" cmd /k "python strategy_09.py" 
  
 echo All Live Trading Strategies have been launched in separate terminal windows.
