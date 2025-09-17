@@ -7,7 +7,7 @@
 
 
 # STATUS as of 2025-09-10 08:00 PM
-""" 🟢 LIVE """
+production_status = "DEMO" # DEMO or LIVE
 
 
 
@@ -180,10 +180,10 @@ class PerformanceMonitor:
 perf_monitor = PerformanceMonitor()
 
 # --- MT5 Configuration ---
-symbol = "GOLDm#"
+symbol = "GOLDm#" if production_status == 'LIVE' else 'GOLD#'
 timeframe_m2 = mt5.TIMEFRAME_M2  # 2-minute timeframe for entry signal
 timeframe_m15 = mt5.TIMEFRAME_M15  # 15-minute timeframe for trend confluence
-volume = 0.1  # Trading lot size
+volume = 0.1 if production_status == 'LIVE' else 0.01 # Trading lot size
 deviation = 20  # Max price deviation in points for order execution
 
 # --- Enhanced Risk Management Configuration ---
@@ -751,7 +751,7 @@ def execute_trade(symbol, trade_type):
         "price": current_price,
         "deviation": deviation,
         "magic": MAGIC_NUMBER,  # *** Set the MAGIC_NUMBER here! ***
-        "comment": f"{filename}_{MAGIC_NUMBER}",  # Add magic number to comment for easier identification
+        "comment": f"{production_status}_{filename}_{MAGIC_NUMBER}",  # Add magic number to comment for easier identification
         "type_time": mt5.ORDER_TIME_GTC,
         "type_filling": mt5.ORDER_FILLING_IOC,
         "sl": sl_price,  # Set Stop Loss

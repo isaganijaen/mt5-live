@@ -5,7 +5,7 @@
 
 
 # STATUS as of 2025-09-10 08:00 PM
-""" 🟢 LIVE """
+production_status = "DEMO" # DEMO or LIVE
 
 
 
@@ -82,9 +82,9 @@ logging.basicConfig(level=logging.INFO,
                     ])
 
 # Trading parameters
-symbol = "GOLDm#"
+symbol = "GOLDm#" if production_status == 'LIVE' else 'GOLD#'
 timeframe_m2 = mt5.TIMEFRAME_M2
-volume = 0.1
+volume = 0.1 if production_status == 'LIVE' else 0.01
 deviation = 20
 
 # Risk management
@@ -448,7 +448,7 @@ def execute_trade(trade_type, indicators, distance_20, signal):
         "price": current_price,
         "deviation": deviation,
         "magic": MAGIC_NUMBER,
-        "comment": "20_200EMA_TREND",
+        "comment": f"{production_status}_{file_name}_{MAGIC_NUMBER}",
         "type_time": mt5.ORDER_TIME_GTC,
         "type_filling": mt5.ORDER_FILLING_IOC,
         "sl": sl_price,

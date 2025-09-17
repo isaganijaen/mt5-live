@@ -22,7 +22,7 @@ REM Start a new terminal for each script
 REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
-start "HFT-11-Wide-R1.2" cmd /k "python strategy_11_demo.py" 
+start "HFT-11-Wide-R1.2" cmd /k "python sqtrategy_11_demo.py" 
 
 
 REM -------------------------------------------------------------
@@ -30,6 +30,9 @@ REM ---         CURRENT PROFITABLE STRATEGIES                 ---
 REM -------------------------------------------------------------
 start "HFT-09-Wide-R1" cmd /k "python strategy_09_demo.py" 
 start "HFT-10-Wide-R1.2" cmd /k "python strategy_10_demo.py" 
+start "Str-01" cmd /k "python strategy_01.py" 
+start "Str-02" cmd /k "python strategy_02.py" 
+start "Str-03" cmd /k "python strategy_03.py" 
 
 
 
