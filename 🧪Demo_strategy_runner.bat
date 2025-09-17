@@ -17,6 +17,13 @@ del /F /Q "*.log" 2>nul
 REM Start a new terminal for each script    
 start "Strategy 07" cmd /k "python strategy_07.py" 
 start "HFT-09" cmd /k "python strategy_09.py" 
+
+
+
+REM -------------------------------------------------------------
+REM ---         CURRENT PROFITABLE STRATEGIES            --------
+REM -------------------------------------------------------------
+
 start "HFT-09-Wide-R1" cmd /k "python strategy_09_demo.py" 
 start "HFT-10-Wide-R1.2" cmd /k "python strategy_10_demo.py" 
  
