@@ -429,7 +429,7 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=49 if production_status == 'DEMO' else 7, # if live
+        strategy_id=50 if production_status == 'DEMO' else 8, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
