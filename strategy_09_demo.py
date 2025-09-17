@@ -329,6 +329,11 @@ class M1AverageZone:
             print("20/21 EMA Close act as Consolidation Filters.")
             print(f"H1 and H4 Candles are not considered as they limit the while potential profits.\n")
 
+
+            #------------------------------------------
+            # Performance TABLE
+            #------------------------------------------   
+            
             tbl_performance_review = Table(title="Performance Review", box=box.ROUNDED, show_header=True)
             tbl_performance_review.add_column("Analysis", style="cyan")
             tbl_performance_review.add_row(f"As of 17/09/2025 1:59 am Manila Time to 17/09/2025 10:00 am, this strategy ({self.config.filename}) has the best performance so far. Total Profit: 3.34, W:8, L:4 WR: 66.67, Max Win Streak: 5, Max Loss Streak: 2, RR: 1 (SL=300 TP=300). \n Let's compare this to its variation `strategy_10_demo.py` which has the same settings but with SL=250 TP=300 (RR:1.2). ")
