@@ -82,7 +82,7 @@ class M1AverageZone:
         """
         Fetches the latest price data from MT5.
         """
-        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M1, 0, 20000)
+        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M2, 0, 20000)
         if rates is None:
             log_error(f"Failed to get rates for {self.config.symbol}")
             return None
@@ -322,21 +322,27 @@ class M1AverageZone:
 
 
             print(f"Trend: {trend}")
-            print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
-            print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
+            # print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
+            # print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
+
 
             #------------------------------------------
             # NOTES TABLE
-            #------------------------------------------                  
-            print(f"Note: This {self.config.filename} uses Trailing Guide 7 ema CLOSE acts as the S&R")
-            print(f"Basically like strategy_09 and strategy_11. However, this has 0.5 R (SL=300 TP=150).")
-            print(f"Predecessor's performance always hit 150 mark for the trailing.")
-            print(f"We'll see if this will get a higher Win Rate with positive return.")
+            #------------------------------------------                
+            tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
+            tbl_notes.add_column("Quick Note", style="cyan")
+            tbl_notes.add_row(f"This is just like the profitable strategy_03.py with 1.5R . However, this strategy uses 20 EMA High and Low as the S&R ENTRY ZONDE instead of pure 20 EMA close. This also has a refresh interval of 10 seconds to capture candle approaching the zone.\n")
+            tbl_notes.add_row(f"{self.config.filename}:  Entry Zone = 20 EMA High/Low, RF=10sec, RR=1.5 + CS 1H/H4 Filters")
+            tbl_notes.add_row(f"strategy_07_demo.py: Entry Zone = 20 EMA High/Low, RF=10sec, RR=1.5")            
+            tbl_notes.add_row(f"strategy_03.py: Entry Zone = 20 EMA Close*, RF=2min*, RR=1.5, + CS 1H/H4 Filters")
+            
+            console.print(tbl_notes)
+
 
             #------------------------------------------
             # Performance TABLE
-            #------------------------------------------      
-
+            #------------------------------------------   
+            
             tbl_performance_review = Table(title="Performance Review", box=box.ROUNDED, show_header=True)
             tbl_performance_review.add_column("Analysis", style="cyan")
             tbl_performance_review.add_row(f"TBD")
@@ -412,7 +418,7 @@ def start_strategy():
 
     production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
-    description = 'M1 Average Zone Trading (2R)'
+    description = 'M2 Average Zone Trading (1.5R)'
     
     
 
@@ -423,19 +429,19 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=48 if production_status == 'DEMO' else 12, # if live
+        strategy_id=49 if production_status == 'DEMO' else 7, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
-        tp_points=150,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
-        trailing_stop_distance=40,
+        tp_points=350,
+        trailing_activation_points=300, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_stop_distance=70,
         trailing_period=7,
-        ema_resistance=7,
-        ema_support=7,
-        support_resistance_distance_threshold=20,
-        consolidation_filter=20,
-        long_term_trend=21,
+        ema_resistance=20,
+        ema_support=20,
+        support_resistance_distance_threshold=20, # Execute Trade within this distance
+        consolidation_filter=38, # NOT TO CONSIDER
+        long_term_trend=40,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
