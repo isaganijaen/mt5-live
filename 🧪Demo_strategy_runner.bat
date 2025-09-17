@@ -15,17 +15,35 @@ del /F /Q "*.lock" 2>nul
 del /F /Q "*.log" 2>nul
 
 REM Start a new terminal for each script    
-start "Strategy 07" cmd /k "python strategy_07.py" 
-start "HFT-09" cmd /k "python strategy_09.py" 
+
 
 
 
 REM -------------------------------------------------------------
-REM ---         CURRENT PROFITABLE STRATEGIES            --------
+REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
+start "HFT-11-Wide-R1.2" cmd /k "python strategy_11_demo.py" 
 
+
+REM -------------------------------------------------------------
+REM ---         CURRENT PROFITABLE STRATEGIES                 ---
+REM -------------------------------------------------------------
 start "HFT-09-Wide-R1" cmd /k "python strategy_09_demo.py" 
 start "HFT-10-Wide-R1.2" cmd /k "python strategy_10_demo.py" 
+
+
+
+
+
+REM -------------------------------------------------------------
+REM ---                     ARCHIVED                          ---
+REM -------------------------------------------------------------
+REM start "Strategy 07" cmd /k "python strategy_07.py" 
+REM start "HFT-09" cmd /k "python strategy_09.py" 
+
+
+
+
  
 echo All Live Trading Strategies have been launched in separate terminal windows.
 pause
