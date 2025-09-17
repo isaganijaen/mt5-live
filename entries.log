@@ -1,0 +1,55 @@
+2025-09-17 20:54:20,067 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-17 20:54:20,076 - INFO - Table 'entries' checked/created successfully.
+2025-09-17 20:54:20,076 - INFO - Table 'entries' checked/created successfully.
+2025-09-17 20:54:21,124 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-17 20:54:21,127 - INFO - Table 'entries' checked/created successfully.
+2025-09-17 20:54:21,132 - INFO - ==================================================
+2025-09-17 20:54:21,132 - INFO - Table 'entries' checked/created successfully.
+2025-09-17 20:54:21,139 - INFO - Starting M2 EMA Trading Bot (Magic: 2)
+2025-09-17 20:54:21,140 - INFO - ==================================================
+2025-09-17 20:54:21,140 - INFO - Starting M2 EMA Trading Bot (Magic: 1)
+2025-09-17 20:54:21,140 - INFO - Symbol: GOLD#
+2025-09-17 20:54:21,140 - INFO - SL: 300 points, TP: 600 points
+2025-09-17 20:54:21,141 - INFO - SL: 300 points, TP: 2700 points
+2025-09-17 20:54:21,141 - INFO - Max positions: 1
+2025-09-17 20:54:21,141 - INFO - Max positions: 1
+2025-09-17 20:54:21,141 - INFO - Trading hours: 20:00-12:00
+2025-09-17 20:54:21,141 - INFO - ==================================================
+2025-09-17 20:54:21,141 - INFO - ==================================================
+2025-09-17 20:54:21,142 - INFO - Connecting to MetaTrader 5...
+2025-09-17 20:54:21,142 - INFO - Connecting to MetaTrader 5...
+2025-09-17 20:54:21,172 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-17 20:54:21,173 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-17 20:54:21,174 - INFO - Trailing stop thread started
+2025-09-17 20:54:21,174 - INFO - Starting main trading loop...
+2025-09-17 20:54:21,174 - INFO - Trailing stop thread started
+2025-09-17 20:54:21,174 - INFO - Starting main trading loop...
+2025-09-17 20:54:21,284 - INFO - EMAs calculated - Price: 3678.12, 20EMA: 3673.85, 200EMA: 3670.47, 21EMA: 3676.49
+2025-09-17 20:54:21,287 - INFO - Distances - 20EMA: 427 points, 200EMA: 765 points
+00EMA: 3670.47, 21EMA: 3676.49
+2025-09-17 20:54:21,288 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 427/130, 200EMA: 765/1400)
+2025-09-17 20:54:21,289 - INFO - Distances - 20EMA: 427 points, 200EMA: 765 points
+2025-09-17 20:54:21,289 - INFO - Candle range for GOLD# H1 is 1292 points (> 1100). Not tradeable.
+2025-09-17 20:54:21,290 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 427/130, 200EMA: 765/1400)
+2025-09-17 20:54:21,290 - INFO - H1 candle range not tradeable. Holding.
+2025-09-17 20:54:21,290 - INFO - Candle range for GOLD# H1 is 1292 points (> 1100). Not tradeable.
+2025-09-17 20:54:21,290 - INFO - H1 candle range not tradeable. Holding.
+2025-09-17 20:55:21,300 - INFO - EMAs calculated - Price: 3678.38, 20EMA: 3673.87, 200EMA: 3670.47, 21EMA: 3676.56
+2025-09-17 20:55:21,301 - INFO - Distances - 20EMA: 451 points, 200EMA: 791 points
+2025-09-17 20:55:21,302 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 451/130, 200EMA: 791/1400)
+2025-09-17 20:55:21,303 - INFO - Candle range for GOLD# H1 is 1292 points (> 1100). Not tradeable.
+2025-09-17 20:55:21,303 - INFO - EMAs calculated - Price: 3678.38, 20EMA: 3673.87, 200EMA: 3670.47, 21EMA: 3676.56
+2025-09-17 20:55:21,303 - INFO - H1 candle range not tradeable. Holding.
+2025-09-17 20:55:21,303 - INFO - Distances - 20EMA: 451 points, 200EMA: 791 points
+2025-09-17 20:55:21,303 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 451/130, 200EMA: 791/1400)
+2025-09-17 20:55:21,304 - INFO - Candle range for GOLD# H1 is 1292 points (> 1100). Not tradeable.
+2025-09-17 20:55:21,304 - INFO - H1 candle range not tradeable. Holding.
+2025-09-17 20:56:21,311 - INFO - EMAs calculated - Price: 3678.06, 20EMA: 3674.30, 200EMA: 3670.55, 21EMA: 3676.98
+2025-09-17 20:56:21,312 - INFO - Distances - 20EMA: 376 points, 200EMA: 751 points
+2025-09-17 20:56:21,312 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 376/130, 200EMA: 751/1400)
+2025-09-17 20:56:21,313 - INFO - EMAs calculated - Price: 3678.06, 20EMA: 3674.30, 200EMA: 3670.55, 21EMA: 3676.98
+2025-09-17 20:56:21,313 - INFO - Candle range for GOLD# H1 is 1347 points (> 1100). Not tradeable.
+2025-09-17 20:56:21,314 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 376/130, 200EMA: 751/1400)
+2025-09-17 20:56:21,314 - INFO - H1 candle range not tradeable. Holding.
+2025-09-17 20:56:21,314 - INFO - Candle range for GOLD# H1 is 1347 points (> 1100). Not tradeable.
+2025-09-17 20:56:21,315 - INFO - H1 candle range not tradeable. Holding.

@@ -16,13 +16,17 @@ del /F /Q "*.log" 2>nul
 
 REM Start a new terminal for each script    
 
-
+REM -------------------------------------------------------------
+REM ---                  UTILITIES                            ---
+REM -------------------------------------------------------------
+start "DB_Baseline" cmd /k "python database_baseline.py"  
+start "Market Data" cmd /k "python market_data.py"
 
 
 REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
-start "HFT-11-Wide-R1.2" cmd /k "python sqtrategy_11_demo.py" 
+start "HFT-11-Wide-R1.2" cmd /k "python strategy_11_demo.py" 
 
 
 REM -------------------------------------------------------------
