@@ -328,8 +328,12 @@ class M1AverageZone:
             print(f"while its predecessor `strategy_09.py` uses 7 ema HIGH and LOW as its S&R.")
             print("20/21 EMA Close act as Consolidation Filters.")
             print(f"H1 and H4 Candles are not considered as they limit the while potential profits.\n")
+
+            tbl_performance_review = Table(title="Performance Review", box=box.ROUNDED, show_header=True)
+            tbl_performance_review.add_column("Analysis", style="cyan")
+            tbl_performance_review.add_row(f"As of 17/09/2025 1:59 am Manila Time to 17/09/2025 10:00 am, this strategy ({self.config.filename}) has the best performance so far. Total Profit: 3.34, W:8, L:4 WR: 66.67, Max Win Streak: 5, Max Loss Streak: 2, RR: 1 (SL=300 TP=300). \n Let's compare this to its variation `strategy_10_demo.py` which has the same settings but with SL=250 TP=300 (RR:1.2). ")
             
-            
+            console.print(tbl_performance_review)
 
 
 
@@ -411,7 +415,7 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=45 if production_status == 'DEMO' else 10, # if live
+        strategy_id=45 if production_status == 'DEMO' else 9, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
