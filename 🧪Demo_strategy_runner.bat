@@ -27,7 +27,7 @@ REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
 start "HFT-11-Wide-R1.2" cmd /k "python strategy_11_demo.py" 
-
+start "HFT-11-Wide-R0.5" cmd /k "python strategy_12_demo.py" 
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
