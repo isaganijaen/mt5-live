@@ -209,7 +209,7 @@ class M1AverageZone:
                 price_type='high'
             )        
 
-            ema_resistance_low = indicator_tools.get_last_ema_value(
+            ema_support_low = indicator_tools.get_last_ema_value(
                 period=self.config.ema_support,
                 price_type='low'
             )     
@@ -232,7 +232,7 @@ class M1AverageZone:
 
             # Calculate all distances in points
             points_distance_vs_ema_resistance = abs(current_price - ema_resistance_high) / point
-            points_distance_vs_ema_support = abs(current_price - ema_resistance_low) / point
+            points_distance_vs_ema_support = abs(current_price - ema_support_low) / point
             points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
             points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
             points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
@@ -257,7 +257,7 @@ class M1AverageZone:
             config_indicators_table.add_column("Value", style="green")
             config_indicators_table.add_column("Description", style="dim")           
 
-            config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
+            config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_support_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
             config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
@@ -272,8 +272,8 @@ class M1AverageZone:
 
             # Identifying Trend
             # DISABLING LONG TERM TREND in the CONDITION
-            # if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
-            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter:
+            # if current_price > ema_support_low and ema_support_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            if current_price > ema_support_low and ema_support_low > ema_consolidation_filter:
                 trend = 'bullish 🟢'
             # elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:      
             elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter:    
@@ -330,13 +330,13 @@ class M1AverageZone:
             #------------------------------------------                
             tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
             tbl_notes.add_column("Quick Note", style="cyan")
-            tbl_notes.add_row(f"Direct Predecessor: strategy_15_demo.py\n")
-            tbl_notes.add_row(f"Similarities: 15 EMA as consolidation filter which avoids early signs of chaos.")
-            tbl_notes.add_row(f"Main difference: SL=300 TP=350 instead of SL=150 TP=150.")
+            tbl_notes.add_row(f"Direct Predecessor: strategy_16_demo.py\n")
+            tbl_notes.add_row(f"Similarities: No Long Term Trend.")
+            tbl_notes.add_row(f"Main difference: Super Aggressive with 3-Period EMA Low/High/Trailing and 12-Period EMA Consolidation Filter..")
             tbl_notes.add_row(f"Expecting a behavior like DEMO_strategy_03 with consistent profitability while trading much actively ✨.\n")
             tbl_notes.add_row(f"Root Predecessors: strategy_09, strategy_11, strategy_12, strategy_14, strategy_15.")
-            tbl_notes.add_row(f"🔒IMPORTANT: excluding strategy_12_demo.py, the strategy_14, 15, and 16 do not use long term trend (aggressive)!") 
-            tbl_notes.add_row(f"giving these strategies with aggressive 7-EMA period Momentum Following!")                       
+            tbl_notes.add_row(f"🔒IMPORTANT: excluding strategy_12_demo.py, the strategy_14, 15, 16 and 17 do not use long term trend (aggressive)!") 
+            tbl_notes.add_row(f"giving these strategies with ✨ SUPER AGGRESSIVE 3-EMA period Momentum Following!")                       
          
 
             console.print(tbl_notes)
@@ -438,18 +438,18 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=54 if production_status == 'DEMO' else 16, # if live
+        strategy_id=55 if production_status == 'DEMO' else 17, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
         tp_points=350,
         trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
-        trailing_period=7,
-        ema_resistance=7,
-        ema_support=7,
+        trailing_period=3,
+        ema_resistance=3,
+        ema_support=3,
         support_resistance_distance_threshold=20,
-        consolidation_filter=15,
+        consolidation_filter=12,
         long_term_trend=21,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         

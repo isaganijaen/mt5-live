@@ -271,9 +271,12 @@ class M1AverageZone:
             
 
             # Identifying Trend
-            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            # DISABLING LONG TERM TREND in the CONDITION
+            # if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter:
                 trend = 'bullish 🟢'
-            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:    
+            # elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:      
+            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter:     
                 trend = 'bearish 🟡'
             else:
                 trend = 'consolidation 🔵'    
@@ -331,7 +334,9 @@ class M1AverageZone:
             tbl_notes.add_row(f"Similarities: Uses 15 EMA as consolidation filter which avoids early signs of chaos.")
             tbl_notes.add_row(f"Main difference: Reduced SL to 150 instead of 300 for 1R. Confidence level increased")
             tbl_notes.add_row(f"as we reduced the noise thru 15 EMA Consolidation Filter.\n")
-            tbl_notes.add_row(f"Root Predecessors: strategy_09, strategy_11, strategy_12.")         
+            tbl_notes.add_row(f"Root Predecessors: strategy_09, strategy_11, strategy_12.")    
+            tbl_notes.add_row(f"🔒IMPORTANT: excluding strategy_12_demo.py, the strategy_14, 15, and 16 do not use long term trend (aggressive)!") 
+            tbl_notes.add_row(f"giving these strategies with aggressive 7-EMA period Momentum Following!")                   
          
 
             console.print(tbl_notes)
