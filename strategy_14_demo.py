@@ -326,14 +326,17 @@ class M1AverageZone:
             print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
             print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
 
+
+            print("\n")   
+
             #------------------------------------------
             # NOTES TABLE
             #------------------------------------------                
             tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
             tbl_notes.add_column("Quick Note", style="cyan")
             tbl_notes.add_row(f"Goal: Same 0.5 R like its parent strategy_12_demo.py.")
-            tbl_notes.add_row*(f"Main difference: This uses 15 EMA as consolidation filter which avoids early signs of chaos. \n")
-            tbl_notes.add_row("Direct Predecessor: strategy_12_demo.py\n")
+            tbl_notes.add_row(f"Main difference: This uses 15 EMA as consolidation filter which avoids early signs of chaos. \n")
+            tbl_notes.add_row(f"Direct Predecessor: strategy_12_demo.py\n")
             tbl_notes.add_row(f"Root Predecessors: strategy_09 and strategy_11.")         
          
 
