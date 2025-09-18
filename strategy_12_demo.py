@@ -26,6 +26,7 @@ from modules.mt5_config import TradingConfig
 from modules.mt5_manager import MT5Manager
 from modules.indicators import Indicators
 from modules.position_manager import PositionManager # Import the new class
+from modules.profit_manager import TakeProfitMonitor # Import the new TakeProfitMonitor class
 
 
 #-------------------------------------
@@ -147,7 +148,7 @@ class M1AverageZone:
         console.print(order_table)
         print("\n")
         
-        # Wake up the position manager thread
+        # Wake up the position manager and take profit monitor threads
         self.position_open_event.set()
         return True
 
@@ -331,8 +332,8 @@ class M1AverageZone:
             print(f"Note: This {self.config.filename} uses Trailing Guide 7 ema CLOSE acts as the S&R")
             print(f"Basically like strategy_09 and strategy_11. However, this has 0.5 R (SL=300 TP=150).")
             print(f"Predecessor's performance always hit 150 mark for the trailing.")
-            print(f"We'll see if this will get a higher Win Rate with positive return.")
-
+            print(f"We'll see if this will get a higher Win Rate with positive return.\n")
+            log_warning(f"Take Profit Monitoring Thread has been added as of 2025-09-18 02:30pm. Remove this and add instead to those with TP > 300 points. A TP slippage here is good and we should take advantage of it.\n")
             #------------------------------------------
             # Performance TABLE
             #------------------------------------------      
@@ -479,11 +480,16 @@ def start_strategy():
     
     mt5_manager.get_account_info(act_type)
 
-    # 3. Instantiate and start the position manager thread
+    # 3. Instantiate and start the position manager and take profit monitor threads
     position_open_event = threading.Event()
+    
     position_manager = PositionManager(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
     position_manager.daemon = True # Allows the thread to exit when the main program exits
     position_manager.start()
+
+    take_profit_monitor = TakeProfitMonitor(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
+    take_profit_monitor.daemon = True
+    take_profit_monitor.start()
 
     # 4. Instantiate the strategy and run it
     my_strategy = M1AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
@@ -492,8 +498,9 @@ def start_strategy():
     except KeyboardInterrupt:
         log_warning("Strategy interrupted by user. Shutting down.")
     finally:
-        # 5. Shutdown MT5 connection and stop the position manager
+        # 5. Shutdown MT5 connection and stop the threads
         position_manager.stop()
+        take_profit_monitor.stop()
         mt5.shutdown()
         log_success("MetaTrader5 shutdown.")
 
