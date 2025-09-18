@@ -443,7 +443,7 @@ def start_strategy():
         deviation=20,
         sl_points=300,
         tp_points=350,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_activation_points=320, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=3,
         ema_resistance=3,
