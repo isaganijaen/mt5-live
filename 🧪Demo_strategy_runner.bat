@@ -19,33 +19,34 @@ REM Start a new terminal for each script
 REM -------------------------------------------------------------
 REM ---                  UTILITIES                            ---
 REM -------------------------------------------------------------
-start "DB_Baseline" cmd /k "python database_baseline.py"  
-start "Market Data" cmd /k "python market_data.py"
+start "db" cmd /k "python database_baseline.py"  
+start "mk" cmd /k "python market_data.py"
 
 
 REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
-start "Str-07" cmd /k "python strategy_07_demo.py"  
-start "Str-08" cmd /k "python strategy_08_demo.py" 
+start "7" cmd /k "python strategy_07_demo.py"  
+start "8" cmd /k "python strategy_08_demo.py" 
 REM start "Str-09" MOVED to Profitiable Section
 REM start "Str-10" MOVED to Profitiable Section
-start "Str-11" cmd /k "python strategy_11_demo.py"
-start "Str-12" cmd /k "python strategy_12_demo.py"
-start "Str-13" cmd /k "python strategy_13_demo.py"
-start "Str-14" cmd /k "python strategy_14_demo.py"
-start "Str-15" cmd /k "python strategy_15_demo.py"
+start "11" cmd /k "python strategy_11_demo.py"
+start "12" cmd /k "python strategy_12_demo.py"
+start "13" cmd /k "python strategy_13_demo.py"
+start "14" cmd /k "python strategy_14_demo.py"
+start "15" cmd /k "python strategy_15_demo.py"
+start "16" cmd /k "python strategy_16_demo.py"
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
 REM -------------------------------------------------------------
 
-start "Str-01" cmd /k "python strategy_01.py" 
-start "Str-02" cmd /k "python strategy_02.py" 
-start "Str-03" cmd /k "python strategy_03.py" 
+start "1" cmd /k "python strategy_01.py" 
+start "2" cmd /k "python strategy_02.py" 
+start "3" cmd /k "python strategy_03.py" 
 
-start "Str-09" cmd /k "python strategy_09_demo.py" 
-start "Str-10" cmd /k "python strategy_10_demo.py" 
+start "9" cmd /k "python strategy_09_demo.py" 
+start "10" cmd /k "python strategy_10_demo.py" 
 
 
 
