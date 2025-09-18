@@ -259,7 +259,7 @@ class M1AverageZone:
             config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
-            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_resistance_low,3)), "Consolidation Filter" ) 
+            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
             config_indicators_table.add_row(f"{self.config.long_term_trend} Period EMA Close", str(round(ema_long_term_trend,3)), "Long Term Trend" ) 
 
             console.print(config_indicators_table)
@@ -321,16 +321,12 @@ class M1AverageZone:
             print("\n")                           
 
 
-            print(f"Trend: {trend}")
-            print(f"H1 Candle Range: {candle_1h_range_status}")  
-            print(f"H4 Candle Range: {candle_4h_range_status}\n") 
-
             #------------------------------------------
             # NOTES TABLE
             #------------------------------------------                
             tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
             tbl_notes.add_column("Quick Note", style="cyan")
-            tbl_notes.add_row(f"This is just like the profitable strategy_03.py with 1.5R . However, this strategy uses 20 EMA High and Low as the S&R ENTRY ZONDE instead of pure 20 EMA close. This also has a refresh interval of 10 seconds to capture candle approaching the zone.\n")
+            tbl_notes.add_row(f"This is just like the profitable strategy_03.py with 1.5R . However, this strategy uses 20 EMA High and Low as the S&R ENTRY ZONE instead of pure 20 EMA close. This also has a refresh interval of 10 seconds to capture candle approaching the zone.\n")
             tbl_notes.add_row(f"{self.config.filename}: Entry Zone = 20 EMA High/Low, RF=10sec, RR=1.5")
             tbl_notes.add_row(f"strategy_08_demo.py:  Entry Zone = 20 EMA High/Low, RF=10sec, RR=1.5 + CS 1H/H4 Filters")
             tbl_notes.add_row(f"strategy_03.py: Entry Zone = 20 EMA Close, RF=2min, RR=1.5, + CS 1H/H4 Filters")
@@ -338,8 +334,14 @@ class M1AverageZone:
             
             console.print(tbl_notes)
          
+            print("\n")                           
 
 
+            print(f"Trend: {trend}")
+            print(f"H1 Candle Range: {candle_1h_range_status}")  
+            print(f"H4 Candle Range: {candle_4h_range_status}\n")
+
+            print("\n")  
             #------------------------------------------
             # Performance TABLE
             #------------------------------------------   

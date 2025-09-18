@@ -259,7 +259,7 @@ class M1AverageZone:
             config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
-            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_resistance_low,3)), "Consolidation Filter" ) 
+            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
             config_indicators_table.add_row(f"{self.config.long_term_trend} Period EMA Close", str(round(ema_long_term_trend,3)), "Long Term Trend" ) 
 
             console.print(config_indicators_table)
@@ -319,9 +319,9 @@ class M1AverageZone:
             console.print(config_metrics_table)
    
             print("\n")                           
-
-
             print(f"Trend: {trend}")
+            print("\n")   
+
             print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
             print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
             print(f"Note: This {self.config.filename} has SL=250 TP=300 giving us RR=1.2.")

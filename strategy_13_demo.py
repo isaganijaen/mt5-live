@@ -82,7 +82,7 @@ class M1AverageZone:
         """
         Fetches the latest price data from MT5.
         """
-        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M1, 0, 20000)
+        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M2, 0, 20000)
         if rates is None:
             log_error(f"Failed to get rates for {self.config.symbol}")
             return None
@@ -218,7 +218,8 @@ class M1AverageZone:
                 price_type='close'
             )                                  
             
-            ema_consolidation_filter = indicator_tools.get_last_ema_value(
+            # Consilidation Filter
+            sma_consolidation_filter = indicator_tools.get_last_sma_value(
                 period=self.config.consolidation_filter,
                 price_type='close'
             )   
@@ -233,7 +234,7 @@ class M1AverageZone:
             points_distance_vs_ema_resistance = abs(current_price - ema_resistance_high) / point
             points_distance_vs_ema_support = abs(current_price - ema_resistance_low) / point
             points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
-            points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
+            points_distance_vs_consolidation_guide = abs(current_price - sma_consolidation_filter) / point
             points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
 
 
@@ -259,7 +260,7 @@ class M1AverageZone:
             config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
-            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
+            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(sma_consolidation_filter,3)), "Consolidation Filter" ) 
             config_indicators_table.add_row(f"{self.config.long_term_trend} Period EMA Close", str(round(ema_long_term_trend,3)), "Long Term Trend" ) 
 
             console.print(config_indicators_table)
@@ -270,9 +271,9 @@ class M1AverageZone:
             
 
             # Identifying Trend
-            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            if current_price > ema_resistance_low and ema_resistance_low > sma_consolidation_filter and sma_consolidation_filter > ema_long_term_trend:
                 trend = 'bullish 🟢'
-            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:    
+            elif current_price < ema_resistance_high and ema_resistance_high < sma_consolidation_filter and sma_consolidation_filter < ema_long_term_trend:    
                 trend = 'bearish 🟡'
             else:
                 trend = 'consolidation 🔵'    
@@ -321,9 +322,37 @@ class M1AverageZone:
             print("\n")                           
 
 
+            #------------------------------------------
+            # NOTES TABLE
+            #------------------------------------------                
+            tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
+            tbl_notes.add_column("Quick Note", style="cyan")
+            tbl_notes.add_row(f"Goal: The core logic is to avoid overtrading by filtering out the consolidation phase thru 40 SMA. The system should trade only based on the Long Term Trend which is the 200 EMA\n")
+            tbl_notes.add_row("Direct Predecessor: strategy_08_demo.py\n")
+            tbl_notes.add_row(f"strategy_08_demo.py:  Entry Zone = 20 EMA High/Low, RF=10sec, RR=1.5 + CS 1H/H4 Filters")         
+            tbl_notes.add_row(f"strategy_03.py: Entry Zone = 20 EMA Close*, RF=2min*, RR=1.5, + CS 1H/H4 Filters")
+
+            console.print(tbl_notes)
+
+            print("\n")
+
+
             print(f"Trend: {trend}")
-            print(f"H1 Candle Range: {candle_1h_range_status}")  
-            print(f"H4 Candle Range: {candle_4h_range_status}\n")     
+            # print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
+            # print(f"H4 Candle Range (Disabled): {candle_4h_range_status}")      
+            
+            print("\n")
+
+            
+            #------------------------------------------
+            # Performance TABLE
+            #------------------------------------------   
+            
+            tbl_performance_review = Table(title="Performance Review", box=box.ROUNDED, show_header=True)
+            tbl_performance_review.add_column("Analysis", style="cyan")
+            tbl_performance_review.add_row(f"TBD")
+            
+            console.print(tbl_performance_review)
 
 
 
@@ -336,12 +365,15 @@ class M1AverageZone:
             distance_threshold_in_points = self.config.support_resistance_distance_threshold
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
-            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points and h1_within_range and h4_within_range:            
+            #if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range: 
+            if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY)
-            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points and h1_within_range and h4_within_range:                    
+            # Disabling Candle Range threshold for now as trades would be limited on a trending market.
+            #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
+            elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
@@ -352,7 +384,7 @@ class M1AverageZone:
                 if trend == 'bullish 🟢':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bullish trend but price's distance is too far from 20 EMA Low ({points_distance_vs_ema_support:.2f} points)")
+                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_trailing_guide:.2f} points)")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -360,7 +392,7 @@ class M1AverageZone:
                 elif trend == 'bearish 🟡':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bearish trend but price's distance is too far from 20 EMA High ({points_distance_vs_ema_resistance:.2f} points).")
+                    log_info(f"Bearish trend but price's distance is too far from Resistance Zone/Trailing Guide ({points_distance_vs_ema_resistance:.2f} points).")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -379,12 +411,24 @@ class M1AverageZone:
 # Main Entry Point
 #-------------------------------------
 
+# ------- PREDECESSORS --------------
+# DEMO_strategy_03.py | 1.5 (root)
+# strategy_08_demo.py | 1.5 (direct)
+# Adjustment Done:
+# Change the Consolidation Filter Trend 38 EMA to 40 SMA
+# Change the Long Term Trend from 40 EMA to 200 SMA
+# Retain: 20 EMA High/Low Entry Zone like its direct predecessor strategy_08_demo.py
+# Goal: The core logic is to avoid overtrading by filtering out the consolidation phase
+#       thru 40 SMA. The system should trade only based on the Long Term Trend which is the 200 EMA  
+
+
 def start_strategy():
     """Main function to start the bot."""
 
     production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
-    description = 'M1  7/20/21 EMA Zone Trend Trading Strategy(2R)'
+    description = 'M2 Average Zone Trading (1.5R)'
+    
     
 
 
@@ -394,18 +438,18 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=40 if production_status == 'DEMO' else 7, # if live
+        strategy_id=51 if production_status == 'DEMO' else 13, # if live
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
-        sl_points=150,
-        tp_points=300,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
-        trailing_stop_distance=40,
+        sl_points=300,
+        tp_points=350,
+        trailing_activation_points=300, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_stop_distance=70,
         trailing_period=7,
-        ema_resistance=7,
-        ema_support=7,
-        support_resistance_distance_threshold=40,
-        consolidation_filter=21,
+        ema_resistance=20,
+        ema_support=20,
+        support_resistance_distance_threshold=20, # Execute Trade within this distance
+        consolidation_filter=40, # NOT TO CONSIDER
         long_term_trend=200,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         

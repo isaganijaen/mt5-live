@@ -42,6 +42,23 @@ class Indicators:
         return ta.EMA(self.rates[price_type], timeperiod=period)
     
 
+    def calculate_sma(self, period, price_type='close'):
+        """
+        Calculates the Exponential Moving Average (SMA).
+        
+        Args:
+            period (int): The period for the SNA calculation.
+            price_type (str): The column to use for the calculation ('close', 'high', 'low').
+            
+        Returns:
+            pd.Series: A Series containing the EMA values.
+        """
+        if price_type not in self.rates.columns:
+            raise ValueError(f"Price type '{price_type}' not found in DataFrame.")
+        
+        return ta.SMA(self.rates[price_type], timeperiod=period)    
+    
+
     def calculate_candle_range(self, symbol, timeframe):
         """
         Checks if the current open candle's range (High - Low) is within the specified limit.
@@ -74,30 +91,11 @@ class Indicators:
             
             return candle_range_points
 
-            # if candle_range_points <= max_range_points:
-            #     log_info(f"Candle range for {symbol} {timeframe_str} is {candle_range_points} points (<= {max_range_points}). Tradeable.")
-            #     return True
-            # else:
-            #     log_info(f"Candle range for {symbol} {timeframe_str} is {candle_range_points} points (> {max_range_points}). Not tradeable.")
-            #     return False
 
         except Exception as e:
             log_error(f"Exception during candle range check for {symbol} {timeframe_str}: {e}")
             return False  
 
-    # def check_1h_open_candle_range(self,symbol,max_range_points):
-    #     """
-    #     Checks if the current open H1 candle's range is <= 1100 points.
-    #     """
-    #     candle_range = self.calculate_candle_range(symbol, mt5.TIMEFRAME_H1, max_range_points)
-    #     return candle_range
-
-    # def check_4h_open_candle_range(self,symbol,max_range_points):
-    #     """
-    #     Checks if the current open H4 candle's range is <= 1800 points.
-    #     """
-    #     candle_range = self.check_candle_range(symbol, mt5.TIMEFRAME_H4, max_range_points)
-    #     return candle_range
 
 
 
@@ -107,6 +105,17 @@ class Indicators:
         """
         ema_series = self.calculate_ema(period, price_type)
         return ema_series.iloc[-1]
+    
+
+    def get_last_sma_value(self, period, price_type='close'):
+        """
+        Gets the last calculated SMA value.
+        """
+        sma_series = self.calculate_sma(period, price_type)
+        return sma_series.iloc[-1]
+
+
+
 
     def get_distance_to_ema(self, period, price_type='close'):
         """
@@ -124,8 +133,29 @@ class Indicators:
         distance = abs((current_price - last_ema)) * 10000 # Assuming 4-digit pairs
         return distance
     
-    def check_price_location(self, short_period, long_period, price_type='close'):
-        return    
+
+
+    def get_distance_to_sma(self, period, price_type='close'):
+        """
+        Calculates the distance of the current price to the SMA in points.
+        
+        Returns:
+            float: The distance in points.
+        """
+        current_price = self.rates['close'].iloc[-1]
+        last_sma = self.get_last_sma_value(period, price_type)
+        
+        if np.isnan(last_sma):
+            return np.nan
+            
+        distance = abs((current_price - last_sma)) * 10000 # Assuming 4-digit pairs
+        return distance
+    
+
+
+    
+    # def check_price_location(self, short_period, long_period, price_type='close'):
+    #     return    
     
 
     def get_current_price(self):
