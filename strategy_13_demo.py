@@ -343,7 +343,7 @@ class M1AverageZone:
             
             print("\n")
 
-            
+
             #------------------------------------------
             # Performance TABLE
             #------------------------------------------   
@@ -352,7 +352,8 @@ class M1AverageZone:
             tbl_performance_review.add_column("Analysis", style="cyan")
             tbl_performance_review.add_row(f"TBD")
             
-            console.print(tbl_performance_review)
+            # 🔒 Uncomment When Ready
+            #console.print(tbl_performance_review)
 
 
 
