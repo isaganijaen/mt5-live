@@ -27,9 +27,9 @@ REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
 start "7" cmd /k "python strategy_07_demo.py"  
-start "8" cmd /k "python strategy_08_demo.py" 
-REM start "Str-09" MOVED to Profitiable Section
-REM start "Str-10" MOVED to Profitiable Section
+REM start "8" ARCHIVED 
+REM start "Str-09" - MOVED to Profitiable Section
+REM start "Str-10" - MOVED to Profitiable Section
 start "11" cmd /k "python strategy_11_demo.py"
 start "12" cmd /k "python strategy_12_demo.py"
 start "13" cmd /k "python strategy_13_demo.py"
@@ -62,7 +62,7 @@ REM ---                     ARCHIVED                          ---
 REM -------------------------------------------------------------
 REM start "Strategy 07" cmd /k "python strategy_07.py" 
 REM start "HFT-09" cmd /k "python strategy_09.py" 
-
+REM start "8" cmd /k "python strategy_08_demo.py" 
 
 
 
