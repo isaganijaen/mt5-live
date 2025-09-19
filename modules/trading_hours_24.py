@@ -15,7 +15,7 @@ def is_trading_hours():
 
     if current_day == "Sat":
     # Saturday exception: runs only until 5:30 AM
-        if current_hour < 5 or (current_hour == 5 and current_minute <= 30):
+        if current_hour < 4 or (current_hour == 5 and current_minute <= 45):
             return True
         else:
             return False
