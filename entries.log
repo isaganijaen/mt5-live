@@ -25545,3 +25545,216 @@ e.
 2025-09-19 12:55:03,813 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
 2025-09-19 12:55:03,814 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
 2025-09-19 12:55:03,815 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:56:03,821 - INFO - EMAs calculated - Price: 3659.50, 20EMA: 3658.55, 200EMA: 3648.97, 21EMA: 3659.06
+2025-09-19 12:56:03,822 - INFO - Distances - 20EMA: 95 points, 200EMA: 1053 points
+2025-09-19 12:56:03,822 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:56:03,823 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:56:03,823 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:56:03,824 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:56:03,825 - INFO - EMAs calculated - Price: 3659.50, 20EMA: 3658.55, 200EMA: 3648.97, 21EMA: 3659.06
+2025-09-19 12:56:03,825 - INFO - Distances - 20EMA: 95 points, 200EMA: 1053 points
+2025-09-19 12:56:03,826 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:56:03,826 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:56:03,827 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:56:03,827 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:57:03,838 - INFO - EMAs calculated - Price: 3659.19, 20EMA: 3658.52, 200EMA: 3648.97, 21EMA: 3658.98
+2025-09-19 12:57:03,838 - INFO - Distances - 20EMA: 67 points, 200EMA: 1022 points
+2025-09-19 12:57:03,838 - INFO - EMAs calculated - Price: 3659.19, 20EMA: 3658.52, 200EMA: 3648.97, 21EMA: 3658.98
+2025-09-19 12:57:03,839 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:57:03,840 - INFO - Distances - 20EMA: 67 points, 200EMA: 1022 points
+2025-09-19 12:57:03,840 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:57:03,840 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:57:03,840 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:57:03,840 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:57:03,841 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:57:03,842 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:58:03,851 - INFO - EMAs calculated - Price: 3658.88, 20EMA: 3658.54, 200EMA: 3649.06, 21EMA: 3658.92
+2025-09-19 12:58:03,852 - INFO - Distances - 20EMA: 34 points, 200EMA: 982 points
+2025-09-19 12:58:03,852 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:58:03,853 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:58:03,853 - INFO - EMAs calculated - Price: 3658.88, 20EMA: 3658.54, 200EMA: 3649.06, 21EMA: 3658.92
+2025-09-19 12:58:03,854 - INFO - H4 candle range not tradeable. Holding.
+ points
+2025-09-19 12:58:03,855 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:58:03,855 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:58:03,856 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:58:03,856 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:59:03,866 - INFO - EMAs calculated - Price: 3659.09, 20EMA: 3658.56, 200EMA: 3649.07, 21EMA: 3658.97
+2025-09-19 12:59:03,867 - INFO - Distances - 20EMA: 53 points, 200EMA: 1002 points
+2025-09-19 12:59:03,867 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:59:03,868 - INFO - EMAs calculated - Price: 3659.09, 20EMA: 3658.56, 200EMA: 3649.07, 21EMA: 3658.97
+2025-09-19 12:59:03,868 - INFO - Distances - 20EMA: 53 points, 200EMA: 1002 points
+2025-09-19 12:59:03,868 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:59:03,869 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:59:03,869 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:59:03,869 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:59:03,870 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:59:03,870 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 13:00:03,870 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:00:03,871 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:01:03,871 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:01:03,872 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:02:03,872 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:02:03,873 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:03:03,873 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:03:03,874 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:04:03,874 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:04:03,875 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:05:03,875 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:05:03,876 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:06:03,876 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:06:03,877 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:07:03,877 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:07:03,878 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:08:03,878 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:08:03,879 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:09:03,879 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:09:03,880 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:10:03,880 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:10:03,881 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:11:03,881 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:11:03,881 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:12:03,883 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:13:03,884 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:14:03,885 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:14:03,885 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:15:03,885 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:15:03,886 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:16:03,886 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:16:03,887 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:17:03,887 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:17:03,888 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:18:03,888 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:18:03,889 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:19:03,889 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:19:03,889 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:20:03,890 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:20:03,890 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:21:03,891 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:21:03,891 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:22:03,892 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:23:03,893 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:23:03,893 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:24:03,894 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:25:03,895 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:26:03,897 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:27:03,899 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:28:03,900 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:29:03,901 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:30:03,903 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:31:03,903 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:32:03,905 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:33:03,906 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:34:03,907 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:34:03,907 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:35:03,907 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:35:03,908 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:36:03,909 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:37:03,910 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:37:03,910 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:38:03,911 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:39:03,912 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:39:03,913 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:40:03,914 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:40:03,914 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:41:03,915 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:41:03,915 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:42:03,916 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:43:03,916 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:44:03,917 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:45:03,918 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:46:03,919 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:47:03,921 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:48:03,922 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:49:03,924 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:50:03,925 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:50:03,925 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:51:03,926 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:51:03,926 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:52:03,927 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:53:03,928 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:53:03,928 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:54:03,929 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:55:03,930 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:56:03,931 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:57:03,932 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:58:03,933 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 13:59:03,934 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:00:03,935 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:01:03,936 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:02:03,937 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:03:03,938 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:04:03,940 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:05:03,940 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:05:03,941 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:06:03,941 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:06:03,942 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:07:03,942 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:07:03,943 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:08:03,943 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:08:03,943 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:09:03,944 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:09:03,944 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:10:03,945 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:11:03,946 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:12:03,947 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:13:03,948 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:14:03,950 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:14:03,950 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:15:03,951 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:16:03,951 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:17:03,952 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:18:03,953 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:19:03,954 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:19:03,954 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:20:03,955 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:21:03,956 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:21:03,956 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:22:03,958 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:22:03,958 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:23:03,959 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:24:03,960 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:25:03,961 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:26:03,962 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:27:03,963 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:27:03,963 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:28:03,964 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:29:03,965 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:30:03,966 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:31:03,967 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:32:03,968 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:33:03,970 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:34:03,970 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:34:03,971 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:35:03,972 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:35:03,972 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:36:03,973 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:37:03,974 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:38:03,975 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:39:03,976 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:40:03,977 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:40:03,977 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:41:03,978 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:42:03,979 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:43:03,979 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:44:03,981 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:45:03,982 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:45:03,982 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:46:03,983 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:47:03,983 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:48:03,985 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:49:03,986 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:50:03,987 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:51:03,988 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:51:03,988 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:52:03,989 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:52:03,989 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:53:03,990 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:53:03,990 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:54:03,991 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:54:03,991 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:55:03,992 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:55:03,992 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:56:03,993 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:57:03,994 - INFO - Outside trading hours (20:00-12:00)
+2025-09-19 14:58:03,995 - INFO - Outside trading hours (20:00-12:00)

@@ -26,3 +26,12 @@
 | DEMO_strategy_02 | 2 | 17.02 | 1.78 | 7.15 | 4.73 | -2.38 |
 | strategy_10_demo | 46 | 21.96 | 1.31 | 1.65 | 9.2 | -13.33 |
 | strategy_12_demo | 48 | 19.16 | 1.26 | 1.14 | 8.69 | -16.88 |
+
+
+&nbsp; 
+&nbsp; 
+
+# Most Promising as of 2025-09-19 03:25 AM onward 
+
+* strategy_18_demo
+* strategy_19_demo
