@@ -8,8 +8,20 @@ from rich import box
 console = Console()
 
 def is_trading_hours():
+    now = datetime.now()
+    current_day = now.strftime("%a")
+    current_hour = now.hour
+    current_minute = now.minute
+
+    if current_day == "Sat":
+    # Saturday exception: runs only until 5:30 AM
+        if current_hour < 5 or (current_hour == 5 and current_minute <= 30):
+            return True
+        else:
+            return False
     # This runs 24/7
-    return True  
+    else:
+        return True  
 
 
 if is_trading_hours():
