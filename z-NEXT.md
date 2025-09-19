@@ -7,3 +7,5 @@
 3. With regard to the #2, we can use it to create a NEW STRATEGY with tighter SL=150 and TP=300, 350, 450, 600 or even no indefinite target at all. We will also crate a new trailing system that is dynamic based on the price movement point. For example, initially, all trades would have a 75 fix point trailing stop. When the price reached the 150 points (other's alread taking profit), the trailing stop would then switch to 7-period EMA Trailing Guide with trailing_stop_distance=70 which is our standard trailing points.
 
 4. 🟡 🎯 strategy_18_demo.py: OBSERVE this. This strategy has indefinite TP. Adjust the trailing stop to 300 or 320 points if performance dropped to give breathing room.
+
+5. **IMPORTANT**: 🟡 🎯 Use trading_hours_12mn_to_15pm.py to strategy_10_demo and strategy_12_demo.py or other super active trading strategies when deployed!

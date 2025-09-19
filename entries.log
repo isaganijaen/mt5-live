@@ -25378,3 +25378,27 @@ e.
 2025-09-19 12:41:03,620 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
 2025-09-19 12:41:03,621 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
 2025-09-19 12:41:03,621 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:42:03,626 - INFO - EMAs calculated - Price: 3658.62, 20EMA: 3657.99, 200EMA: 3648.24, 21EMA: 3658.51
+2025-09-19 12:42:03,627 - INFO - Distances - 20EMA: 63 points, 200EMA: 1038 points
+2025-09-19 12:42:03,628 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:42:03,629 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:42:03,630 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:42:03,630 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:42:03,632 - INFO - EMAs calculated - Price: 3658.62, 20EMA: 3657.99, 200EMA: 3648.24, 21EMA: 3658.51
+2025-09-19 12:42:03,633 - INFO - Distances - 20EMA: 63 points, 200EMA: 1038 points
+2025-09-19 12:42:03,633 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:42:03,634 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:42:03,635 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:42:03,635 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:43:03,639 - INFO - EMAs calculated - Price: 3658.69, 20EMA: 3657.99, 200EMA: 3648.24, 21EMA: 3658.53
+2025-09-19 12:43:03,640 - INFO - Distances - 20EMA: 70 points, 200EMA: 1045 points
+2025-09-19 12:43:03,640 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:43:03,641 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:43:03,642 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:43:03,642 - INFO - H4 candle range not tradeable. Holding.
+2025-09-19 12:43:03,645 - INFO - EMAs calculated - Price: 3658.69, 20EMA: 3657.99, 200EMA: 3648.24, 21EMA: 3658.53
+2025-09-19 12:43:03,646 - INFO - Distances - 20EMA: 70 points, 200EMA: 1045 points
+2025-09-19 12:43:03,646 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-19 12:43:03,646 - INFO - Candle range for GOLD# H1 is 631 points (<= 1100). Tradeable.
+2025-09-19 12:43:03,647 - INFO - Candle range for GOLD# H4 is 2763 points (> 1800). Not tradeable.
+2025-09-19 12:43:03,648 - INFO - H4 candle range not tradeable. Holding.
