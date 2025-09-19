@@ -36,11 +36,12 @@ start "13" cmd /k "python strategy_13_demo.py"
 start "14" cmd /k "python strategy_14_demo.py"
 start "15" cmd /k "python strategy_15_demo.py"
 start "16" cmd /k "python strategy_16_demo.py"
-start "17" cmd /k "python strategy_17_demo.py"
+REM start "17" ARCHIVED 
 start "18" cmd /k "python strategy_18_demo.py"
 start "19" cmd /k "python strategy_19_demo.py"
 start "20" cmd /k "python strategy_20_demo.py"
 start "21" cmd /k "python strategy_21_demo.py"
+start "22" cmd /k "python strategy_22_demo.py"
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
@@ -63,7 +64,7 @@ REM -------------------------------------------------------------
 REM start "Strategy 07" cmd /k "python strategy_07.py" 
 REM start "HFT-09" cmd /k "python strategy_09.py" 
 REM start "8" cmd /k "python strategy_08_demo.py" 
-
+REM start "17" cmd /k "python strategy_17_demo.py"
 
 
  
