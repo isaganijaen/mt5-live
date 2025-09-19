@@ -445,7 +445,7 @@ def start_strategy():
         sl_points=300,
         tp_points=350,
         trailing_activation_points=300, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
-        trailing_stop_distance=70,
+        trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=20,
         ema_support=20,
