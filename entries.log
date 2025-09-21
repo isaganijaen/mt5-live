@@ -376,3 +376,60 @@ s
 2025-09-20 05:03:35,727 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
 2025-09-20 05:03:35,956 - ERROR - Failed to modify SL for position 443977904: Market closed
 2025-09-20 05:03:35,956 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:03:45,255 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:03:45,484 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:03:45,485 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:03:45,967 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:03:46,198 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:03:46,198 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:03:55,494 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:03:55,724 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:03:55,725 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:03:56,207 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:03:56,437 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:03:56,437 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:00,250 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:00,251 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:00,251 - INFO - Distances - 20EMA: 105 points, 200EMA: 961 points
+2025-09-20 05:04:00,252 - INFO - Distances - 20EMA: 105 points, 200EMA: 961 points
+2025-09-20 05:04:00,252 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-20 05:04:00,252 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-20 05:04:00,252 - INFO - Candle range for GOLD# H1 is 462 points (<= 1100). Tradeable.
+2025-09-20 05:04:00,252 - INFO - Candle range for GOLD# H1 is 462 points (<= 1100). Tradeable.
+2025-09-20 05:04:00,253 - INFO - Candle range for GOLD# H4 is 1729 points (<= 1800). Tradeable.
+2025-09-20 05:04:00,253 - INFO - Max positions (1) already open
+2025-09-20 05:04:00,253 - INFO - Max positions (1) already open
+2025-09-20 05:04:00,253 - INFO - Performance: 0:10:32 uptime, 0 trades, 0.00% success
+2025-09-20 05:04:00,253 - INFO - Performance: 0:10:33 uptime, 0 trades, 0.00% success
+2025-09-20 05:04:00,253 - INFO - Waiting 120 seconds for next candle
+2025-09-20 05:04:00,253 - INFO - Waiting 120 seconds for next candle
+2025-09-20 05:04:05,734 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:05,963 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:04:05,964 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:06,448 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:06,676 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:04:06,677 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:15,972 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:16,203 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:04:16,203 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:16,689 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:16,919 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:04:16,919 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:26,212 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:26,441 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:04:26,441 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:26,929 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:27,159 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:04:27,160 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:36,449 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:36,680 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:04:36,681 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:37,169 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:37,399 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:04:37,399 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:46,690 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:46,920 - ERROR - Failed to modify SL for position 443977903: Market closed
+2025-09-20 05:04:46,920 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
+2025-09-20 05:04:47,411 - INFO - EMAs calculated - Price: 3685.18, 20EMA: 3684.13, 200EMA: 3675.57, 21EMA: 3684.75
+2025-09-20 05:04:47,640 - ERROR - Failed to modify SL for position 443977904: Market closed
+2025-09-20 05:04:47,641 - INFO - Trailed BUY SL to 3684.25 (21EMA: 3684.75)
