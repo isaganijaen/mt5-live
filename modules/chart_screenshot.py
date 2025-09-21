@@ -128,7 +128,8 @@ class screenshot:
             # Generate filename with timestamp
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
             #base_filename = os.path.splitext(filename)[0]  # Remove .py extension
-            chart_filename = f"{strategy_id}_{position_ticket}_{deal_id}_{timestamp}.png"
+            # _1_open for database then _2_close for the closing on other app.
+            chart_filename = f"{strategy_id}_{position_ticket}_{deal_id}_{timestamp}_1_open.png"
             chart_path = os.path.join(self.SCREENSHOT_DIR, chart_filename)
             
             # Create the chart
