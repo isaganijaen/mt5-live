@@ -243,12 +243,7 @@ class M1AverageZone:
             
             # ------------------------------------------------------------------
             
-            # Get new data
-            rates_df = self.get_data()
-            if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
-                log_warning("Not enough data to run indicators. Waiting...")
-                continue            
-            
+
             # Check Trading Hours
 
             if not is_trading_hours():

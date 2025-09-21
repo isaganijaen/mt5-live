@@ -28,7 +28,7 @@ from modules.mt5_manager import MT5Manager
 from modules.indicators import Indicators
 from modules.position_manager import PositionManager # Import the new class
 from modules.profit_manager import TakeProfitMonitor # Import the new TakeProfitMonitor class
-
+import mplfinance as mpf
 
 #-------------------------------------
 # Library Initialization
@@ -239,12 +239,6 @@ class M1AverageZone:
             rates_df['long_term_trend'] = rates_df['close'].ewm(span=self.config.long_term_trend, adjust=False).mean()
             
             # ------------------------------------------------------------------            
-
-            # Get new data
-            rates_df = self.get_data()
-            if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
-                log_warning("Not enough data to run indicators. Waiting...")
-                continue
 
 
             # Check Trading Hours

@@ -10360,3 +10360,337 @@ ds
 2025-09-22 07:04:02,664 - INFO - EMAs calculated - Price: 3688.10, 20EMA: 3688.59, 200EMA: 3679.26, 21EMA: 3688.34
 2025-09-22 07:04:11,953 - INFO - EMAs calculated - Price: 3688.18, 20EMA: 3688.60, 200EMA: 3679.26, 21EMA: 3688.36
 2025-09-22 07:04:12,673 - INFO - EMAs calculated - Price: 3688.20, 20EMA: 3688.60, 200EMA: 3679.26, 21EMA: 3688.36
+2025-09-22 07:04:21,963 - INFO - EMAs calculated - Price: 3688.39, 20EMA: 3688.62, 200EMA: 3679.26, 21EMA: 3688.41
+2025-09-22 07:04:22,683 - INFO - EMAs calculated - Price: 3688.39, 20EMA: 3688.62, 200EMA: 3679.26, 21EMA: 3688.41
+2025-09-22 07:04:31,974 - INFO - EMAs calculated - Price: 3688.19, 20EMA: 3688.60, 200EMA: 3679.26, 21EMA: 3688.36
+2025-09-22 07:04:32,694 - INFO - EMAs calculated - Price: 3688.14, 20EMA: 3688.60, 200EMA: 3679.26, 21EMA: 3688.35
+2025-09-22 07:04:41,984 - INFO - EMAs calculated - Price: 3688.30, 20EMA: 3688.61, 200EMA: 3679.26, 21EMA: 3688.39
+2025-09-22 07:04:42,702 - INFO - EMAs calculated - Price: 3688.30, 20EMA: 3688.61, 200EMA: 3679.26, 21EMA: 3688.39
+2025-09-22 07:04:51,992 - INFO - EMAs calculated - Price: 3688.33, 20EMA: 3688.61, 200EMA: 3679.26, 21EMA: 3688.39
+2025-09-22 07:04:52,711 - INFO - EMAs calculated - Price: 3688.33, 20EMA: 3688.61, 200EMA: 3679.26, 21EMA: 3688.39
+2025-09-22 07:05:02,002 - INFO - EMAs calculated - Price: 3688.51, 20EMA: 3688.63, 200EMA: 3679.26, 21EMA: 3688.44
+2025-09-22 07:05:02,720 - INFO - EMAs calculated - Price: 3688.58, 20EMA: 3688.64, 200EMA: 3679.26, 21EMA: 3688.46
+2025-09-22 07:05:12,011 - INFO - EMAs calculated - Price: 3688.60, 20EMA: 3688.64, 200EMA: 3679.26, 21EMA: 3688.46
+2025-09-22 07:05:12,729 - INFO - EMAs calculated - Price: 3688.60, 20EMA: 3688.64, 200EMA: 3679.26, 21EMA: 3688.46
+2025-09-22 07:05:22,019 - INFO - EMAs calculated - Price: 3688.71, 20EMA: 3688.65, 200EMA: 3679.26, 21EMA: 3688.49
+2025-09-22 07:05:22,737 - INFO - EMAs calculated - Price: 3688.71, 20EMA: 3688.65, 200EMA: 3679.26, 21EMA: 3688.49
+2025-09-22 07:05:32,030 - INFO - EMAs calculated - Price: 3688.59, 20EMA: 3688.64, 200EMA: 3679.26, 21EMA: 3688.46
+2025-09-22 07:05:32,746 - INFO - EMAs calculated - Price: 3688.60, 20EMA: 3688.64, 200EMA: 3679.26, 21EMA: 3688.46
+2025-09-22 07:05:42,040 - INFO - EMAs calculated - Price: 3688.92, 20EMA: 3688.67, 200EMA: 3679.26, 21EMA: 3688.54
+2025-09-22 07:05:42,755 - INFO - EMAs calculated - Price: 3688.92, 20EMA: 3688.67, 200EMA: 3679.26, 21EMA: 3688.54
+2025-09-22 07:05:52,049 - INFO - EMAs calculated - Price: 3689.05, 20EMA: 3688.68, 200EMA: 3679.27, 21EMA: 3688.57
+2025-09-22 07:05:52,764 - INFO - EMAs calculated - Price: 3689.05, 20EMA: 3688.68, 200EMA: 3679.27, 21EMA: 3688.57
+2025-09-22 07:06:00,166 - INFO - EMAs calculated - Price: 3689.20, 20EMA: 3688.70, 200EMA: 3679.27, 21EMA: 3688.61
+2025-09-22 07:06:00,167 - INFO - Distances - 20EMA: 50 points, 200EMA: 993 points
+2025-09-22 07:06:00,167 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:06:00,167 - INFO - Candle range for GOLD# H1 is 202 points (<= 1100). Tradeable.
+2025-09-22 07:06:00,168 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:06:00,168 - INFO - Max positions (1) already open
+2025-09-22 07:06:00,168 - INFO - Performance: 4:37:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:06:00,169 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:06:00,568 - INFO - EMAs calculated - Price: 3689.20, 20EMA: 3688.70, 200EMA: 3679.27, 21EMA: 3688.61
+2025-09-22 07:06:00,569 - INFO - Distances - 20EMA: 50 points, 200EMA: 993 points
+2025-09-22 07:06:00,570 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:06:00,570 - INFO - Candle range for GOLD# H1 is 202 points (<= 1100). Tradeable.
+2025-09-22 07:06:00,571 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:06:00,572 - INFO - Max positions (1) already open
+2025-09-22 07:06:00,572 - INFO - Performance: 4:37:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:06:00,572 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:06:02,061 - INFO - EMAs calculated - Price: 3689.20, 20EMA: 3688.70, 200EMA: 3679.27, 21EMA: 3688.61
+2025-09-22 07:06:02,772 - INFO - EMAs calculated - Price: 3689.09, 20EMA: 3688.73, 200EMA: 3679.36, 21EMA: 3688.73
+2025-09-22 07:06:12,072 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:06:12,783 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:06:22,081 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:06:22,793 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:06:32,091 - INFO - EMAs calculated - Price: 3688.94, 20EMA: 3688.72, 200EMA: 3679.36, 21EMA: 3688.69
+2025-09-22 07:06:32,803 - INFO - EMAs calculated - Price: 3688.94, 20EMA: 3688.72, 200EMA: 3679.36, 21EMA: 3688.69
+2025-09-22 07:06:42,101 - INFO - EMAs calculated - Price: 3689.01, 20EMA: 3688.73, 200EMA: 3679.36, 21EMA: 3688.71
+2025-09-22 07:06:42,812 - INFO - EMAs calculated - Price: 3689.03, 20EMA: 3688.73, 200EMA: 3679.36, 21EMA: 3688.72
+2025-09-22 07:06:52,109 - INFO - EMAs calculated - Price: 3689.11, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:06:52,822 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:07:02,119 - INFO - EMAs calculated - Price: 3689.12, 20EMA: 3688.74, 200EMA: 3679.36, 21EMA: 3688.74
+2025-09-22 07:07:02,831 - INFO - EMAs calculated - Price: 3689.09, 20EMA: 3688.73, 200EMA: 3679.36, 21EMA: 3688.73
+2025-09-22 07:07:12,127 - INFO - EMAs calculated - Price: 3689.21, 20EMA: 3688.75, 200EMA: 3679.37, 21EMA: 3688.76
+2025-09-22 07:07:12,842 - INFO - EMAs calculated - Price: 3689.21, 20EMA: 3688.75, 200EMA: 3679.37, 21EMA: 3688.76
+2025-09-22 07:07:22,136 - INFO - EMAs calculated - Price: 3689.14, 20EMA: 3688.74, 200EMA: 3679.37, 21EMA: 3688.74
+2025-09-22 07:07:22,852 - INFO - EMAs calculated - Price: 3689.08, 20EMA: 3688.73, 200EMA: 3679.36, 21EMA: 3688.73
+2025-09-22 07:07:32,144 - INFO - EMAs calculated - Price: 3688.57, 20EMA: 3688.68, 200EMA: 3679.36, 21EMA: 3688.60
+2025-09-22 07:07:32,861 - INFO - EMAs calculated - Price: 3688.18, 20EMA: 3688.65, 200EMA: 3679.36, 21EMA: 3688.50
+2025-09-22 07:07:42,156 - INFO - EMAs calculated - Price: 3688.22, 20EMA: 3688.65, 200EMA: 3679.36, 21EMA: 3688.51
+2025-09-22 07:07:42,871 - INFO - EMAs calculated - Price: 3688.15, 20EMA: 3688.64, 200EMA: 3679.36, 21EMA: 3688.50
+2025-09-22 07:07:52,165 - INFO - EMAs calculated - Price: 3687.60, 20EMA: 3688.59, 200EMA: 3679.35, 21EMA: 3688.36
+2025-09-22 07:07:52,880 - INFO - EMAs calculated - Price: 3687.61, 20EMA: 3688.59, 200EMA: 3679.35, 21EMA: 3688.36
+2025-09-22 07:08:00,181 - INFO - EMAs calculated - Price: 3687.36, 20EMA: 3688.57, 200EMA: 3679.35, 21EMA: 3688.30
+2025-09-22 07:08:00,182 - INFO - Distances - 20EMA: 121 points, 200EMA: 801 points
+2025-09-22 07:08:00,183 - INFO - Signal: HOLD, Reason: ❌ Price not clearly above or below both EMAs
+2025-09-22 07:08:00,183 - INFO - Candle range for GOLD# H1 is 220 points (<= 1100). Tradeable.
+2025-09-22 07:08:00,184 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:08:00,185 - INFO - Performance: 4:39:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:08:00,185 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:08:00,582 - INFO - EMAs calculated - Price: 3687.38, 20EMA: 3688.57, 200EMA: 3679.35, 21EMA: 3688.30
+2025-09-22 07:08:00,583 - INFO - Distances - 20EMA: 119 points, 200EMA: 803 points
+2025-09-22 07:08:00,583 - INFO - Signal: HOLD, Reason: ❌  Price not clearly above or below both EMAs
+2025-09-22 07:08:00,583 - INFO - Candle range for GOLD# H1 is 220 points (<= 1100). Tradeable.
+2025-09-22 07:08:00,584 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:08:00,585 - INFO - Performance: 4:39:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:08:00,585 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:08:02,174 - INFO - EMAs calculated - Price: 3687.37, 20EMA: 3688.46, 200EMA: 3679.43, 21EMA: 3688.07
+2025-09-22 07:08:02,889 - INFO - EMAs calculated - Price: 3687.37, 20EMA: 3688.46, 200EMA: 3679.43, 21EMA: 3688.07
+2025-09-22 07:08:12,183 - INFO - EMAs calculated - Price: 3687.54, 20EMA: 3688.47, 200EMA: 3679.43, 21EMA: 3688.11
+2025-09-22 07:08:12,899 - INFO - EMAs calculated - Price: 3687.56, 20EMA: 3688.48, 200EMA: 3679.43, 21EMA: 3688.12
+2025-09-22 07:08:22,193 - INFO - EMAs calculated - Price: 3687.42, 20EMA: 3688.46, 200EMA: 3679.43, 21EMA: 3688.08
+2025-09-22 07:08:22,907 - INFO - EMAs calculated - Price: 3687.66, 20EMA: 3688.48, 200EMA: 3679.43, 21EMA: 3688.14
+2025-09-22 07:10:00,195 - INFO - EMAs calculated - Price: 3687.19, 20EMA: 3688.44, 200EMA: 3679.43, 21EMA: 3688.03
+2025-09-22 07:10:00,196 - INFO - Distances - 20EMA: 125 points, 200EMA: 776 points
+2025-09-22 07:10:00,196 - INFO - Signal: HOLD, Reason: ❌ Price not clearly above or below both EMAs
+2025-09-22 07:10:00,197 - INFO - Candle range for GOLD# H1 is 243 points (<= 1100). Tradeable.
+2025-09-22 07:10:00,198 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:10:00,198 - INFO - Performance: 4:41:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:10:00,198 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:10:00,593 - INFO - EMAs calculated - Price: 3687.19, 20EMA: 3688.44, 200EMA: 3679.43, 21EMA: 3688.03
+2025-09-22 07:10:00,593 - INFO - Distances - 20EMA: 125 points, 200EMA: 776 points
+2025-09-22 07:10:00,594 - INFO - Signal: HOLD, Reason: ❌  Price not clearly above or below both EMAs
+2025-09-22 07:10:00,594 - INFO - Candle range for GOLD# H1 is 243 points (<= 1100). Tradeable.
+2025-09-22 07:10:00,595 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:10:00,596 - INFO - Performance: 4:41:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:10:00,596 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:12:00,205 - INFO - EMAs calculated - Price: 3686.64, 20EMA: 3688.27, 200EMA: 3679.50, 21EMA: 3687.68
+2025-09-22 07:12:00,206 - INFO - Distances - 20EMA: 163 points, 200EMA: 714 points
+2025-09-22 07:12:00,206 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 163/130, 200EMA: 714/1400)
+2025-09-22 07:12:00,207 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:12:00,207 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:12:00,208 - INFO - Performance: 4:43:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:12:00,208 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:12:00,605 - INFO - EMAs calculated - Price: 3686.64, 20EMA: 3688.27, 200EMA: 3679.50, 21EMA: 3687.68
+2025-09-22 07:12:00,606 - INFO - Distances - 20EMA: 163 points, 200EMA: 714 points
+2025-09-22 07:12:00,606 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 163/130, 200EMA: 714/1400)
+2025-09-22 07:12:00,606 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:12:00,607 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:12:00,607 - INFO - Performance: 4:43:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:12:00,607 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:14:00,218 - INFO - EMAs calculated - Price: 3687.09, 20EMA: 3688.16, 200EMA: 3679.57, 21EMA: 3687.53
+2025-09-22 07:14:00,219 - INFO - Distances - 20EMA: 107 points, 200EMA: 752 points
+2025-09-22 07:14:00,219 - INFO - Signal: HOLD, Reason: ❌ Price not clearly above or below both EMAs
+2025-09-22 07:14:00,220 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:14:00,220 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:14:00,220 - INFO - Performance: 4:45:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:14:00,221 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:14:00,617 - INFO - EMAs calculated - Price: 3687.09, 20EMA: 3688.16, 200EMA: 3679.57, 21EMA: 3687.53
+2025-09-22 07:14:00,617 - INFO - Distances - 20EMA: 107 points, 200EMA: 752 points
+2025-09-22 07:14:00,618 - INFO - Signal: HOLD, Reason: ❌  Price not clearly above or below both EMAs
+2025-09-22 07:14:00,618 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:14:00,618 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:14:00,619 - INFO - Performance: 4:45:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:14:00,619 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:16:00,232 - INFO - EMAs calculated - Price: 3687.46, 20EMA: 3688.09, 200EMA: 3679.65, 21EMA: 3687.51
+2025-09-22 07:16:00,233 - INFO - Distances - 20EMA: 63 points, 200EMA: 781 points
+2025-09-22 07:16:00,233 - INFO - Signal: HOLD, Reason: ❌ Price not clearly above or below both EMAs
+2025-09-22 07:16:00,234 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:16:00,235 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:16:00,235 - INFO - Performance: 4:47:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:16:00,236 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:16:00,628 - INFO - EMAs calculated - Price: 3687.46, 20EMA: 3688.09, 200EMA: 3679.65, 21EMA: 3687.51
+2025-09-22 07:16:00,629 - INFO - Distances - 20EMA: 63 points, 200EMA: 781 points
+2025-09-22 07:16:00,629 - INFO - Signal: HOLD, Reason: ❌  Price not clearly above or below both EMAs
+2025-09-22 07:16:00,630 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:16:00,630 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:16:00,631 - INFO - Performance: 4:47:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:16:00,631 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:18:00,244 - INFO - EMAs calculated - Price: 3687.57, 20EMA: 3688.04, 200EMA: 3679.73, 21EMA: 3687.53
+2025-09-22 07:18:00,245 - INFO - Distances - 20EMA: 47 points, 200EMA: 784 points
+2025-09-22 07:18:00,245 - INFO - Signal: HOLD, Reason: ❌ Price not clearly above or below both EMAs
+2025-09-22 07:18:00,246 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:18:00,247 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:18:00,247 - INFO - Performance: 4:49:45 uptime, 2 trades, 100.00% success
+2025-09-22 07:18:00,247 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:18:00,639 - INFO - EMAs calculated - Price: 3687.57, 20EMA: 3688.04, 200EMA: 3679.73, 21EMA: 3687.53
+2025-09-22 07:18:00,640 - INFO - Distances - 20EMA: 47 points, 200EMA: 784 points
+2025-09-22 07:18:00,640 - INFO - Signal: HOLD, Reason: ❌  Price not clearly above or below both EMAs
+2025-09-22 07:18:00,641 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:18:00,641 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:18:00,642 - INFO - Performance: 4:49:44 uptime, 2 trades, 100.00% success
+2025-09-22 07:18:00,642 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:20:00,256 - INFO - EMAs calculated - Price: 3688.24, 20EMA: 3688.06, 200EMA: 3679.81, 21EMA: 3687.71
+2025-09-22 07:20:00,257 - INFO - Distances - 20EMA: 18 points, 200EMA: 843 points
+2025-09-22 07:20:00,257 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:20:00,258 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:20:00,259 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:20:00,260 - INFO - Executing BUY order at 3688.46, SL: 3685.46, TP: 3715.46
+2025-09-22 07:20:00,497 - INFO - Order executed successfully. Deal ticket: 444876354
+2025-09-22 07:20:00,498 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-22 07:20:00,505 - INFO - Trade entry recorded successfully. Deal Ticket: 444876354
+2025-09-22 07:20:00,506 - INFO - Performance: 4:51:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:20:00,506 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:20:00,652 - INFO - EMAs calculated - Price: 3688.24, 20EMA: 3688.06, 200EMA: 3679.81, 21EMA: 3687.71
+2025-09-22 07:20:00,652 - INFO - Distances - 20EMA: 18 points, 200EMA: 843 points
+2025-09-22 07:20:00,653 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:20:00,653 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:20:00,654 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:20:00,655 - INFO - Executing BUY order at 3688.46, SL: 3685.46, TP: 3694.46
+2025-09-22 07:20:00,893 - INFO - Order executed successfully. Deal ticket: 444876355
+2025-09-22 07:20:00,894 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-22 07:20:00,902 - INFO - Trade entry recorded successfully. Deal Ticket: 444876355
+2025-09-22 07:20:00,902 - INFO - Performance: 4:51:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:20:00,903 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:20:02,332 - INFO - EMAs calculated - Price: 3688.27, 20EMA: 3688.06, 200EMA: 3679.82, 21EMA: 3687.71
+2025-09-22 07:20:03,095 - INFO - EMAs calculated - Price: 3688.26, 20EMA: 3688.08, 200EMA: 3679.90, 21EMA: 3687.85
+2025-09-22 07:20:12,342 - INFO - EMAs calculated - Price: 3688.25, 20EMA: 3688.08, 200EMA: 3679.90, 21EMA: 3687.85
+2025-09-22 07:20:13,104 - INFO - EMAs calculated - Price: 3688.26, 20EMA: 3688.08, 200EMA: 3679.90, 21EMA: 3687.85
+2025-09-22 07:20:22,353 - INFO - EMAs calculated - Price: 3688.16, 20EMA: 3688.07, 200EMA: 3679.90, 21EMA: 3687.83
+2025-09-22 07:20:23,114 - INFO - EMAs calculated - Price: 3688.15, 20EMA: 3688.07, 200EMA: 3679.90, 21EMA: 3687.82
+2025-09-22 07:20:32,363 - INFO - EMAs calculated - Price: 3688.17, 20EMA: 3688.07, 200EMA: 3679.90, 21EMA: 3687.83
+2025-09-22 07:20:33,124 - INFO - EMAs calculated - Price: 3688.21, 20EMA: 3688.08, 200EMA: 3679.90, 21EMA: 3687.84
+2025-09-22 07:20:42,372 - INFO - EMAs calculated - Price: 3688.18, 20EMA: 3688.07, 200EMA: 3679.90, 21EMA: 3687.83
+2025-09-22 07:20:43,134 - INFO - EMAs calculated - Price: 3688.18, 20EMA: 3688.07, 200EMA: 3679.90, 21EMA: 3687.83
+2025-09-22 07:20:52,383 - INFO - EMAs calculated - Price: 3687.98, 20EMA: 3688.05, 200EMA: 3679.90, 21EMA: 3687.78
+2025-09-22 07:20:53,145 - INFO - EMAs calculated - Price: 3687.98, 20EMA: 3688.05, 200EMA: 3679.90, 21EMA: 3687.78
+2025-09-22 07:21:02,393 - INFO - EMAs calculated - Price: 3687.97, 20EMA: 3688.05, 200EMA: 3679.90, 21EMA: 3687.78
+2025-09-22 07:21:03,155 - INFO - EMAs calculated - Price: 3687.97, 20EMA: 3688.05, 200EMA: 3679.90, 21EMA: 3687.78
+2025-09-22 07:21:12,403 - INFO - EMAs calculated - Price: 3688.02, 20EMA: 3688.06, 200EMA: 3679.90, 21EMA: 3687.79
+2025-09-22 07:21:13,165 - INFO - EMAs calculated - Price: 3688.02, 20EMA: 3688.06, 200EMA: 3679.90, 21EMA: 3687.79
+2025-09-22 07:21:22,413 - INFO - EMAs calculated - Price: 3688.33, 20EMA: 3688.09, 200EMA: 3679.90, 21EMA: 3687.87
+2025-09-22 07:21:23,172 - INFO - EMAs calculated - Price: 3688.33, 20EMA: 3688.09, 200EMA: 3679.90, 21EMA: 3687.87
+2025-09-22 07:21:32,423 - INFO - EMAs calculated - Price: 3688.41, 20EMA: 3688.10, 200EMA: 3679.90, 21EMA: 3687.89
+2025-09-22 07:21:33,181 - INFO - EMAs calculated - Price: 3688.43, 20EMA: 3688.10, 200EMA: 3679.90, 21EMA: 3687.89
+2025-09-22 07:21:42,431 - INFO - EMAs calculated - Price: 3688.77, 20EMA: 3688.13, 200EMA: 3679.90, 21EMA: 3687.98
+2025-09-22 07:21:43,191 - INFO - EMAs calculated - Price: 3688.79, 20EMA: 3688.13, 200EMA: 3679.90, 21EMA: 3687.98
+2025-09-22 07:21:52,440 - INFO - EMAs calculated - Price: 3689.03, 20EMA: 3688.15, 200EMA: 3679.91, 21EMA: 3688.04
+2025-09-22 07:21:53,200 - INFO - EMAs calculated - Price: 3689.03, 20EMA: 3688.15, 200EMA: 3679.91, 21EMA: 3688.04
+2025-09-22 07:22:00,514 - INFO - EMAs calculated - Price: 3689.11, 20EMA: 3688.16, 200EMA: 3679.91, 21EMA: 3688.06
+2025-09-22 07:22:00,515 - INFO - Distances - 20EMA: 95 points, 200EMA: 920 points
+2025-09-22 07:22:00,515 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:22:00,516 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:22:00,516 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:22:00,517 - INFO - Max positions (1) already open
+2025-09-22 07:22:00,517 - INFO - Performance: 4:53:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:22:00,517 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:22:00,913 - INFO - EMAs calculated - Price: 3689.11, 20EMA: 3688.16, 200EMA: 3679.91, 21EMA: 3688.06
+2025-09-22 07:22:00,913 - INFO - Distances - 20EMA: 95 points, 200EMA: 920 points
+2025-09-22 07:22:00,914 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:22:00,914 - INFO - Candle range for GOLD# H1 is 308 points (<= 1100). Tradeable.
+2025-09-22 07:22:00,915 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:22:00,916 - INFO - Max positions (1) already open
+2025-09-22 07:22:00,916 - INFO - Performance: 4:53:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:22:00,916 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:22:02,448 - INFO - EMAs calculated - Price: 3689.13, 20EMA: 3688.25, 200EMA: 3680.00, 21EMA: 3688.33
+2025-09-22 07:22:03,210 - INFO - EMAs calculated - Price: 3689.14, 20EMA: 3688.26, 200EMA: 3680.00, 21EMA: 3688.33
+2025-09-22 07:22:12,458 - INFO - EMAs calculated - Price: 3689.46, 20EMA: 3688.29, 200EMA: 3680.00, 21EMA: 3688.41
+2025-09-22 07:22:13,219 - INFO - EMAs calculated - Price: 3689.59, 20EMA: 3688.30, 200EMA: 3680.00, 21EMA: 3688.44
+2025-09-22 07:22:22,467 - INFO - EMAs calculated - Price: 3689.75, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.48
+2025-09-22 07:22:23,229 - INFO - EMAs calculated - Price: 3689.80, 20EMA: 3688.32, 200EMA: 3680.01, 21EMA: 3688.50
+2025-09-22 07:22:32,476 - INFO - EMAs calculated - Price: 3689.76, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.49
+2025-09-22 07:22:33,243 - INFO - EMAs calculated - Price: 3689.70, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.47
+2025-09-22 07:22:42,487 - INFO - EMAs calculated - Price: 3689.94, 20EMA: 3688.33, 200EMA: 3680.01, 21EMA: 3688.53
+2025-09-22 07:22:43,252 - INFO - EMAs calculated - Price: 3689.99, 20EMA: 3688.34, 200EMA: 3680.01, 21EMA: 3688.54
+2025-09-22 07:22:52,497 - INFO - EMAs calculated - Price: 3689.93, 20EMA: 3688.33, 200EMA: 3680.01, 21EMA: 3688.53
+2025-09-22 07:22:53,262 - INFO - EMAs calculated - Price: 3689.93, 20EMA: 3688.33, 200EMA: 3680.01, 21EMA: 3688.53
+2025-09-22 07:23:02,513 - INFO - EMAs calculated - Price: 3689.86, 20EMA: 3688.32, 200EMA: 3680.01, 21EMA: 3688.51
+2025-09-22 07:23:03,273 - INFO - EMAs calculated - Price: 3689.76, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.49
+2025-09-22 07:23:12,524 - INFO - EMAs calculated - Price: 3689.73, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.48
+2025-09-22 07:23:13,284 - INFO - EMAs calculated - Price: 3689.74, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.48
+2025-09-22 07:23:22,533 - INFO - EMAs calculated - Price: 3689.74, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.48
+2025-09-22 07:23:23,295 - INFO - EMAs calculated - Price: 3689.74, 20EMA: 3688.31, 200EMA: 3680.01, 21EMA: 3688.48
+2025-09-22 07:23:32,542 - INFO - EMAs calculated - Price: 3689.66, 20EMA: 3688.30, 200EMA: 3680.00, 21EMA: 3688.46
+2025-09-22 07:23:33,306 - INFO - EMAs calculated - Price: 3689.68, 20EMA: 3688.31, 200EMA: 3680.00, 21EMA: 3688.47
+2025-09-22 07:23:42,551 - INFO - EMAs calculated - Price: 3689.66, 20EMA: 3688.30, 200EMA: 3680.00, 21EMA: 3688.46
+2025-09-22 07:23:43,317 - INFO - EMAs calculated - Price: 3689.66, 20EMA: 3688.30, 200EMA: 3680.00, 21EMA: 3688.46
+2025-09-22 07:23:52,560 - INFO - EMAs calculated - Price: 3689.40, 20EMA: 3688.28, 200EMA: 3680.00, 21EMA: 3688.40
+2025-09-22 07:23:53,327 - INFO - EMAs calculated - Price: 3689.35, 20EMA: 3688.28, 200EMA: 3680.00, 21EMA: 3688.38
+2025-09-22 07:24:00,526 - INFO - EMAs calculated - Price: 3689.33, 20EMA: 3688.27, 200EMA: 3680.00, 21EMA: 3688.38
+2025-09-22 07:24:00,527 - INFO - Distances - 20EMA: 106 points, 200EMA: 933 points
+2025-09-22 07:24:00,528 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:24:00,528 - INFO - Candle range for GOLD# H1 is 369 points (<= 1100). Tradeable.
+2025-09-22 07:24:00,529 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:24:00,529 - INFO - Max positions (1) already open
+2025-09-22 07:24:00,530 - INFO - Performance: 4:55:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:24:00,530 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:24:00,923 - INFO - EMAs calculated - Price: 3689.33, 20EMA: 3688.27, 200EMA: 3680.00, 21EMA: 3688.38
+2025-09-22 07:24:00,924 - INFO - Distances - 20EMA: 106 points, 200EMA: 933 points
+2025-09-22 07:24:00,924 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:24:00,925 - INFO - Candle range for GOLD# H1 is 369 points (<= 1100). Tradeable.
+2025-09-22 07:24:00,926 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:24:00,926 - INFO - Max positions (1) already open
+2025-09-22 07:24:00,926 - INFO - Performance: 4:55:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:24:00,927 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:24:02,570 - INFO - EMAs calculated - Price: 3689.27, 20EMA: 3688.37, 200EMA: 3680.09, 21EMA: 3688.60
+2025-09-22 07:24:03,336 - INFO - EMAs calculated - Price: 3689.27, 20EMA: 3688.37, 200EMA: 3680.09, 21EMA: 3688.60
+2025-09-22 07:24:12,580 - INFO - EMAs calculated - Price: 3689.36, 20EMA: 3688.38, 200EMA: 3680.09, 21EMA: 3688.62
+2025-09-22 07:24:13,346 - INFO - EMAs calculated - Price: 3689.51, 20EMA: 3688.39, 200EMA: 3680.10, 21EMA: 3688.66
+2025-09-22 07:24:22,589 - INFO - EMAs calculated - Price: 3689.76, 20EMA: 3688.42, 200EMA: 3680.10, 21EMA: 3688.72
+2025-09-22 07:24:23,357 - INFO - EMAs calculated - Price: 3689.78, 20EMA: 3688.42, 200EMA: 3680.10, 21EMA: 3688.73
+2025-09-22 07:24:32,599 - INFO - EMAs calculated - Price: 3690.01, 20EMA: 3688.44, 200EMA: 3680.10, 21EMA: 3688.79
+2025-09-22 07:24:33,367 - INFO - EMAs calculated - Price: 3690.06, 20EMA: 3688.44, 200EMA: 3680.10, 21EMA: 3688.80
+2025-09-22 07:24:42,608 - INFO - EMAs calculated - Price: 3689.99, 20EMA: 3688.44, 200EMA: 3680.10, 21EMA: 3688.78
+2025-09-22 07:24:43,376 - INFO - EMAs calculated - Price: 3689.99, 20EMA: 3688.44, 200EMA: 3680.10, 21EMA: 3688.78
+2025-09-22 07:24:52,619 - INFO - EMAs calculated - Price: 3690.15, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.82
+2025-09-22 07:24:53,385 - INFO - EMAs calculated - Price: 3690.15, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.82
+2025-09-22 07:25:02,632 - INFO - EMAs calculated - Price: 3690.17, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.83
+2025-09-22 07:25:03,395 - INFO - EMAs calculated - Price: 3690.16, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.82
+2025-09-22 07:25:12,642 - INFO - EMAs calculated - Price: 3690.15, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.82
+2025-09-22 07:25:13,405 - INFO - EMAs calculated - Price: 3690.15, 20EMA: 3688.45, 200EMA: 3680.10, 21EMA: 3688.82
+2025-09-22 07:25:22,653 - INFO - EMAs calculated - Price: 3690.38, 20EMA: 3688.47, 200EMA: 3680.10, 21EMA: 3688.88
+2025-09-22 07:25:23,415 - INFO - EMAs calculated - Price: 3690.39, 20EMA: 3688.48, 200EMA: 3680.10, 21EMA: 3688.88
+2025-09-22 07:25:32,661 - INFO - EMAs calculated - Price: 3690.18, 20EMA: 3688.46, 200EMA: 3680.10, 21EMA: 3688.83
+2025-09-22 07:25:33,423 - INFO - EMAs calculated - Price: 3690.18, 20EMA: 3688.46, 200EMA: 3680.10, 21EMA: 3688.83
+2025-09-22 07:25:42,671 - INFO - EMAs calculated - Price: 3690.34, 20EMA: 3688.47, 200EMA: 3680.10, 21EMA: 3688.87
+2025-09-22 07:25:43,432 - INFO - EMAs calculated - Price: 3690.34, 20EMA: 3688.47, 200EMA: 3680.10, 21EMA: 3688.87
+2025-09-22 07:25:52,680 - INFO - EMAs calculated - Price: 3690.18, 20EMA: 3688.46, 200EMA: 3680.10, 21EMA: 3688.83
+2025-09-22 07:25:53,441 - INFO - EMAs calculated - Price: 3690.18, 20EMA: 3688.46, 200EMA: 3680.10, 21EMA: 3688.83
+2025-09-22 07:26:00,539 - INFO - EMAs calculated - Price: 3690.33, 20EMA: 3688.47, 200EMA: 3680.10, 21EMA: 3688.87
+2025-09-22 07:26:00,540 - INFO - Distances - 20EMA: 186 points, 200EMA: 1023 points
+2025-09-22 07:26:00,541 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 186/130, 200EMA: 1023/1400)
+2025-09-22 07:26:00,542 - INFO - Candle range for GOLD# H1 is 415 points (<= 1100). Tradeable.
+2025-09-22 07:26:00,542 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:26:00,543 - INFO - Performance: 4:57:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:26:00,543 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:26:00,935 - INFO - EMAs calculated - Price: 3690.33, 20EMA: 3688.47, 200EMA: 3680.10, 21EMA: 3688.87
+2025-09-22 07:26:00,936 - INFO - Distances - 20EMA: 186 points, 200EMA: 1023 points
+2025-09-22 07:26:00,936 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 186/130, 200EMA: 1023/1400)
+2025-09-22 07:26:00,937 - INFO - Candle range for GOLD# H1 is 415 points (<= 1100). Tradeable.
+2025-09-22 07:26:00,938 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:26:00,939 - INFO - Performance: 4:57:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:26:00,939 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:26:02,688 - INFO - EMAs calculated - Price: 3690.31, 20EMA: 3688.64, 200EMA: 3680.21, 21EMA: 3689.23
+2025-09-22 07:26:03,451 - INFO - EMAs calculated - Price: 3690.22, 20EMA: 3688.64, 200EMA: 3680.20, 21EMA: 3689.21
+2025-09-22 07:26:12,698 - INFO - EMAs calculated - Price: 3690.01, 20EMA: 3688.62, 200EMA: 3680.20, 21EMA: 3689.15
+2025-09-22 07:26:13,459 - INFO - EMAs calculated - Price: 3690.01, 20EMA: 3688.62, 200EMA: 3680.20, 21EMA: 3689.15
+2025-09-22 07:26:22,709 - INFO - EMAs calculated - Price: 3689.93, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:26:23,517 - INFO - EMAs calculated - Price: 3689.95, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.14
+2025-09-22 07:26:32,719 - INFO - EMAs calculated - Price: 3689.72, 20EMA: 3688.59, 200EMA: 3680.20, 21EMA: 3689.08
+2025-09-22 07:26:33,530 - INFO - EMAs calculated - Price: 3689.72, 20EMA: 3688.59, 200EMA: 3680.20, 21EMA: 3689.08
+2025-09-22 07:26:42,728 - INFO - EMAs calculated - Price: 3689.92, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:26:43,540 - INFO - EMAs calculated - Price: 3689.92, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:26:52,738 - INFO - EMAs calculated - Price: 3689.92, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:26:53,552 - INFO - EMAs calculated - Price: 3689.92, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:27:02,747 - INFO - EMAs calculated - Price: 3689.94, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.14
+2025-09-22 07:27:03,561 - INFO - EMAs calculated - Price: 3689.94, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.14
+2025-09-22 07:27:12,757 - INFO - EMAs calculated - Price: 3689.98, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.15
+2025-09-22 07:27:13,571 - INFO - EMAs calculated - Price: 3690.00, 20EMA: 3688.62, 200EMA: 3680.20, 21EMA: 3689.15
+2025-09-22 07:27:22,769 - INFO - EMAs calculated - Price: 3690.06, 20EMA: 3688.62, 200EMA: 3680.20, 21EMA: 3689.17
+2025-09-22 07:27:23,582 - INFO - EMAs calculated - Price: 3690.06, 20EMA: 3688.62, 200EMA: 3680.20, 21EMA: 3689.17
+2025-09-22 07:27:32,778 - INFO - EMAs calculated - Price: 3689.88, 20EMA: 3688.60, 200EMA: 3680.20, 21EMA: 3689.12
+2025-09-22 07:27:33,592 - INFO - EMAs calculated - Price: 3689.91, 20EMA: 3688.61, 200EMA: 3680.20, 21EMA: 3689.13
+2025-09-22 07:27:42,788 - INFO - EMAs calculated - Price: 3689.85, 20EMA: 3688.60, 200EMA: 3680.20, 21EMA: 3689.11
+2025-09-22 07:27:43,601 - INFO - EMAs calculated - Price: 3689.85, 20EMA: 3688.60, 200EMA: 3680.20, 21EMA: 3689.11
+2025-09-22 07:27:52,801 - INFO - EMAs calculated - Price: 3689.83, 20EMA: 3688.60, 200EMA: 3680.20, 21EMA: 3689.11
+2025-09-22 07:27:53,611 - INFO - EMAs calculated - Price: 3689.83, 20EMA: 3688.60, 200EMA: 3680.20, 21EMA: 3689.11
+2025-09-22 07:28:00,553 - INFO - EMAs calculated - Price: 3689.74, 20EMA: 3688.59, 200EMA: 3680.20, 21EMA: 3689.09
+2025-09-22 07:28:00,554 - INFO - Distances - 20EMA: 115 points, 200EMA: 954 points
+2025-09-22 07:28:00,554 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:28:00,555 - INFO - Candle range for GOLD# H1 is 415 points (<= 1100). Tradeable.
+2025-09-22 07:28:00,556 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:28:00,556 - INFO - Max positions (1) already open
+2025-09-22 07:28:00,557 - INFO - Performance: 4:59:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:28:00,557 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:28:00,949 - INFO - EMAs calculated - Price: 3689.74, 20EMA: 3688.59, 200EMA: 3680.20, 21EMA: 3689.09
+2025-09-22 07:28:00,950 - INFO - Distances - 20EMA: 115 points, 200EMA: 954 points
+2025-09-22 07:28:00,950 - INFO - Signal: BUY, Reason: ✅ Price above both 20EMA and 200EMA within distance thresholds
+2025-09-22 07:28:00,951 - INFO - Candle range for GOLD# H1 is 415 points (<= 1100). Tradeable.
+2025-09-22 07:28:00,952 - INFO - Candle range for GOLD# H4 is 844 points (<= 1800). Tradeable.
+2025-09-22 07:28:00,953 - INFO - Max positions (1) already open
+2025-09-22 07:28:00,953 - INFO - Performance: 4:59:45 uptime, 3 trades, 100.00% success
+2025-09-22 07:28:00,953 - INFO - Waiting 120 seconds for next candle
+2025-09-22 07:28:02,814 - INFO - EMAs calculated - Price: 3689.67, 20EMA: 3688.69, 200EMA: 3680.29, 21EMA: 3689.23
+2025-09-22 07:28:03,622 - INFO - EMAs calculated - Price: 3689.64, 20EMA: 3688.69, 200EMA: 3680.29, 21EMA: 3689.22
+2025-09-22 07:28:12,824 - INFO - EMAs calculated - Price: 3689.73, 20EMA: 3688.70, 200EMA: 3680.29, 21EMA: 3689.25
+2025-09-22 07:28:13,632 - INFO - EMAs calculated - Price: 3689.73, 20EMA: 3688.70, 200EMA: 3680.29, 21EMA: 3689.25
