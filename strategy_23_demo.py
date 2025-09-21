@@ -214,6 +214,13 @@ class M1AverageZone:
                 log_info(f"Position already exists. Skipping entry signal check.")
                 continue
 
+            # Get new data
+            rates_df = self.get_data()
+            if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
+                log_warning("Not enough data to run indicators. Waiting...")
+                continue
+            
+
             # ------------------------------------------------------------------
             # FIX: Calculate and add EMA columns required by chart_screenshot.py
             # ------------------------------------------------------------------
@@ -384,7 +391,7 @@ class M1AverageZone:
             # NOTES TABLE
             #------------------------------------------                  
             print(f"Note: Same as strategy_22_demo")
-            print(f"Difference:  SL=220* TP=150 (Reduced SL from 330 to 220).")
+            print(f"Difference:  SL=220* TP=300 TS_activation=259 (Reduced SL from 330 to 220 compared to strategy_12_demo.py).")
             print(f"Predecessor's performance always hit 150 mark for the trailing.")
             print(f"competitors in same category:strategy_12_demo, strategy_21_demo")
             print(f"EXACTLY like its predecessor: strategy_12_demo. 🎯🔒 Will deploy this to production if it would be able to match or surpass its predecessors.\n")

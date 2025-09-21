@@ -16,6 +16,7 @@ from rich import box
 import modules.mt5_config as mt5_config
 from account_list import account_type
 from modules.trading_hours_24 import is_trading_hours
+from modules.chart_screenshot import screenshot # Import the screenshot class
 
 #-----------------------------------
 # Utilities and Global Variables
@@ -34,6 +35,7 @@ from modules.profit_manager import TakeProfitMonitor # Import the new TakeProfit
 #-------------------------------------
 console = Console()
 load_dotenv()
+SCREENSHOTS_DIR = "screenshots/GOLD/"
 
 
 
@@ -92,7 +94,7 @@ class M1AverageZone:
         rates_df['time'] = pd.to_datetime(rates_df['time'], unit='s')
         return rates_df
 
-    def execute_trade(self, order_type):
+    def execute_trade(self, order_type, rates_df):
         """
         Executes a trade based on the strategy signal.
         """
@@ -105,10 +107,12 @@ class M1AverageZone:
 
         # Determine the price, SL, and TP based on the order type
         if order_type == mt5.ORDER_TYPE_BUY:
+            signal_type = 'BUY'
             price = symbol_info_tick.ask
             sl = price - (self.config.sl_points * symbol_info.point)
             tp = price + (self.config.tp_points * symbol_info.point)
         else:  # mt5.ORDER_TYPE_SELL
+            signal_type = 'SELL'
             price = symbol_info_tick.bid
             sl = price + (self.config.sl_points * symbol_info.point)
             tp = price - (self.config.tp_points * symbol_info.point)
@@ -147,6 +151,38 @@ class M1AverageZone:
 
         console.print(order_table)
         print("\n")
+
+        # ----------------------------------------------------
+        # NEW: Create Chart Screenshot after successful trade
+        # ----------------------------------------------------
+        try:
+            # FIX: Use 'result.order' as a robust alternative for the position ticket
+            position_ticket = result.order 
+            deal_id = result.deal # The deal ID
+            
+            # Use the position_ticket as the base filename (as per request for position_id)
+            base_filename = f"{position_ticket}.png"
+            
+            # Call the chart creation function
+            self.screenshot_tool.create_trade_chart(
+                df=rates_df, 
+                signal_type=signal_type, 
+                entry_price=price, 
+                sl_price=sl, 
+                tp_price=tp, 
+                position_ticket=position_ticket, 
+                deal_id=deal_id, 
+                position_id=position_ticket, # Using ticket as ID
+                comment="M1_Average_Zone", # A descriptive comment
+                filename=base_filename, 
+                symbol=self.config.symbol,
+                sl_points=self.config.sl_points, 
+                tp_points=self.config.tp_points,
+                strategy_id=self.config.strategy_id
+            )
+        except Exception as e:
+            log_error(f"Screenshot generation failed: {e}")
+        # ----------------------------------------------------        
         
         # Wake up the position manager and take profit monitor threads
         self.position_open_event.set()
@@ -177,6 +213,31 @@ class M1AverageZone:
             if positions and any(p.magic == self.config.strategy_id for p in positions):
                 log_info(f"Position already exists. Skipping entry signal check.")
                 continue
+
+            # Get new data
+            rates_df = self.get_data()
+            if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
+                log_warning("Not enough data to run indicators. Waiting...")
+                continue
+            
+
+            # ------------------------------------------------------------------
+            # FIX: Calculate and add EMA columns required by chart_screenshot.py
+            # ------------------------------------------------------------------
+            # Using your configuration periods to calculate the full EMA series:
+            
+            # 'ema_fast' (e.g., using trailing_period=7)
+            rates_df['entry'] = rates_df['close'].ewm(span=self.config.trailing_period, adjust=False).mean()
+            rates_df['resistance'] = rates_df['high'].ewm(span=self.config.ema_resistance, adjust=False).mean()
+            rates_df['support'] = rates_df['low'].ewm(span=self.config.ema_support, adjust=False).mean()
+            
+            # 'ema_slow' (e.g., using consolidation_filter=20)
+            rates_df['consolidation_filter'] = rates_df['close'].ewm(span=self.config.consolidation_filter, adjust=False).mean()
+            
+            # 'ema_long' (e.g., using long_term_trend=21)
+            rates_df['long_term_trend'] = rates_df['close'].ewm(span=self.config.long_term_trend, adjust=False).mean()
+            
+            # ------------------------------------------------------------------            
 
             # Get new data
             rates_df = self.get_data()
@@ -335,6 +396,7 @@ class M1AverageZone:
             print(f"competitors in same category:strategy_12_demo, strategy_21_demo")
             print(f"EXACTLY like its predecessor: strategy_12_demo. 🎯🔒 Will deploy this to production if it would be able to match or surpass its predecessors.\n")
 
+            
             #------------------------------------------
             # Performance TABLE
             #------------------------------------------      
@@ -426,12 +488,12 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=60 if production_status == 'DEMO' else 22, # if live
-        volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
+        strategy_id=60 if production_status == 'DEV' else 60 if production_status == 'DEMO'  else 22, # if LIVE
+        volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
         deviation=20,
         sl_points=220,
         tp_points=150,
-        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_activation_points=250, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=7,
@@ -442,6 +504,22 @@ def start_strategy():
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
+
+    # ----------------------------------------------------
+    # NEW: Determine the screenshot directory dynamically
+    # ----------------------------------------------------
+    symbol = config_settings.symbol
+    if 'GOLD' in symbol.upper():
+        screenshot_dir = "screenshots/GOLD/"
+    elif 'BTCUSD' in symbol.upper():
+        screenshot_dir = "screenshots/BTCUSD/"
+    else:
+        # Fallback for other symbols
+        screenshot_dir = f"screenshots/{symbol}/"
+        
+    # Instantiate the screenshot utility
+    screenshot_tool = screenshot(SCREENSHOT_DIR=screenshot_dir)
+    # ----------------------------------------------------    
 
     # 2. Instantiate and connect the MT5 manager
 
