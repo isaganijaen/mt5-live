@@ -182,7 +182,8 @@ class M1AverageZone:
                 filename=base_filename, 
                 symbol=self.config.symbol,
                 sl_points=self.config.sl_points, 
-                tp_points=self.config.tp_points
+                tp_points=self.config.tp_points,
+                strategy_id=self.config.strategy_id
             )
         except Exception as e:
             log_error(f"Screenshot generation failed: {e}")

@@ -40,7 +40,7 @@ def log_info(message):
     console.print(f"[bold blue]ℹ️  {message}[/bold blue]")
 
 CHART_BARS_COUNT = 200  # Number of bars to include in chart
-SCREENSHOTS_DIR = "screenshots/GOLD/"
+#SCREENSHOTS_DIR = "screenshots/GOLD/"
 
 class screenshot:
     def __init__(self, SCREENSHOT_DIR):
@@ -56,7 +56,7 @@ class screenshot:
 
     def create_trade_chart(self, df, signal_type, entry_price, sl_price, tp_price, 
                            position_ticket, deal_id, position_id, comment, filename, symbol,
-                           sl_points, tp_points):
+                           sl_points, tp_points,strategy_id):
         """
         Create and save a chart showing the trade entry with EMAs and levels.
         
@@ -74,6 +74,7 @@ class screenshot:
             symbol: Symbol
             sl_points:
             tp_points:
+            strategy_id:
         """
         self.df = df
         self.signal_type = signal_type
@@ -88,7 +89,8 @@ class screenshot:
         self.symbol = symbol
         self.sl_points = sl_points
         self.tp_points = tp_points
-        self.SCREENSHOTS_DIR="screenshots/GOLD/" 
+        self.strategy_id = strategy_id
+        # self.SCREENSHOTS_DIR="screenshots/GOLD/" 
         try:
             self.ensure_screenshots_directory()
             
@@ -125,9 +127,9 @@ class screenshot:
             
             # Generate filename with timestamp
             timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M")
-            base_filename = os.path.splitext(filename)[0]  # Remove .py extension
-            chart_filename = f"{base_filename}_{comment}_{position_ticket}_{deal_id}_{timestamp}.png"
-            chart_path = os.path.join(self.SCREENSHOTS_DIR, chart_filename)
+            #base_filename = os.path.splitext(filename)[0]  # Remove .py extension
+            chart_filename = f"{strategy_id}_{position_ticket}_{deal_id}_{timestamp}.png"
+            chart_path = os.path.join(self.SCREENSHOT_DIR, chart_filename)
             
             # Create the chart
             fig, axes = mpf.plot(
