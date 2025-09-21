@@ -384,18 +384,15 @@ class M1AverageZone:
             print("\n")                           
 
 
-            print(f"Trend: {trend}")
-            print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
-            print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
+            print(f"Trend: {trend}\n")
+            # print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
+            # print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
 
             #------------------------------------------
             # NOTES TABLE
-            #------------------------------------------                  
+            #--------------------------------                                                                                                       ----------                  
             print(f"Note: Same as strategy_12_demo")
-            print(f"Difference:  SL=220* TP=150 (Reduced SL from 330 to 220).")
-            print(f"Predecessor's performance always hit 150 mark for the trailing.")
-            print(f"competitors in same category:strategy_12_demo, strategy_21_demo")
-            print(f"EXACTLY like its predecessor: strategy_12_demo. 🎯🔒 Will deploy this to production if it would be able to match or surpass its predecessors.\n")
+            print(f"Difference:  📸 SCREENSHOT ADDED.\n")
 
 
             #------------------------------------------
@@ -489,12 +486,12 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=60 if production_status == 'DEV' else 60 if production_status == 'DEMO'  else 22, # if LIVE
+        strategy_id=62 if production_status == 'DEV' else 62 if production_status == 'DEMO'  else 24, # if LIVE
         volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
         deviation=20,
-        sl_points=220,
+        sl_points=300,
         tp_points=150,
-        trailing_activation_points=250, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_activation_points=150, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=7,
         ema_resistance=7,

@@ -76,10 +76,11 @@ class M1AverageZone:
     """
     Encapsulates the full logic for the M1 Average Zone Strategy.
     """
-    def __init__(self, config, mt5_manager, position_open_event):
+    def __init__(self, config, mt5_manager, position_open_event, screenshot_tool):
         self.config = config
         self.mt5_manager = mt5_manager
         self.position_open_event = position_open_event # Add the event here
+        self.screenshot_tool = screenshot_tool # Add the screenshot tool
         
     def get_data(self):
         """
@@ -219,7 +220,7 @@ class M1AverageZone:
             if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
                 log_warning("Not enough data to run indicators. Waiting...")
                 continue
-            
+
 
             # ------------------------------------------------------------------
             # FIX: Calculate and add EMA columns required by chart_screenshot.py
@@ -423,14 +424,14 @@ class M1AverageZone:
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
-                self.execute_trade(mt5.ORDER_TYPE_BUY)
+                self.execute_trade(mt5.ORDER_TYPE_BUY,rates_df)
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
             elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
-                self.execute_trade(mt5.ORDER_TYPE_SELL)                
+                self.execute_trade(mt5.ORDER_TYPE_SELL,rates_df)                
             else:
                 # print("Hold!")
                 signal = 'hold'
@@ -570,7 +571,7 @@ def start_strategy():
     take_profit_monitor.start()
 
     # 4. Instantiate the strategy and run it
-    my_strategy = M1AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
+    my_strategy = M1AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event,screenshot_tool=screenshot_tool)
     try:
         my_strategy.run()
     except KeyboardInterrupt:
