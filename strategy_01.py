@@ -26,7 +26,8 @@ from functools import wraps
 from collections import deque
 import statistics
 from entries import insert_entry, create_entries_table
-from modules.trading_hours_08pm_to_12nn import is_trading_hours
+# from modules.trading_hours_08pm_to_12nn import is_trading_hours
+from modules.trading_hours_24 import is_trading_hours
 
 # Load environment variables
 load_dotenv()

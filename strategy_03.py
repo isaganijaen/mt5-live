@@ -26,8 +26,8 @@ import threading
 from functools import wraps
 from collections import deque
 import statistics
-from modules.trading_hours_08pm_to_12nn import is_trading_hours # ⚠️ TESTING
-
+#from modules.trading_hours_08pm_to_12nn import is_trading_hours # ⚠️ TESTING
+from modules.trading_hours_24 import is_trading_hours
 
 
 # Rich imports for beautiful logging
