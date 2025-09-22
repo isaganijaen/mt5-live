@@ -109,11 +109,11 @@ class screenshot:
             
             # Create additional plots for EMAs
             apd = [
-                mpf.make_addplot(chart_df['entry'], color='orange', width=1.5, label='7 EMA entry'),
-                mpf.make_addplot(chart_df['resistance'], color='red', width=1.5, label='7 EMA resistance'),
-                mpf.make_addplot(chart_df['support'], color='black', width=1.5, label='7 EMA support'),
-                mpf.make_addplot(chart_df['consolidation_filter'], color='blue', width=1.5, label='20 EMA Consolidation Filter'),
-                mpf.make_addplot(chart_df['long_term_trend'], color='blue', width=1.5, label='21 EMA Consolidation Filter')
+                mpf.make_addplot(chart_df['entry'], color='orange', width=1.5, label='Entry/Trailing Guide'),
+                mpf.make_addplot(chart_df['resistance'], color='red', width=1.5, label='Resistance'),
+                mpf.make_addplot(chart_df['support'], color='black', width=1.5, label='support'),
+                mpf.make_addplot(chart_df['consolidation_filter'], color='blue', width=1.5, label='Consolidation Filter'),
+                mpf.make_addplot(chart_df['long_term_trend'], color='blue', width=1.5, label='Long Term Trend')
             ]
             
             # Create horizontal lines for entry, SL, and TP
