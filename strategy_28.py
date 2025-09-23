@@ -265,7 +265,7 @@ class M2AverageZone:
                 price_type='high'
             )        
 
-            ema_resistance_low = indicator_tools.get_last_ema_value(
+            ema_support_low = indicator_tools.get_last_ema_value(
                 period=self.config.ema_support,
                 price_type='low'
             )     
@@ -288,7 +288,7 @@ class M2AverageZone:
 
             # Calculate all distances in points
             points_distance_vs_ema_resistance = abs(current_price - ema_resistance_high) / point
-            points_distance_vs_ema_support = abs(current_price - ema_resistance_low) / point
+            points_distance_vs_ema_support = abs(current_price - ema_support_low) / point
             points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
             points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
             points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
@@ -313,7 +313,7 @@ class M2AverageZone:
             config_indicators_table.add_column("Value", style="green")
             config_indicators_table.add_column("Description", style="dim")           
 
-            config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_resistance_low,3)), "Support" ) 
+            config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_support_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
             config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
@@ -327,7 +327,7 @@ class M2AverageZone:
             
 
             # Identifying Trend
-            if current_price > ema_resistance_low and ema_resistance_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            if current_price > ema_support_low and ema_support_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
                 trend = 'bullish 🟢'
             elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:    
                 trend = 'bearish 🟡'
