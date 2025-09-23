@@ -44,6 +44,12 @@ start "21" cmd /k "python strategy_21_demo.py"
 start "22" cmd /k "python strategy_22_demo.py"
 start "23" cmd /k "python strategy_23_demo.py"
 start "24" cmd /k "python strategy_24_demo.py"
+start "25" cmd /k "python strategy_25.py"
+start "26" cmd /k "python strategy_26.py"
+start "27" cmd /k "python strategy_27.py"
+start "28" cmd /k "python strategy_28.py"
+start "29" cmd /k "python strategy_29.py"
+start "30" cmd /k "python strategy_30.py"
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
