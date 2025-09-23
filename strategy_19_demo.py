@@ -441,7 +441,7 @@ def start_strategy():
         volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
-        tp_points=350,
+        tp_points=350, # PLACEHOLDER ONLY - NO TARGET
         trailing_activation_points=320, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=40,
         trailing_period=3,

@@ -130,7 +130,7 @@ class MarketDataCollector:
 
         # Override symbol based on the active account
         account_info = mt5.account_info()
-        if account_info and account_info.login == 166322367:
+        if account_info and account_info.login == 308723027:
             symbol = 'GOLD#'
         elif account_info and account_info.login == 301457236:
             symbol = 'GOLDm#'
