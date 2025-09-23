@@ -400,7 +400,7 @@ class M2AverageZone:
             print(f"Bearish: current_price < ema_trailing_period (instead of < ema_support_low)")
             print(f"This is to prevent the system from executing order if price isnt' aligned properly. ")
             print(f"Example to provent:63_444659192_445453367_2025-09-23_11-23_1_open.png")
-
+ 
 
 
             #------------------------------------------
