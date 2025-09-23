@@ -16,6 +16,7 @@ from rich import box
 import modules.mt5_config as mt5_config
 from account_list import account_type
 from modules.trading_hours_24 import is_trading_hours
+# from modules.trading_hours_01am_to_04am_10am_to_17pm import is_trading_hours # LIVE PRODUCTION MODULE
 
 #-----------------------------------
 # Utilities and Global Variables
