@@ -525,7 +525,7 @@ def start_strategy():
         ema_resistance=3,
         ema_support=3,
         support_resistance_distance_threshold=70,
-        momentum_consolidation_filter=10,
+        momentum_consolidation_filter=10, 
         consolidation_filter=12,
         long_term_trend=21,
         max_candle_range_1h_allowed=1100,
