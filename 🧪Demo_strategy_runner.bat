@@ -33,12 +33,12 @@ REM start "Str-10" - MOVED to Profitiable Section
 start "11" cmd /k "python strategy_11_demo.py"
 start "12" cmd /k "python strategy_12_demo.py"
 start "13" cmd /k "python strategy_13_demo.py"
-start "14" cmd /k "python strategy_14_d                                     emo.py"
+start "14" cmd /k "python strategy_14_demo.py"
 start "15" cmd /k "python strategy_15_demo.py"
 start "16" cmd /k "python strategy_16_demo.py"
 REM start "17" ARCHIVED 
 start "18" cmd /k "python strategy_18_demo.py"
-start "19" cmd /k "python strategy_19_demo.py"
+REM  start "19" - - MOVED to Profitiable Section
 start "20" cmd /k "python strategy_20_demo.py"
 start "21" cmd /k "python strategy_21_demo.py"
 start "22" cmd /k "python strategy_22_demo.py"
@@ -66,6 +66,7 @@ start "3" cmd /k "python strategy_03.py"
 start "9" cmd /k "python strategy_09_demo.py" 
 start "10" cmd /k "python strategy_10_demo.py" 
 
+start "19" cmd /k "python strategy_19_demo.py"
 
 
 
