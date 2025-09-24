@@ -56,6 +56,7 @@ start "33" cmd /k "python strategy_33.py"
 start "34" cmd /k "python strategy_34.py"
 start "35" cmd /k "python strategy_35.py"
 start "36" cmd /k "python strategy_36.py"
+start "37" cmd /k "python strategy_37.py"
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
