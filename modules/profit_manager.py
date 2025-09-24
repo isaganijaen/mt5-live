@@ -78,23 +78,30 @@ class TakeProfitMonitor(threading.Thread):
         Args:
             position (mt5.Position): The open position object to be closed.
         """
+        # Get the current tick data to determine the correct closing price.
+        tick = mt5.symbol_info_tick(self.config.symbol)
+        if tick is None:
+            log_error(f"Failed to get tick data for {self.config.symbol}")
+            return
+            
+        # Determine the closing price and order type based on the position type.
         if position.type == mt5.ORDER_TYPE_BUY:
-            action = mt5.TRADE_ACTION_DEAL
-            price = mt5.symbol_info_tick(self.config.symbol).bid
+            close_price = tick.bid
+            close_type = mt5.ORDER_TYPE_SELL
         elif position.type == mt5.ORDER_TYPE_SELL:
-            action = mt5.TRADE_ACTION_DEAL
-            price = mt5.symbol_info_tick(self.config.symbol).ask
+            close_price = tick.ask
+            close_type = mt5.ORDER_TYPE_BUY
         else:
             log_error(f"Unknown position type: {position.type}")
             return
 
         request = {
-            "action": action,
+            "action": mt5.TRADE_ACTION_DEAL,
             "position": position.ticket,
             "symbol": position.symbol,
             "volume": position.volume,
-            "type": mt5.ORDER_TYPE_SELL if position.type == mt5.ORDER_TYPE_BUY else mt5.ORDER_TYPE_BUY,
-            "price": price,
+            "type": close_type,
+            "price": close_price,
             "deviation": self.config.deviation,
             "magic": self.config.strategy_id,
             "comment": "Take Profit Close"
