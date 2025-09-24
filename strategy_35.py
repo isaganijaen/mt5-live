@@ -465,7 +465,7 @@ class M15AverageZone:
                 if trend == 'bullish 🟢':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_trailing_guide:.2f} points)")
+                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_ema_support:.2f} points)")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
