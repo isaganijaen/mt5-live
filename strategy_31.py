@@ -524,7 +524,7 @@ def start_strategy():
         trailing_period=3,
         ema_resistance=3,
         ema_support=3,
-        support_resistance_distance_threshold=7,
+        support_resistance_distance_threshold=70,
         momentum_consolidation_filter=10,
         consolidation_filter=12,
         long_term_trend=21,
