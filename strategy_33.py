@@ -531,7 +531,7 @@ def start_strategy():
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
-
+    
     # ----------------------------------------------------
     # NEW: Determine the screenshot directory dynamically
     # ----------------------------------------------------
