@@ -446,14 +446,14 @@ class M2AverageZone:
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range: 
-            if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points:            
+            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY,rates_df)
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
-            elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points:                    
+            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
