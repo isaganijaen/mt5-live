@@ -15,16 +15,11 @@ del /F /Q "*.lock" 2>nul
 del /F /Q "*.log" 2>nul
 
 REM Start a new terminal for each script
-start "App" cmd /k "python app.py"
+REM start "App" cmd /k "python app.py"
+start "Mk"t" cmd /k "python market_data.py"
 start "Database" cmd /k "python database_live.py"  
-REM Increased interval from 1 minute to 17 minutes. Real Time data is not suitable for live trading because of latency issues
-REM and frequent gaps in data. Will use this as initial data then append with broker data during live trading.
-start "Market Data" cmd /k "python market_data.py"
-REM start "Strategy 01" cmd /k "python strategy_01.py"        
-REM start "Strategy 02" cmd /k "python strategy_02.py"           
-start "2M o 15M-Strategy 03" cmd /k "python strategy_03.py"      
-REM start "Strategy 07" cmd /k "python strategy_07.py" 
-start "HFT-Strategy 09" cmd /k "python strategy_09.py" 
+start "LIVE - 19" cmd /k "python strategy_19_live.py" 
+start "LIVE - 31" cmd /k "python strategy_31.py" 
  
 echo All Live Trading Strategies have been launched in separate terminal windows.
 pause

@@ -13,29 +13,28 @@ from rich.console import Console
 from rich.logging import RichHandler
 from rich.table import Table
 from rich import box
-# import modules.mt5_config as mt5_config
-from modules.mt5_config_v1_1_0 import TradingConfig
+import modules.mt5_config as mt5_config
 from account_list import account_type
-from modules.trading_hours_24 import is_trading_hours
-from modules.chart_screenshot import screenshot # Import the screenshot class
+# from modules.trading_hours_24 import is_trading_hours
+from modules.trading_hours_01am_to_04am_10am_to_17pm import is_trading_hours # LIVE PRODUCTION MODULE
 
 #-----------------------------------
 # Utilities and Global Variables
 #-----------------------------------
 from modules.utilities import log_success, log_error, log_warning, log_info
 # Import the reusable classes and the new Indicators class
+from modules.mt5_config import TradingConfig
 from modules.mt5_manager import MT5Manager
 from modules.indicators import Indicators
 from modules.position_manager import PositionManager # Import the new class
 from modules.profit_manager import TakeProfitMonitor # Import the new TakeProfitMonitor class
-import mplfinance as mpf
+
 
 #-------------------------------------
 # Library Initialization
 #-------------------------------------
 console = Console()
 load_dotenv()
-SCREENSHOTS_DIR = "screenshots/GOLD/"
 
 
 
@@ -72,21 +71,20 @@ def wait_until_next_interval(interval_seconds: int = 10):
 #-------------------------------------
 # Main Strategy
 #-------------------------------------
-class M2AverageZone:
+class M1AverageZone:
     """
-    Encapsulates the full logic for the M2 Average Zone Strategy.
+    Encapsulates the full logic for the M1 Average Zone Strategy.
     """
-    def __init__(self, config, mt5_manager, position_open_event, screenshot_tool):
+    def __init__(self, config, mt5_manager, position_open_event):
         self.config = config
         self.mt5_manager = mt5_manager
         self.position_open_event = position_open_event # Add the event here
-        self.screenshot_tool = screenshot_tool # Add the screenshot tool
         
     def get_data(self):
         """
         Fetches the latest price data from MT5.
         """
-        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M2, 0, 20000)
+        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M1, 0, 20000)
         if rates is None:
             log_error(f"Failed to get rates for {self.config.symbol}")
             return None
@@ -95,7 +93,7 @@ class M2AverageZone:
         rates_df['time'] = pd.to_datetime(rates_df['time'], unit='s')
         return rates_df
 
-    def execute_trade(self, order_type, rates_df):
+    def execute_trade(self, order_type):
         """
         Executes a trade based on the strategy signal.
         """
@@ -108,12 +106,10 @@ class M2AverageZone:
 
         # Determine the price, SL, and TP based on the order type
         if order_type == mt5.ORDER_TYPE_BUY:
-            signal_type = 'BUY'
             price = symbol_info_tick.ask
             sl = price - (self.config.sl_points * symbol_info.point)
             tp = price + (self.config.tp_points * symbol_info.point)
         else:  # mt5.ORDER_TYPE_SELL
-            signal_type = 'SELL'
             price = symbol_info_tick.bid
             sl = price + (self.config.sl_points * symbol_info.point)
             tp = price - (self.config.tp_points * symbol_info.point)
@@ -129,8 +125,7 @@ class M2AverageZone:
             "comment": self.config.filename,
             "type_time": mt5.ORDER_TIME_GTC,
             "type_filling": mt5.ORDER_FILLING_IOC,
-            "sl": sl,
-            "tp": tp,
+            "sl": sl
         }
 
         result = mt5.order_send(request)
@@ -152,38 +147,6 @@ class M2AverageZone:
 
         console.print(order_table)
         print("\n")
-
-        # ----------------------------------------------------
-        # NEW: Create Chart Screenshot after successful trade
-        # ----------------------------------------------------
-        try:
-            # FIX: Use 'result.order' as a robust alternative for the position ticket
-            position_ticket = result.order 
-            deal_id = result.deal # The deal ID
-            
-            # Use the position_ticket as the base filename (as per request for position_id)
-            base_filename = f"{position_ticket}.png"
-            
-            # Call the chart creation function
-            self.screenshot_tool.create_trade_chart(
-                df=rates_df, 
-                signal_type=signal_type, 
-                entry_price=price, 
-                sl_price=sl, 
-                tp_price=tp, 
-                position_ticket=position_ticket, 
-                deal_id=deal_id, 
-                position_id=position_ticket, # Using ticket as ID
-                comment="M2_Average_Zone", # A descriptive comment
-                filename=base_filename, 
-                symbol=self.config.symbol,
-                sl_points=self.config.sl_points, 
-                tp_points=self.config.tp_points,
-                strategy_id=self.config.strategy_id
-            )
-        except Exception as e:
-            log_error(f"Screenshot generation failed: {e}")
-        # ----------------------------------------------------        
         
         # Wake up the position manager and take profit monitor threads
         self.position_open_event.set()
@@ -193,7 +156,7 @@ class M2AverageZone:
         """
         Main loop for the strategy.
         """
-        log_info(f"Starting {self.config.symbol} M2 Average Zone Strategy.\n")
+        log_info(f"Starting {self.config.symbol} M1 Average Zone Strategy.\n")
         
         # Display the configuration
         self.config.display()
@@ -220,25 +183,6 @@ class M2AverageZone:
             if rates_df is None or len(rates_df) < self.config.long_term_trend + 10:
                 log_warning("Not enough data to run indicators. Waiting...")
                 continue
-            
-
-            # ------------------------------------------------------------------
-            # FIX: Calculate and add EMA columns required by chart_screenshot.py
-            # ------------------------------------------------------------------
-            # Using your configuration periods to calculate the full EMA series:
-            
-            # 'ema_fast' (e.g., using trailing_period=7)
-            rates_df['entry'] = rates_df['close'].ewm(span=self.config.trailing_period, adjust=False).mean()
-            rates_df['resistance'] = rates_df['high'].ewm(span=self.config.ema_resistance, adjust=False).mean()
-            rates_df['support'] = rates_df['low'].ewm(span=self.config.ema_support, adjust=False).mean()
-            
-            # 'ema_slow' (e.g., using consolidation_filter=20)
-            rates_df['consolidation_filter'] = rates_df['close'].ewm(span=self.config.consolidation_filter, adjust=False).mean()
-            
-            # 'ema_long' (e.g., using long_term_trend=21)
-            rates_df['long_term_trend'] = rates_df['close'].ewm(span=self.config.long_term_trend, adjust=False).mean()
-            
-            # ------------------------------------------------------------------            
 
 
             # Check Trading Hours
@@ -275,13 +219,6 @@ class M2AverageZone:
                 price_type='close'
             )                                  
             
-
-            ema_momentum_consolidation_filter = indicator_tools.get_last_ema_value(
-                period=self.config.momentum_consolidation_filter,
-                price_type='close'
-            )   
-
-
             ema_consolidation_filter = indicator_tools.get_last_ema_value(
                 period=self.config.consolidation_filter,
                 price_type='close'
@@ -297,7 +234,6 @@ class M2AverageZone:
             points_distance_vs_ema_resistance = abs(current_price - ema_resistance_high) / point
             points_distance_vs_ema_support = abs(current_price - ema_support_low) / point
             points_distance_vs_trailing_guide = abs(current_price - ema_trailing_period) / point
-            points_distance_vs_momentum_consolidation_guide = abs(current_price - ema_momentum_consolidation_filter) / point
             points_distance_vs_consolidation_guide = abs(current_price - ema_consolidation_filter) / point
             points_distance_vs_long_term_trend_guide = abs(current_price - ema_long_term_trend) / point
 
@@ -324,7 +260,6 @@ class M2AverageZone:
             config_indicators_table.add_row(f"{self.config.ema_support} Period EMA Low", str(round(ema_support_low,3)), "Support" ) 
             config_indicators_table.add_row(f"{self.config.ema_resistance} Period EMA High", str(round(ema_resistance_high,3)), "Resistance") 
             config_indicators_table.add_row(f"{self.config.trailing_period} Period EMA Close", str(round(ema_trailing_period,3)), "Trailing Guide" ) 
-            config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_momentum_consolidation_filter,3)), "Momentum Consolidation Filter" ) 
             config_indicators_table.add_row(f"{self.config.consolidation_filter} Period Close", str(round(ema_consolidation_filter,3)), "Consolidation Filter" ) 
             config_indicators_table.add_row(f"{self.config.long_term_trend} Period EMA Close", str(round(ema_long_term_trend,3)), "Long Term Trend" ) 
 
@@ -336,9 +271,12 @@ class M2AverageZone:
             
 
             # Identifying Trend
-            if current_price > ema_support_low and ema_support_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            # DISABLING LONG TERM TREND in the CONDITION
+            # if current_price > ema_support_low and ema_support_low > ema_consolidation_filter and ema_consolidation_filter > ema_long_term_trend:
+            if current_price > ema_support_low and ema_support_low > ema_consolidation_filter:
                 trend = 'bullish 🟢'
-            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:    
+            # elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter and ema_consolidation_filter < ema_long_term_trend:      
+            elif current_price < ema_resistance_high and ema_resistance_high < ema_consolidation_filter:    
                 trend = 'bearish 🟡'
             else:
                 trend = 'consolidation 🔵'    
@@ -384,45 +322,36 @@ class M2AverageZone:
 
             console.print(config_metrics_table)
    
-            print("\n")                           
 
-
-            print(f"Trend: {trend}\n")
-            # print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
-            # print(f"H4 Candle Range (Disabled): {candle_4h_range_status}") 
+            print("\n")   
 
             #------------------------------------------
             # NOTES TABLE
-            #--------------------------------                                                                                                       ----------                  
-            print(f"Note: In style of strategy_19 but running in M2 timeframe.")
-            # print(f"Difference:")
-            # print(f"TP=300 for 1:1 R ✨")
-            # print(f"consolidation_filter=40 (instead of 50)")
-            # print(f"long_term_trend=NONE (same style of )")
+            #------------------------------------------                
+            tbl_notes = Table(title="Quick Note", box=box.ROUNDED, show_header=False)
+            tbl_notes.add_column("Quick Note", style="cyan")
+            tbl_notes.add_row(f"Direct Predecessor: strategy_18_demo.py\n")
+            tbl_notes.add_row(f"Similarities: Super Aggressive with Indefinite TP Target.")
+            tbl_notes.add_row(f"Main difference: Trailing Activation = 320 ")
+            tbl_notes.add_row(f"EXPECTATION: Trade actively with no definite TP and match or surpass the strategy_12 in terms of return! ✨.\n")
+            tbl_notes.add_row(f"Root Predecessors: strategy_09, strategy_11, strategy_12, strategy_14, strategy_15, 16, 17 and 18.")
+            tbl_notes.add_row(f"🔒IMPORTANT: excluding strategy_12_demo.py, the strategy_14, 15, 16, 17, 18 do not use long term trend (aggressive)!") 
+            tbl_notes.add_row(f"giving these strategies with ✨ SUPER AGGRESSIVE 3-EMA period Momentum Following!")                       
+         
 
-            notes_table = Table(title="📝 NOTE", box=box.ROUNDED, show_header=True)
-            notes_table.add_column("Setting", style="cyan")
-            notes_table.add_column("Value", style="green")
-            notes_table.add_column("Description", style="dim")
+            console.print(tbl_notes)
 
-            notes_table.add_row("Stop Loss", f"{self.config.sl_points} pts", "Fixed stop loss distance")
-            notes_table.add_row("Take Profit", f"{self.config.tp_points} pts", "Enhanced take profit target")
-            notes_table.add_row("Entry Zone",f"{self.config.support_resistance_distance_threshold} pts","Minimum Price Distance vs S/R")
-            notes_table.add_row("Support",f"{self.config.ema_support}","Buy Zone (EMA Low)")
-            notes_table.add_row("Resistance",f"{self.config.ema_resistance}","Sell Zone (EMA High)")
-            notes_table.add_row("Trail Activation", f"{self.config.trailing_activation_points} pts", "Trailing mechanism trigger points")    
-            notes_table.add_row("Trailing Stop", f"{self.config.trailing_stop_distance} pts", "Trailing stop distance")
-
-            notes_table.add_row("Momentum Consolidation Filter",f"{self.config.momentum_consolidation_filter}","Momentum Consolidation Filter (EMA close)")     
-            notes_table.add_row("Consolidation Filter",f"{self.config.consolidation_filter}","Consolidation Filter (EMA close)")
-            notes_table.add_row("Long Term Trend",f"{self.config.long_term_trend}","Long Term Trend (EMA Close)")       
-
-            console.print(notes_table)
-                 
-            print("\n")     
- 
+            print("\n")
+           
+                             
 
 
+            print(f"Trend: {trend}")
+            # print(f"H1 Candle Range (Disabled): {candle_1h_range_status}")  
+            # print(f"H4 Candle Range (Disabled): {candle_4h_range_status}")     
+
+            print("\n")      
+                   
             #------------------------------------------
             # Performance TABLE
             #------------------------------------------      
@@ -446,18 +375,18 @@ class M2AverageZone:
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range: 
-            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points:            
+            if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
-                self.execute_trade(mt5.ORDER_TYPE_BUY,rates_df)
+                self.execute_trade(mt5.ORDER_TYPE_BUY)
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
-            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points:                    
+            elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
-                self.execute_trade(mt5.ORDER_TYPE_SELL,rates_df)                
+                self.execute_trade(mt5.ORDER_TYPE_SELL)                
             else:
                 # print("Hold!")
                 signal = 'hold'
@@ -491,19 +420,14 @@ class M2AverageZone:
 # Main Entry Point 
 #-------------------------------------
 
-# ------- Todo ---------------
-# - Check how may were closed > 0.0 but less than target
-# - These are Trailing Stopped.
-# - Maybe we can reduce the target to 150 points
-# - Giving us 1R return.
-# - (Will test in separate file)
+
 
 def start_strategy():
     """Main function to start the bot."""
 
     production_status = "LIVE" # DEMO or LIVE
     filename = os.path.basename(__file__)
-    description = 'M2 Average Zone Trading (2R)'
+    description = 'M1 Average Zone Trading (2R)'
     
     
 
@@ -514,39 +438,22 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=66 if production_status == 'DEMO'  else 31, # if LIVE
-        volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
+        strategy_id=57 if production_status == 'DEMO' else 19, # if live
+        volume=float(0.01) if production_status == 'DEMO' else 0.1, # if live
         deviation=20,
         sl_points=300,
-        tp_points=350,
-        trailing_activation_points=320, # (3500 = 2x ave. candle range in M2) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
-        trailing_stop_distance=50,
+        tp_points=350, # PLACEHOLDER ONLY - NO TARGET
+        trailing_activation_points=320, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
+        trailing_stop_distance=40,
         trailing_period=3,
         ema_resistance=3,
         ema_support=3,
-        support_resistance_distance_threshold=70,
-        momentum_consolidation_filter=10,
+        support_resistance_distance_threshold=20,
         consolidation_filter=12,
         long_term_trend=21,
         max_candle_range_1h_allowed=1100,
         max_candle_range_4h_allowed=1800         
     )
-
-    # ----------------------------------------------------
-    # NEW: Determine the screenshot directory dynamically
-    # ----------------------------------------------------
-    symbol = config_settings.symbol
-    if 'GOLD' in symbol.upper():
-        screenshot_dir = "screenshots/GOLD/"
-    elif 'BTCUSD' in symbol.upper():
-        screenshot_dir = "screenshots/BTCUSD/"
-    else:
-        # Fallback for other symbols
-        screenshot_dir = f"screenshots/{symbol}/"
-        
-    # Instantiate the screenshot utility
-    screenshot_tool = screenshot(SCREENSHOT_DIR=screenshot_dir)
-    # ----------------------------------------------------    
 
     # 2. Instantiate and connect the MT5 manager
 
@@ -593,12 +500,13 @@ def start_strategy():
     position_manager.daemon = True # Allows the thread to exit when the main program exits
     position_manager.start()
 
-    take_profit_monitor = TakeProfitMonitor(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
-    take_profit_monitor.daemon = True
-    take_profit_monitor.start()
+    # DISABLING Take Profit Monitoring Thread as this strategy has no definite Target.    
+    # take_profit_monitor = TakeProfitMonitor(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
+    # take_profit_monitor.daemon = True
+    # take_profit_monitor.start()
 
     # 4. Instantiate the strategy and run it
-    my_strategy = M2AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event,screenshot_tool=screenshot_tool)
+    my_strategy = M1AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
     try:
         my_strategy.run()
     except KeyboardInterrupt:
@@ -606,7 +514,7 @@ def start_strategy():
     finally:
         # 5. Shutdown MT5 connection and stop the threads
         position_manager.stop()
-        take_profit_monitor.stop()
+        #take_profit_monitor.stop()
         mt5.shutdown()
         log_success("MetaTrader5 shutdown.")
 
