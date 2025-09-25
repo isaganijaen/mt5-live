@@ -25799,3 +25799,25 @@ ts (<= 1100). Tradeable.
 2025-09-25 10:17:00,401 - INFO - Candle range for GOLD# H1 is 682 points (<= 1100). Tradeable.
 2025-09-25 10:17:00,401 - INFO - Candle range for GOLD# H4 is 2088 points (> 1800). Not tradeable.
 2025-09-25 10:17:00,402 - INFO - H4 candle range not tradeable. Holding.
+2025-09-25 10:18:00,284 - INFO - EMAs calculated - Price: 3732.85, 20EMA: 3735.56, 200EMA: 3740.89, 21EMA: 3732.98
+2025-09-25 10:18:00,284 - INFO - Distances - 20EMA: 271 points, 200EMA: 804 points
+2025-09-25 10:18:00,284 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 271/130, 200EMA: 804/1400)
+2025-09-25 10:18:00,285 - INFO - Performance: 20:27:43 uptime, 15 trades, 100.00% success
+2025-09-25 10:18:00,285 - INFO - Waiting 120 seconds for next candle
+2025-09-25 10:18:00,408 - INFO - EMAs calculated - Price: 3732.85, 20EMA: 3735.56, 200EMA: 3740.89, 21EMA: 3732.98
+2025-09-25 10:18:00,409 - INFO - Distances - 20EMA: 271 points, 200EMA: 804 points
+2025-09-25 10:18:00,409 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 271/130, 200EMA: 804/1400)
+2025-09-25 10:18:00,409 - INFO - Candle range for GOLD# H1 is 682 points (<= 1100). Tradeable.
+2025-09-25 10:18:00,410 - INFO - Candle range for GOLD# H4 is 2088 points (> 1800). Not tradeable.
+2025-09-25 10:18:00,411 - INFO - H4 candle range not tradeable. Holding.
+2025-09-25 10:18:00,413 - INFO - EMAs calculated - Price: 3732.85, 20EMA: 3735.56, 200EMA: 3740.89, 21EMA: 3732.98
+2025-09-25 10:18:00,413 - INFO - Distances - 20EMA: 271 points, 200EMA: 804 points
+2025-09-25 10:18:00,414 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 271/130, 200EMA: 804/1400)
+2025-09-25 10:18:00,414 - INFO - Candle range for GOLD# H1 is 682 points (<= 1100). Tradeable.
+2025-09-25 10:18:00,415 - INFO - Candle range for GOLD# H4 is 2088 points (> 1800). Not tradeable.
+2025-09-25 10:18:00,415 - INFO - H4 candle range not tradeable. Holding.
+2025-09-25 10:18:00,506 - INFO - EMAs calculated - Price: 3732.85, 20EMA: 3735.56, 200EMA: 3740.89, 21EMA: 3732.98
+2025-09-25 10:18:00,507 - INFO - Distances - 20EMA: 271 points, 200EMA: 804 points
+2025-09-25 10:18:00,507 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 271/130, 200EMA: 804/1400)
+2025-09-25 10:18:00,508 - INFO - Performance: 20:27:42 uptime, 15 trades, 100.00% success
+2025-09-25 10:18:00,508 - INFO - Waiting 120 seconds for next candle
