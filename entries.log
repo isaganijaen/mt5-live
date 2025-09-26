@@ -1,0 +1,80 @@
+2025-09-26 14:45:06,323 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:06,327 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:06,483 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:06,487 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:06,488 - INFO - ==================================================
+2025-09-26 14:45:06,489 - INFO - Starting M2 EMA Trading Bot (Magic: 25)
+2025-09-26 14:45:06,489 - INFO - Symbol: GOLD#
+2025-09-26 14:45:06,490 - INFO - SL: 300 points, TP: 2700 points
+2025-09-26 14:45:06,490 - INFO - Max positions: 1
+2025-09-26 14:45:06,490 - INFO - Trading hours: 20:00-12:00
+2025-09-26 14:45:06,490 - INFO - ==================================================
+2025-09-26 14:45:06,491 - INFO - Connecting to MetaTrader 5...
+2025-09-26 14:45:06,515 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-26 14:45:06,516 - INFO - Trailing stop thread started
+2025-09-26 14:45:06,516 - INFO - Starting main trading loop...
+2025-09-26 14:45:06,527 - INFO - EMAs calculated - Price: 3745.17, 20EMA: 3748.90, 200EMA: 3745.38, 21EMA: 3748.05
+2025-09-26 14:45:06,528 - INFO - Distances - 20EMA: 373 points, 200EMA: 21 points
+2025-09-26 14:45:06,528 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 373/130, 200EMA: 21/1400)
+2025-09-26 14:45:06,529 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-26 14:45:06,529 - INFO - Waiting 53 seconds for next candle
+2025-09-26 14:45:07,033 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:07,037 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:07,190 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:07,191 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:07,192 - INFO - ==================================================
+2025-09-26 14:45:07,195 - INFO - Starting M2 EMA Trading Bot (Magic: 26)
+2025-09-26 14:45:07,195 - INFO - Symbol: GOLD#
+2025-09-26 14:45:07,195 - INFO - SL: 300 points, TP: 600 points
+2025-09-26 14:45:07,195 - INFO - Max positions: 1
+2025-09-26 14:45:07,196 - INFO - Trading hours: 20:00-12:00
+2025-09-26 14:45:07,196 - INFO - ==================================================
+2025-09-26 14:45:07,196 - INFO - Connecting to MetaTrader 5...
+2025-09-26 14:45:07,217 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-26 14:45:07,218 - INFO - Trailing stop thread started
+2025-09-26 14:45:07,218 - INFO - Starting main trading loop...
+2025-09-26 14:45:07,229 - INFO - EMAs calculated - Price: 3745.17, 20EMA: 3748.90, 200EMA: 3745.38, 21EMA: 3748.05
+2025-09-26 14:45:07,229 - INFO - Distances - 20EMA: 373 points, 200EMA: 21 points
+2025-09-26 14:45:07,229 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 373/130, 200EMA: 21/1400)
+2025-09-26 14:45:07,230 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-26 14:45:07,230 - INFO - Waiting 53 seconds for next candle
+2025-09-26 14:45:23,217 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:23,266 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:23,721 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:23,733 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:23,735 - INFO - ==================================================
+2025-09-26 14:45:23,737 - INFO - Starting M2 EMA Trading Bot (Magic: 1)
+2025-09-26 14:45:23,742 - INFO - Symbol: GOLD#
+2025-09-26 14:45:23,745 - INFO - SL: 300 points, TP: 2700 points
+2025-09-26 14:45:23,751 - INFO - Max positions: 1
+2025-09-26 14:45:23,753 - INFO - Trading hours: 20:00-12:00
+2025-09-26 14:45:23,758 - INFO - ==================================================
+2025-09-26 14:45:23,758 - INFO - Connecting to MetaTrader 5...
+2025-09-26 14:45:23,801 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-26 14:45:23,817 - INFO - Trailing stop thread started
+2025-09-26 14:45:23,819 - INFO - Starting main trading loop...
+2025-09-26 14:45:23,849 - INFO - EMAs calculated - Price: 3745.22, 20EMA: 3748.91, 200EMA: 3745.38, 21EMA: 3748.06
+2025-09-26 14:45:23,852 - INFO - Distances - 20EMA: 369 points, 200EMA: 16 points
+2025-09-26 14:45:23,853 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 369/130, 200EMA: 16/1400)
+2025-09-26 14:45:23,854 - INFO - Candle range for GOLD# H1 is 1262 points (> 1100). Not tradeable.
+2025-09-26 14:45:23,861 - INFO - H1 candle range not tradeable. Holding.
+2025-09-26 14:45:24,213 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:24,220 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:24,568 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-26 14:45:24,579 - INFO - Table 'entries' checked/created successfully.
+2025-09-26 14:45:24,581 - INFO - ==================================================
+2025-09-26 14:45:24,581 - INFO - Starting M2 EMA Trading Bot (Magic: 2)
+2025-09-26 14:45:24,582 - INFO - Symbol: GOLD#
+2025-09-26 14:45:24,583 - INFO - SL: 300 points, TP: 600 points
+2025-09-26 14:45:24,583 - INFO - Max positions: 1
+2025-09-26 14:45:24,584 - INFO - Trading hours: 20:00-12:00
+2025-09-26 14:45:24,584 - INFO - ==================================================
+2025-09-26 14:45:24,585 - INFO - Connecting to MetaTrader 5...
+2025-09-26 14:45:24,621 - INFO - MetaTrader5 connected: Version (500, 5260, '5 Sep 2025')
+2025-09-26 14:45:24,625 - INFO - Trailing stop thread started
+2025-09-26 14:45:24,627 - INFO - Starting main trading loop...
+2025-09-26 14:45:24,641 - INFO - EMAs calculated - Price: 3745.21, 20EMA: 3748.91, 200EMA: 3745.38, 21EMA: 3748.06
+2025-09-26 14:45:24,642 - INFO - Distances - 20EMA: 370 points, 200EMA: 17 points
+2025-09-26 14:45:24,643 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 370/130, 200EMA: 17/1400)
+2025-09-26 14:45:24,644 - INFO - Candle range for GOLD# H1 is 1262 points (> 1100). Not tradeable.
+2025-09-26 14:45:24,644 - INFO - H1 candle range not tradeable. Holding.

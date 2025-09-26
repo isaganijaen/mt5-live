@@ -422,7 +422,7 @@ class M1AverageZone:
 def start_strategy():
     """Main function to start the bot."""
 
-    production_status = "LIVE" # DEMO or LIVE
+    production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
     description = 'M1 Average Zone Trading (2R)'
     
