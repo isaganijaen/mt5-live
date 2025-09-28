@@ -416,7 +416,7 @@ class M1AverageZone:
             notes_table.add_row("Consolidation Filter",f"{self.config.consolidation_filter}","Consolidation Filter (EMA close)")
             notes_table.add_row("Long Term Trend",f"{self.config.long_term_trend}","Long Term Trend (EMA Close)")       
             notes_table.add_row("NOTE","✨ M1 3ema Low/High 10ema over 21ema TP 300","")
-            notes_table.add_row("Trend", f"{ {trend}}","")
+            notes_table.add_row("Trend", f"{trend}","")
             console.print(notes_table)
                  
             print("\n")     
