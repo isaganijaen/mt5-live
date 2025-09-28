@@ -478,12 +478,20 @@ class M1AverageZone:
 # Main Entry Point 
 #-------------------------------------
 
-# ------- Todo ---------------
-# - Check how may were closed > 0.0 but less than target
-# - These are Trailing Stopped.
-# - Maybe we can reduce the target to 150 points
-# - Giving us 1R return.
-# - (Will test in separate file)
+# ------------ DONCHIAN CHANNEL BREAKOUT STRATEGY --------------
+# Context: Pullback entry after breakout but should close above middle Donchian
+# BUY IF:
+# 1. If price broke above the Donchian Channel (3) high (ready_to_buy = True)
+# 2. Wait for the next candle to cloe. If the next candle closes below the Donchian Channel (3) high
+#    but above the Middle Donchiann, the BUY trade is executed.
+# If next candle closes below the middle channel, reset the ready_to_buy = False
+# If next candle closes below the Lower channel, ready_to_sell = False
+# SELL IF:
+# 1. If price broke below the Donchian Channel (3) low (ready_to_sell = True)
+# 2. Wait for the next candle to cloe. If the next candle closes above the Donchian Channel (3) low
+#    but below the Middle Donchian, the SELL trade is executed.     
+# If next candle closes above the middle channel, reset the ready_to_sell = False
+# If next candle closes above the Upper channel, ready_to_buy = True    
 
 def start_strategy():
     """Main function to start the bot."""
@@ -501,7 +509,7 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="BTCUSD#" if production_status == 'DEMO' else "BTCUSD#", # Use a symbol that contains BTCUSD
         filename=filename,
-        strategy_id=62 if production_status == 'DEV' else 62 if production_status == 'DEMO'  else 24, # if LIVE
+        strategy_id=999 if production_status == 'DEV' else 62 if production_status == 'DEMO'  else 24, # if LIVE
         volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
         deviation=20,
         sl_points=15000,

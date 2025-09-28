@@ -340,6 +340,8 @@ class M1AverageZone:
 
             console.print(tbl_notes)
 
+
+
             print("\n")
            
                              

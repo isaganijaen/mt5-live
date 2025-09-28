@@ -18,7 +18,7 @@ REM Start a new terminal for each script
 REM start "App" cmd /k "python app.py"
 start "Mk" cmd /k "python market_data.py"
 start "Database" cmd /k "python database_live.py"  
-start "LIVE - 14" cmd /k "python strategy_14_demo.py" 
+REM start "LIVE - 14" cmd /k "python strategy_14_demo.py" 
 start "LIVE - 20" cmd /k "python strategy_20_demo.py" 
  
 echo All Live Trading Strategies have been launched in separate terminal windows.
