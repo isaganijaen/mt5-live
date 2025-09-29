@@ -26,7 +26,7 @@ from modules.utilities import log_success, log_error, log_warning, log_info
 # Import the reusable classes and the new Indicators class
 from modules.mt5_manager import MT5Manager
 from modules.indicators import Indicators
-from modules.position_manager import PositionManager # Import the new class
+from modules.position_manager_m2 import PositionManager # Import the new class
 from modules.profit_manager import TakeProfitMonitor # Import the new TakeProfitMonitor class
 import mplfinance as mpf
 

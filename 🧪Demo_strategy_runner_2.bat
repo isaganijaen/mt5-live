@@ -17,13 +17,6 @@ del /F /Q "*.log" 2>nul
 REM Start a new terminal for each script    
 
 REM -------------------------------------------------------------
-REM ---                  UTILITIES                            ---
-REM -------------------------------------------------------------
-start "db" cmd /k "python database_baseline.py"  
-start "mk" cmd /k "python market_data.py"
-
-
-REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
 
