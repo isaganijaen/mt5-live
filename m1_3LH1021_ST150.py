@@ -72,9 +72,9 @@ def wait_until_next_interval(interval_seconds: int = 10):
 #-------------------------------------
 # Main Strategy
 #-------------------------------------
-class M2AverageZone:
+class M1AverageZone:
     """
-    Encapsulates the full logic for the M2 Average Zone Strategy.
+    Encapsulates the full logic for the M1 Average Zone Strategy.
     """
     def __init__(self, config, mt5_manager, position_open_event, screenshot_tool):
         self.config = config
@@ -86,7 +86,7 @@ class M2AverageZone:
         """
         Fetches the latest price data from MT5.
         """
-        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M2, 0, 20000)
+        rates = mt5.copy_rates_from_pos(self.config.symbol, mt5.TIMEFRAME_M1, 0, 20000)
         if rates is None:
             log_error(f"Failed to get rates for {self.config.symbol}")
             return None
@@ -129,7 +129,8 @@ class M2AverageZone:
             "comment": self.config.filename,
             "type_time": mt5.ORDER_TIME_GTC,
             "type_filling": mt5.ORDER_FILLING_IOC,
-            "sl": sl
+            "sl": sl,
+            "tp": tp
         }
 
         result = mt5.order_send(request)
@@ -173,7 +174,7 @@ class M2AverageZone:
                 position_ticket=position_ticket, 
                 deal_id=deal_id, 
                 position_id=position_ticket, # Using ticket as ID
-                comment="M2_Average_Zone", # A descriptive comment
+                comment="M1_Average_Zone", # A descriptive comment
                 filename=base_filename, 
                 symbol=self.config.symbol,
                 sl_points=self.config.sl_points, 
@@ -192,7 +193,7 @@ class M2AverageZone:
         """
         Main loop for the strategy.
         """
-        log_info(f"Starting {self.config.symbol} M2 Average Zone Strategy.\n")
+        log_info(f"Starting {self.config.symbol} M1 Average Zone Strategy.\n")
         
         # Display the configuration
         self.config.display()
@@ -409,10 +410,11 @@ class M2AverageZone:
             notes_table.add_row("Support",f"{self.config.ema_support}","Buy Zone (EMA Low)")
             notes_table.add_row("Resistance",f"{self.config.ema_resistance}","Sell Zone (EMA High)")
             notes_table.add_row("Trail Activation", f"{self.config.trailing_activation_points} pts", "Trailing mechanism trigger points")    
-            notes_table.add_row("Trailing Stop", f"{self.config.trailing_stop_distance} pts", "Trailing stop distance")  
+            notes_table.add_row("Trailing Stop", f"{self.config.trailing_stop_distance} pts", "Trailing stop distance")
+  
             notes_table.add_row("Consolidation Filter",f"{self.config.consolidation_filter}","Consolidation Filter (EMA close)")
             notes_table.add_row("Long Term Trend",f"{self.config.long_term_trend}","Long Term Trend (EMA Close)")       
-            notes_table.add_row("NOTE","✨ M2 3ema Low/High 10ema over 21ema TP INFINITE","")
+            notes_table.add_row("NOTE","✨ M1 3ema Low/High 10ema over 21ema TP 150","")
             notes_table.add_row("Trend", f"{trend}","")
             console.print(notes_table)
                  
@@ -500,7 +502,7 @@ def start_strategy():
 
     production_status = "DEMO" # DEMO or LIVE
     filename = os.path.basename(__file__)
-    description = 'M2 Average Zone Trading (2R)'
+    description = 'M1 Average Zone Trading (2R)'
     
     
 
@@ -511,12 +513,12 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=79 if production_status == 'DEMO'  else 44, # if LIVE
+        strategy_id=82 if production_status == 'DEMO'  else 47, # if LIVE
         volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
         deviation=20,
-        sl_points=300, 
-        tp_points=350, # ✨🔒 NO TARGET, Just a placeholder
-        trailing_activation_points=320, 
+        sl_points=150,  
+        tp_points=150,
+        trailing_activation_points=320, # (3500 = 2x ave. candle range in M1) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=50,
         trailing_period=3,
         ema_resistance=3,
@@ -595,7 +597,7 @@ def start_strategy():
     take_profit_monitor.start()
 
     # 4. Instantiate the strategy and run it
-    my_strategy = M2AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event,screenshot_tool=screenshot_tool)
+    my_strategy = M1AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event,screenshot_tool=screenshot_tool)
     try:
         my_strategy.run()
     except KeyboardInterrupt:

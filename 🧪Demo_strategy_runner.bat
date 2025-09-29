@@ -67,6 +67,13 @@ start "42" cmd /k "python m2_3LH_1021_t300.py"
 start "43" cmd /k "python m2_3LH_1021_t350.py"
 start "44" cmd /k "python m2_3LH_1021_tinf.py"
 
+start "45" cmd /k "python m1_3LH_1021_t150.py"
+start "46" cmd /k "python m2_3LH_1021_t150.py"
+start "47" cmd /k "python m1_3LH1021_ST150.py"
+start "48" cmd /k "python m2_3LH1021_ST150.py"
+start "49" cmd /k "python m1_3LH_r150r200.py"
+start "50" cmd /k "python m2_3LH_r150r200.py"
+
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---
 REM -------------------------------------------------------------

@@ -445,14 +445,14 @@ class M2AverageZone:
            
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #if trend == 'bullish 🟢' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range: 
-            if trend == 'bullish 🟢' and points_distance_vs_ema_support <= distance_threshold_in_points:            
+            if trend == 'bullish 🟢' and points_distance_vs_consolidation_guide <= distance_threshold_in_points:            
                 print("Buying!")
                 signal = 'buy'
                 log_info("Bullish signal and price is in Support Zone. Placing BUY order.")
                 self.execute_trade(mt5.ORDER_TYPE_BUY,rates_df)
             # Disabling Candle Range threshold for now as trades would be limited on a trending market.
             #elif trend == 'bearish 🟡' and points_distance_vs_trailing_guide <= distance_threshold_in_points and h1_within_range and h4_within_range:     
-            elif trend == 'bearish 🟡' and points_distance_vs_ema_resistance <= distance_threshold_in_points:                    
+            elif trend == 'bearish 🟡' and points_distance_vs_consolidation_guide <= distance_threshold_in_points:                    
                 print(f"Selling! {self.config.volume}")
                 signal = 'sell'
                 log_info("Bearish signal and price is in Resistance Zone. Placing SELL order.")
@@ -463,7 +463,7 @@ class M2AverageZone:
                 if trend == 'bullish 🟢':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_trailing_guide:.2f} points)")
+                    log_info(f"Bullish trend but price's distance is too far from Support Zone/Trailing Guide ({points_distance_vs_consolidation_guide:.2f} points)")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:
@@ -471,7 +471,7 @@ class M2AverageZone:
                 elif trend == 'bearish 🟡':
                     log_info(f"Signal: {signal}")
                     log_info(f"No valid trading signal detected.")
-                    log_info(f"Bearish trend but price's distance is too far from Resistance Zone/Trailing Guide ({points_distance_vs_ema_resistance:.2f} points).")
+                    log_info(f"Bearish trend but price's distance is too far from Resistance Zone/Trailing Guide ({points_distance_vs_consolidation_guide:.2f} points).")
                     if not h1_within_range:
                         log_info(f"Note: 1H candle range {candle_1h_range} outide the treshold {self.config.max_candle_range_1h_allowed}.")
                     if not h4_within_range:

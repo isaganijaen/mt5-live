@@ -129,7 +129,8 @@ class M2AverageZone:
             "comment": self.config.filename,
             "type_time": mt5.ORDER_TIME_GTC,
             "type_filling": mt5.ORDER_FILLING_IOC,
-            "sl": sl
+            "sl": sl,
+            "tp": tp
         }
 
         result = mt5.order_send(request)
@@ -409,10 +410,12 @@ class M2AverageZone:
             notes_table.add_row("Support",f"{self.config.ema_support}","Buy Zone (EMA Low)")
             notes_table.add_row("Resistance",f"{self.config.ema_resistance}","Sell Zone (EMA High)")
             notes_table.add_row("Trail Activation", f"{self.config.trailing_activation_points} pts", "Trailing mechanism trigger points")    
-            notes_table.add_row("Trailing Stop", f"{self.config.trailing_stop_distance} pts", "Trailing stop distance")  
+            notes_table.add_row("Trailing Stop", f"{self.config.trailing_stop_distance} pts", "Trailing stop distance")
+
+            notes_table.add_row("Momentum Consolidation Filter",f"{self.config.momentum_consolidation_filter}","Momentum Consolidation Filter (EMA close)")     
             notes_table.add_row("Consolidation Filter",f"{self.config.consolidation_filter}","Consolidation Filter (EMA close)")
             notes_table.add_row("Long Term Trend",f"{self.config.long_term_trend}","Long Term Trend (EMA Close)")       
-            notes_table.add_row("NOTE","✨ M2 3ema Low/High 10ema over 21ema TP INFINITE","")
+            notes_table.add_row("NOTE","✨ M2 3ema Low/High 10ema over 21ema TP 150","")
             notes_table.add_row("Trend", f"{trend}","")
             console.print(notes_table)
                  
@@ -511,12 +514,12 @@ def start_strategy():
     config_settings = TradingConfig(
         symbol="GOLD#" if production_status == 'DEMO' else "GOLDm#",
         filename=filename,
-        strategy_id=79 if production_status == 'DEMO'  else 44, # if LIVE
+        strategy_id=85 if production_status == 'DEMO'  else 50, # if LIVE
         volume = 0.01 if production_status == 'DEV' else 0.01 if production_status == 'DEMO' else 0.1, # if LIVE
         deviation=20,
-        sl_points=300, 
-        tp_points=350, # ✨🔒 NO TARGET, Just a placeholder
-        trailing_activation_points=320, 
+        sl_points=150,  
+        tp_points=200,
+        trailing_activation_points=290, # (3500 = 2x ave. candle range in M2) 2000 points or $0.2 profit | 10 = 1000, 20 = 2000
         trailing_stop_distance=50,
         trailing_period=3,
         ema_resistance=3,
