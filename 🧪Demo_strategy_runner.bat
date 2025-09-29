@@ -73,6 +73,10 @@ start "47" cmd /k "python m1_3LH1021_ST150.py"
 start "48" cmd /k "python m2_3LH1021_ST150.py"
 start "49" cmd /k "python m1_3LH_r150r200.py"
 start "50" cmd /k "python m2_3LH_r150r200.py"
+start "51" cmd /k "python m1_3LH_S150_tinf.py"
+start "52" cmd /k "python m2_3LH_S150_tinf.py"
+
+
 
 REM -------------------------------------------------------------
 REM ---         CURRENT PROFITABLE STRATEGIES                 ---

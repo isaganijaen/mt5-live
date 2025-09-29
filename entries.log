@@ -14006,3 +14006,141 @@ ts (<= 1100). Tradeable.
 2025-09-29 14:12:00,894 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 430/130, 200EMA: 2109/1400)
 2025-09-29 14:12:00,894 - INFO - Performance: 12:50:46 uptime, 5 trades, 100.00% success
 2025-09-29 14:12:00,894 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:14:00,303 - INFO - EMAs calculated - Price: 3815.75, 20EMA: 3810.53, 200EMA: 3793.41, 21EMA: 3813.39
+2025-09-29 14:14:00,307 - INFO - Distances - 20EMA: 522 points, 200EMA: 2234 points
+2025-09-29 14:14:00,313 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 522/130, 200EMA: 2234/1400)
+2025-09-29 14:14:00,316 - INFO - Candle range for GOLD# H1 is 552 points (<= 1100). Tradeable.
+2025-09-29 14:14:00,317 - INFO - EMAs calculated - Price: 3815.75, 20EMA: 3810.53, 200EMA: 3793.41, 21EMA: 3813.39
+2025-09-29 14:14:00,319 - INFO - Candle range for GOLD# H4 is 1525 points (<= 1800). Tradeable.
+2025-09-29 14:14:00,322 - INFO - Distances - 20EMA: 522 points, 200EMA: 2234 points
+2025-09-29 14:14:00,323 - INFO - Performance: 12:52:29 uptime, 2 trades, 100.00% success
+2025-09-29 14:14:00,323 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 522/130, 200EMA: 2234/1400)
+2025-09-29 14:14:00,330 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:14:00,331 - INFO - Candle range for GOLD# H1 is 552 points (<= 1100). Tradeable.
+2025-09-29 14:14:00,334 - INFO - Candle range for GOLD# H4 is 1525 points (<= 1800). Tradeable.
+2025-09-29 14:14:00,338 - INFO - Performance: 12:52:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:14:00,339 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:14:00,694 - INFO - EMAs calculated - Price: 3815.75, 20EMA: 3810.53, 200EMA: 3793.41, 21EMA: 3813.39
+2025-09-29 14:14:00,695 - INFO - Distances - 20EMA: 522 points, 200EMA: 2234 points
+2025-09-29 14:14:00,696 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 522/130, 200EMA: 2234/1400)
+2025-09-29 14:14:00,696 - INFO - Performance: 12:52:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:14:00,696 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:14:00,904 - INFO - EMAs calculated - Price: 3815.75, 20EMA: 3810.53, 200EMA: 3793.41, 21EMA: 3813.39
+2025-09-29 14:14:00,905 - INFO - Distances - 20EMA: 522 points, 200EMA: 2234 points
+2025-09-29 14:14:00,905 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 522/130, 200EMA: 2234/1400)
+2025-09-29 14:14:00,906 - INFO - Performance: 12:52:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:14:00,906 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:16:00,349 - INFO - EMAs calculated - Price: 3818.39, 20EMA: 3811.28, 200EMA: 3793.66, 21EMA: 3814.64
+2025-09-29 14:16:00,355 - INFO - EMAs calculated - Price: 3818.39, 20EMA: 3811.28, 200EMA: 3793.66, 21EMA: 3814.64
+2025-09-29 14:16:00,355 - INFO - Distances - 20EMA: 711 points, 200EMA: 2473 points
+2025-09-29 14:16:00,356 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 711/130, 200EMA: 2473/1400)
+2025-09-29 14:16:00,357 - INFO - Distances - 20EMA: 711 points, 200EMA: 2473 points
+2025-09-29 14:16:00,358 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:16:00,359 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 711/130, 200EMA: 2473/1400)
+2025-09-29 14:16:00,366 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:16:00,366 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:16:00,373 - INFO - Performance: 12:54:29 uptime, 2 trades, 100.00% success
+2025-09-29 14:16:00,374 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:16:00,376 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:16:00,387 - INFO - Performance: 12:54:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:16:00,391 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:16:00,704 - INFO - EMAs calculated - Price: 3818.39, 20EMA: 3811.28, 200EMA: 3793.66, 21EMA: 3814.64
+2025-09-29 14:16:00,705 - INFO - Distances - 20EMA: 711 points, 200EMA: 2473 points
+2025-09-29 14:16:00,705 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 711/130, 200EMA: 2473/1400)
+2025-09-29 14:16:00,705 - INFO - Performance: 12:54:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:16:00,705 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:16:00,916 - INFO - EMAs calculated - Price: 3818.39, 20EMA: 3811.28, 200EMA: 3793.66, 21EMA: 3814.64
+2025-09-29 14:16:00,917 - INFO - Distances - 20EMA: 711 points, 200EMA: 2473 points
+2025-09-29 14:16:00,918 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 711/130, 200EMA: 2473/1400)
+2025-09-29 14:16:00,918 - INFO - Performance: 12:54:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:16:00,918 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:18:00,404 - INFO - EMAs calculated - Price: 3816.72, 20EMA: 3811.78, 200EMA: 3793.89, 21EMA: 3815.12
+2025-09-29 14:18:00,406 - INFO - Distances - 20EMA: 494 points, 200EMA: 2283 points
+2025-09-29 14:18:00,407 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 494/130, 200EMA: 2283/1400)
+2025-09-29 14:18:00,407 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:18:00,409 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:18:00,409 - INFO - Performance: 12:56:29 uptime, 2 trades, 100.00% success
+2025-09-29 14:18:00,409 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:18:00,412 - INFO - EMAs calculated - Price: 3816.72, 20EMA: 3811.78, 200EMA: 3793.89, 21EMA: 3815.12
+2025-09-29 14:18:00,412 - INFO - Distances - 20EMA: 494 points, 200EMA: 2283 points
+2025-09-29 14:18:00,413 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 494/130, 200EMA: 2283/1400)
+2025-09-29 14:18:00,413 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:18:00,414 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:18:00,414 - INFO - Performance: 12:56:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:18:00,414 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:18:00,715 - INFO - EMAs calculated - Price: 3816.72, 20EMA: 3811.78, 200EMA: 3793.89, 21EMA: 3815.12
+2025-09-29 14:18:00,716 - INFO - Distances - 20EMA: 494 points, 200EMA: 2283 points
+2025-09-29 14:18:00,716 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 494/130, 200EMA: 2283/1400)
+2025-09-29 14:18:00,716 - INFO - Performance: 12:56:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:18:00,716 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:18:00,926 - INFO - EMAs calculated - Price: 3816.74, 20EMA: 3811.78, 200EMA: 3793.89, 21EMA: 3815.13
+2025-09-29 14:18:00,927 - INFO - Distances - 20EMA: 496 points, 200EMA: 2285 points
+2025-09-29 14:18:00,928 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 496/130, 200EMA: 2285/1400)
+2025-09-29 14:18:00,928 - INFO - Performance: 12:56:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:18:00,928 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:20:00,430 - INFO - EMAs calculated - Price: 3814.22, 20EMA: 3812.03, 200EMA: 3794.09, 21EMA: 3814.93
+2025-09-29 14:20:00,431 - INFO - EMAs calculated - Price: 3814.22, 20EMA: 3812.03, 200EMA: 3794.09, 21EMA: 3814.93
+2025-09-29 14:20:00,433 - INFO - Distances - 20EMA: 219 points, 200EMA: 2013 points
+2025-09-29 14:20:00,434 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 219/130, 200EMA: 2013/1400)
+2025-09-29 14:20:00,438 - INFO - Distances - 20EMA: 219 points, 200EMA: 2013 points
+2025-09-29 14:20:00,440 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:20:00,443 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 219/130, 200EMA: 2013/1400)
+2025-09-29 14:20:00,444 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:20:00,445 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:20:00,447 - INFO - Performance: 12:58:29 uptime, 2 trades, 100.00% success
+2025-09-29 14:20:00,447 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:20:00,448 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:20:00,449 - INFO - Performance: 12:58:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:20:00,450 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:20:00,725 - INFO - EMAs calculated - Price: 3814.22, 20EMA: 3812.03, 200EMA: 3794.09, 21EMA: 3814.93
+2025-09-29 14:20:00,726 - INFO - Distances - 20EMA: 219 points, 200EMA: 2013 points
+2025-09-29 14:20:00,726 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 219/130, 200EMA: 2013/1400)
+2025-09-29 14:20:00,727 - INFO - Performance: 12:58:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:20:00,727 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:20:00,937 - INFO - EMAs calculated - Price: 3814.22, 20EMA: 3812.03, 200EMA: 3794.09, 21EMA: 3814.93
+2025-09-29 14:20:00,938 - INFO - Distances - 20EMA: 219 points, 200EMA: 2013 points
+2025-09-29 14:20:00,938 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 219/130, 200EMA: 2013/1400)
+2025-09-29 14:20:00,938 - INFO - Performance: 12:58:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:20:00,939 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:22:00,464 - INFO - EMAs calculated - Price: 3813.62, 20EMA: 3812.18, 200EMA: 3794.29, 21EMA: 3814.61
+2025-09-29 14:22:00,465 - INFO - EMAs calculated - Price: 3813.62, 20EMA: 3812.18, 200EMA: 3794.29, 21EMA: 3814.61
+2025-09-29 14:22:00,466 - INFO - Distances - 20EMA: 144 points, 200EMA: 1933 points
+2025-09-29 14:22:00,466 - INFO - Distances - 20EMA: 144 points, 200EMA: 1933 points
+2025-09-29 14:22:00,466 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 144/130, 200EMA: 1933/1400)
+2025-09-29 14:22:00,466 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 144/130, 200EMA: 1933/1400)
+2025-09-29 14:22:00,466 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:22:00,467 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:22:00,468 - INFO - Performance: 13:00:29 uptime, 2 trades, 100.00% success
+2025-09-29 14:22:00,468 - INFO - Performance: 13:00:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:22:00,468 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:22:00,468 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:22:00,735 - INFO - EMAs calculated - Price: 3813.74, 20EMA: 3812.19, 200EMA: 3794.29, 21EMA: 3814.64
+2025-09-29 14:22:00,736 - INFO - Distances - 20EMA: 155 points, 200EMA: 1945 points
+2025-09-29 14:22:00,736 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 155/130, 200EMA: 1945/1400)
+2025-09-29 14:22:00,737 - INFO - Performance: 13:00:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:22:00,737 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:22:00,948 - INFO - EMAs calculated - Price: 3813.74, 20EMA: 3812.19, 200EMA: 3794.29, 21EMA: 3814.64
+2025-09-29 14:22:00,949 - INFO - Distances - 20EMA: 155 points, 200EMA: 1945 points
+2025-09-29 14:22:00,949 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 155/130, 200EMA: 1945/1400)
+2025-09-29 14:22:00,949 - INFO - Performance: 13:00:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:22:00,950 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:24:00,479 - INFO - EMAs calculated - Price: 3814.46, 20EMA: 3812.40, 200EMA: 3794.49, 21EMA: 3814.59
+2025-09-29 14:24:00,480 - INFO - Distances - 20EMA: 206 points, 200EMA: 1997 points
+2025-09-29 14:24:00,480 - INFO - Distances - 20EMA: 206 points, 200EMA: 1997 points
+2025-09-29 14:24:00,480 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 206/130, 200EMA: 1997/1400)
+2025-09-29 14:24:00,480 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 206/130, 200EMA: 1997/1400)
+2025-09-29 14:24:00,481 - INFO - Candle range for GOLD# H1 is 752 points (<= 1100). Tradeable.
+2025-09-29 14:24:00,481 - INFO - Candle range for GOLD# H4 is 1725 points (<= 1800). Tradeable.
+2025-09-29 14:24:00,482 - INFO - Performance: 13:02:31 uptime, 2 trades, 100.00% success
+2025-09-29 14:24:00,482 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:24:00,482 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:24:00,747 - INFO - EMAs calculated - Price: 3814.35, 20EMA: 3812.39, 200EMA: 3794.49, 21EMA: 3814.56
+2025-09-29 14:24:00,748 - INFO - Distances - 20EMA: 196 points, 200EMA: 1986 points
+2025-09-29 14:24:00,748 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 196/130, 200EMA: 1986/1400)
+2025-09-29 14:24:00,748 - INFO - Performance: 13:02:45 uptime, 5 trades, 100.00% success
+2025-09-29 14:24:00,748 - INFO - Waiting 120 seconds for next candle
+2025-09-29 14:24:00,959 - INFO - EMAs calculated - Price: 3814.35, 20EMA: 3812.39, 200EMA: 3794.49, 21EMA: 3814.56
+2025-09-29 14:24:00,960 - INFO - Distances - 20EMA: 196 points, 200EMA: 1986 points
+2025-09-29 14:24:00,960 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 196/130, 200EMA: 1986/1400)
+2025-09-29 14:24:00,960 - INFO - Performance: 13:02:46 uptime, 5 trades, 100.00% success
+2025-09-29 14:24:00,961 - INFO - Waiting 120 seconds for next candle
