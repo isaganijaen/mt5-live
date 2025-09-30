@@ -43,7 +43,7 @@ start "58" cmd /k "python m15_S350T600.py"
 start "59" cmd /k "python m15_S350T16k.py"
 start "60" cmd /k "python m1_3S300T350TS21.py"
 start "61" cmd /k "python m1_3S300T450TS21.py"
-
+start "62" cmd /k "python strategy_01_1am_4am_10am_5pm.py"
 
 
 
