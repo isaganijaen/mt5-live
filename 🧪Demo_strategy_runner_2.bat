@@ -41,6 +41,8 @@ start "56" cmd /k "python m2_3S300TinfTS21.py"
 start "57" cmd /k "python m15_S350T350.py"
 start "58" cmd /k "python m15_S350T600.py"
 start "59" cmd /k "python m15_S350T16k.py"
+start "60" cmd /k "python m1_3S300T350TS21.py"
+start "61" cmd /k "python m1_3S300T450TS21.py"
 
 
 
