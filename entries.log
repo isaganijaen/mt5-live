@@ -1,104 +1,158 @@
-2025-09-29 22:01:50,494 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:01:50,517 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:01:50,770 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:01:50,773 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:01:50,777 - INFO - ==================================================
-2025-09-29 22:01:50,778 - INFO - Starting M2 EMA Trading Bot (Magic: 25)
-2025-09-29 22:01:50,778 - INFO - Symbol: GOLD#
-2025-09-29 22:01:50,779 - INFO - SL: 300 points, TP: 2700 points
-2025-09-29 22:01:50,779 - INFO - Max positions: 1
-2025-09-29 22:01:50,779 - INFO - Trading hours: 20:00-12:00
-2025-09-29 22:01:50,779 - INFO - ==================================================
-2025-09-29 22:01:50,780 - INFO - Connecting to MetaTrader 5...
-2025-09-29 22:01:50,816 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
-2025-09-29 22:01:50,818 - INFO - Trailing stop thread started
-2025-09-29 22:01:50,818 - INFO - Starting main trading loop...
-2025-09-29 22:01:50,830 - INFO - EMAs calculated - Price: 3824.77, 20EMA: 3822.42, 200EMA: 3816.18, 21EMA: 3822.87
-2025-09-29 22:01:50,831 - INFO - Distances - 20EMA: 235 points, 200EMA: 859 points
-2025-09-29 22:01:50,831 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 235/130, 200EMA: 859/1400)
-2025-09-29 22:01:50,832 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
-2025-09-29 22:01:50,832 - INFO - Waiting 9 seconds for next candle
-2025-09-29 22:01:51,384 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:01:51,390 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:01:51,588 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:01:51,590 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:01:51,592 - INFO - ==================================================
-2025-09-29 22:01:51,593 - INFO - Starting M2 EMA Trading Bot (Magic: 26)
-2025-09-29 22:01:51,593 - INFO - Symbol: GOLD#
-2025-09-29 22:01:51,593 - INFO - SL: 300 points, TP: 600 points
-2025-09-29 22:01:51,594 - INFO - Max positions: 1
-2025-09-29 22:01:51,594 - INFO - Trading hours: 20:00-12:00
-2025-09-29 22:01:51,594 - INFO - ==================================================
-2025-09-29 22:01:51,594 - INFO - Connecting to MetaTrader 5...
-2025-09-29 22:01:51,621 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
-2025-09-29 22:01:51,622 - INFO - Trailing stop thread started
-2025-09-29 22:01:51,622 - INFO - Starting main trading loop...
-2025-09-29 22:01:51,631 - INFO - EMAs calculated - Price: 3824.84, 20EMA: 3822.43, 200EMA: 3816.18, 21EMA: 3822.89
-2025-09-29 22:01:51,632 - INFO - Distances - 20EMA: 241 points, 200EMA: 866 points
-2025-09-29 22:01:51,632 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 241/130, 200EMA: 866/1400)
-2025-09-29 22:01:51,632 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
-2025-09-29 22:01:51,632 - INFO - Waiting 8 seconds for next candle
-2025-09-29 22:02:00,061 - INFO - EMAs calculated - Price: 3824.79, 20EMA: 3822.43, 200EMA: 3816.18, 21EMA: 3822.88
-2025-09-29 22:02:00,174 - INFO - Distances - 20EMA: 236 points, 200EMA: 861 points
-2025-09-29 22:02:00,127 - INFO - EMAs calculated - Price: 3824.79, 20EMA: 3822.43, 200EMA: 3816.18, 21EMA: 3822.88
-2025-09-29 22:02:00,230 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 236/130, 200EMA: 861/1400)
-2025-09-29 22:02:00,233 - INFO - Performance: 0:00:09 uptime, 0 trades, 0.00% success
-2025-09-29 22:02:00,234 - INFO - Waiting 120 seconds for next candle
-2025-09-29 22:02:00,293 - INFO - Distances - 20EMA: 236 points, 200EMA: 861 points
-2025-09-29 22:02:00,314 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 236/130, 200EMA: 861/1400)
-2025-09-29 22:02:00,339 - INFO - Performance: 0:00:08 uptime, 0 trades, 0.00% success
-2025-09-29 22:02:00,403 - INFO - Waiting 120 seconds for next candle
-2025-09-29 22:02:09,147 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:02:09,152 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:02:09,328 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:02:09,330 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:02:09,331 - INFO - ==================================================
-2025-09-29 22:02:09,331 - INFO - Starting M2 EMA Trading Bot (Magic: 1)
-2025-09-29 22:02:09,332 - INFO - Symbol: GOLD#
-2025-09-29 22:02:09,332 - INFO - SL: 300 points, TP: 2700 points
-2025-09-29 22:02:09,332 - INFO - Max positions: 1
-2025-09-29 22:02:09,332 - INFO - Trading hours: 20:00-12:00
-2025-09-29 22:02:09,332 - INFO - ==================================================
-2025-09-29 22:02:09,333 - INFO - Connecting to MetaTrader 5...
-2025-09-29 22:02:09,364 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
-2025-09-29 22:02:09,365 - INFO - Trailing stop thread started
-2025-09-29 22:02:09,365 - INFO - Starting main trading loop...
-2025-09-29 22:02:09,375 - INFO - EMAs calculated - Price: 3824.96, 20EMA: 3822.66, 200EMA: 3816.26, 21EMA: 3823.38
-2025-09-29 22:02:09,376 - INFO - Distances - 20EMA: 230 points, 200EMA: 870 points
-2025-09-29 22:02:09,376 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 230/130, 200EMA: 870/1400)
-2025-09-29 22:02:09,377 - INFO - Candle range for GOLD# H1 is 594 points (<= 1100). Tradeable.
-2025-09-29 22:02:09,378 - INFO - Candle range for GOLD# H4 is 1879 points (> 1800). Not tradeable.
-2025-09-29 22:02:09,379 - INFO - H4 candle range not tradeable. Holding.
-2025-09-29 22:02:10,146 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:02:10,251 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:02:10,645 - INFO - Successfully connected to database: mt5_trades.db
-2025-09-29 22:02:10,650 - INFO - Table 'entries' checked/created successfully.
-2025-09-29 22:02:10,667 - INFO - ==================================================
-2025-09-29 22:02:10,676 - INFO - Starting M2 EMA Trading Bot (Magic: 2)
-2025-09-29 22:02:10,682 - INFO - Symbol: GOLD#
-2025-09-29 22:02:10,689 - INFO - SL: 300 points, TP: 600 points
-2025-09-29 22:02:10,703 - INFO - Max positions: 1
-2025-09-29 22:02:10,715 - INFO - Trading hours: 20:00-12:00
-2025-09-29 22:02:10,722 - INFO - ==================================================
-2025-09-29 22:02:10,733 - INFO - Connecting to MetaTrader 5...
-2025-09-29 22:02:10,841 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
-2025-09-29 22:02:10,886 - INFO - Trailing stop thread started
-2025-09-29 22:02:10,896 - INFO - Starting main trading loop...
-2025-09-29 22:02:10,922 - INFO - EMAs calculated - Price: 3824.97, 20EMA: 3822.66, 200EMA: 3816.26, 21EMA: 3823.38
-2025-09-29 22:02:10,931 - INFO - Distances - 20EMA: 231 points, 200EMA: 871 points
-2025-09-29 22:02:10,933 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 231/130, 200EMA: 871/1400)
-2025-09-29 22:02:10,934 - INFO - Candle range for GOLD# H1 is 594 points (<= 1100). Tradeable.
-2025-09-29 22:02:10,962 - INFO - Candle range for GOLD# H4 is 1879 points (> 1800). Not tradeable.
-2025-09-29 22:02:10,988 - INFO - H4 candle range not tradeable. Holding.
-2025-09-29 22:03:09,388 - INFO - EMAs calculated - Price: 3824.52, 20EMA: 3822.62, 200EMA: 3816.26, 21EMA: 3823.27
-2025-09-29 22:03:09,389 - INFO - Distances - 20EMA: 190 points, 200EMA: 826 points
-2025-09-29 22:03:09,389 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 190/130, 200EMA: 826/1400)
-2025-09-29 22:03:09,389 - INFO - Candle range for GOLD# H1 is 735 points (<= 1100). Tradeable.
-2025-09-29 22:03:09,390 - INFO - Candle range for GOLD# H4 is 1879 points (> 1800). Not tradeable.
-2025-09-29 22:03:09,390 - INFO - H4 candle range not tradeable. Holding.
-2025-09-29 22:03:11,438 - INFO - EMAs calculated - Price: 3824.25, 20EMA: 3822.59, 200EMA: 3816.26, 21EMA: 3823.20
-2025-09-29 22:03:11,667 - INFO - Distances - 20EMA: 166 points, 200EMA: 799 points
-2025-09-29 22:03:11,668 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 166/130, 200EMA: 799/1400)
-2025-09-29 22:03:11,669 - INFO - Candle range for GOLD# H1 is 735 points (<= 1100). Tradeable.
-2025-09-29 22:03:11,670 - INFO - Candle range for GOLD# H4 is 1879 points (> 1800). Not tradeable.
-2025-09-29 22:03:11,670 - INFO - H4 candle range not tradeable. Holding.
+2025-09-30 10:54:06,498 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:06,508 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:06,745 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:06,754 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:06,755 - INFO - ==================================================
+2025-09-30 10:54:06,755 - INFO - Starting M2 EMA Trading Bot (Magic: 25)
+2025-09-30 10:54:06,755 - INFO - Symbol: GOLD#
+2025-09-30 10:54:06,756 - INFO - SL: 300 points, TP: 2700 points
+2025-09-30 10:54:06,757 - INFO - Max positions: 1
+2025-09-30 10:54:06,758 - INFO - Trading hours: 20:00-12:00
+2025-09-30 10:54:06,758 - INFO - ==================================================
+2025-09-30 10:54:06,758 - INFO - Connecting to MetaTrader 5...
+2025-09-30 10:54:07,196 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
+2025-09-30 10:54:07,204 - INFO - Trailing stop thread started
+2025-09-30 10:54:07,207 - INFO - Starting main trading loop...
+2025-09-30 10:54:07,226 - INFO - EMAs calculated - Price: 3849.20, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:54:07,227 - INFO - EMAs calculated - Price: 3849.20, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:54:07,232 - INFO - Distances - 20EMA: 164 points, 200EMA: 1167 points
+2025-09-30 10:54:07,240 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 164/130, 200EMA: 1167/1400)
+2025-09-30 10:54:07,240 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-30 10:54:07,241 - INFO - Waiting 113 seconds for next candle
+2025-09-30 10:54:07,445 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:07,450 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:07,637 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:07,640 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:07,642 - INFO - ==================================================
+2025-09-30 10:54:07,646 - INFO - Starting M2 EMA Trading Bot (Magic: 26)
+2025-09-30 10:54:07,650 - INFO - Symbol: GOLD#
+2025-09-30 10:54:07,651 - INFO - SL: 300 points, TP: 600 points
+2025-09-30 10:54:07,652 - INFO - Max positions: 1
+2025-09-30 10:54:07,652 - INFO - Trading hours: 20:00-12:00
+2025-09-30 10:54:07,653 - INFO - ==================================================
+2025-09-30 10:54:07,653 - INFO - Connecting to MetaTrader 5...
+2025-09-30 10:54:07,685 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
+2025-09-30 10:54:07,688 - INFO - Trailing stop thread started
+2025-09-30 10:54:07,689 - INFO - Starting main trading loop...
+2025-09-30 10:54:07,708 - INFO - EMAs calculated - Price: 3849.20, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:54:07,709 - INFO - EMAs calculated - Price: 3849.20, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:54:07,709 - INFO - Distances - 20EMA: 164 points, 200EMA: 1167 points
+2025-09-30 10:54:07,709 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 164/130, 200EMA: 1167/1400)
+2025-09-30 10:54:07,710 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-30 10:54:07,710 - INFO - Waiting 112 seconds for next candle
+2025-09-30 10:54:17,346 - INFO - EMAs calculated - Price: 3849.31, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.52
+2025-09-30 10:54:17,735 - INFO - EMAs calculated - Price: 3849.29, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.51
+2025-09-30 10:54:18,602 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:18,606 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:18,848 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:18,855 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:18,857 - INFO - ==================================================
+2025-09-30 10:54:18,859 - INFO - Starting M2 EMA Trading Bot (Magic: 1)
+2025-09-30 10:54:18,859 - INFO - Symbol: GOLD#
+2025-09-30 10:54:18,860 - INFO - SL: 300 points, TP: 2700 points
+2025-09-30 10:54:18,860 - INFO - Max positions: 1
+2025-09-30 10:54:18,861 - INFO - Trading hours: 20:00-12:00
+2025-09-30 10:54:18,861 - INFO - ==================================================
+2025-09-30 10:54:18,862 - INFO - Connecting to MetaTrader 5...
+2025-09-30 10:54:18,914 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
+2025-09-30 10:54:18,925 - INFO - Trailing stop thread started
+2025-09-30 10:54:18,929 - INFO - Starting main trading loop...
+2025-09-30 10:54:18,937 - INFO - EMAs calculated - Price: 3849.34, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.52
+2025-09-30 10:54:18,949 - INFO - EMAs calculated - Price: 3849.34, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.52
+2025-09-30 10:54:18,950 - INFO - Distances - 20EMA: 177 points, 200EMA: 1181 points
+2025-09-30 10:54:18,950 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 177/130, 200EMA: 1181/1400)
+2025-09-30 10:54:18,954 - INFO - Candle range for GOLD# H1 is 947 points (<= 1100). Tradeable.
+2025-09-30 10:54:18,960 - INFO - Candle range for GOLD# H4 is 1402 points (<= 1800). Tradeable.
+2025-09-30 10:54:18,965 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-30 10:54:18,965 - INFO - Waiting 101 seconds for next candle
+2025-09-30 10:54:19,720 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:19,725 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:19,944 - INFO - Successfully connected to database: mt5_trades.db
+2025-09-30 10:54:19,947 - INFO - Table 'entries' checked/created successfully.
+2025-09-30 10:54:19,948 - INFO - ==================================================
+2025-09-30 10:54:19,949 - INFO - Starting M2 EMA Trading Bot (Magic: 2)
+2025-09-30 10:54:19,949 - INFO - Symbol: GOLD#
+2025-09-30 10:54:19,950 - INFO - SL: 300 points, TP: 600 points
+2025-09-30 10:54:19,950 - INFO - Max positions: 1
+2025-09-30 10:54:19,951 - INFO - Trading hours: 20:00-12:00
+2025-09-30 10:54:19,952 - INFO - ==================================================
+2025-09-30 10:54:19,952 - INFO - Connecting to MetaTrader 5...
+2025-09-30 10:54:19,992 - INFO - MetaTrader5 connected: Version (500, 5320, '26 Sep 2025')
+2025-09-30 10:54:19,997 - INFO - Trailing stop thread started
+2025-09-30 10:54:19,999 - INFO - Starting main trading loop...
+2025-09-30 10:54:20,025 - INFO - EMAs calculated - Price: 3849.51, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.57
+2025-09-30 10:54:20,026 - INFO - EMAs calculated - Price: 3849.51, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.57
+2025-09-30 10:54:20,041 - INFO - Distances - 20EMA: 192 points, 200EMA: 1198 points
+2025-09-30 10:54:20,061 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 192/130, 200EMA: 1198/1400)
+2025-09-30 10:54:20,078 - INFO - Candle range for GOLD# H1 is 947 points (<= 1100). Tradeable.
+2025-09-30 10:54:20,099 - INFO - Candle range for GOLD# H4 is 1402 points (<= 1800). Tradeable.
+2025-09-30 10:54:20,123 - INFO - Performance: 0:00:00 uptime, 0 trades, 0.00% success
+2025-09-30 10:54:20,127 - INFO - Waiting 100 seconds for next candle
+2025-09-30 10:54:27,391 - INFO - EMAs calculated - Price: 3849.54, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.57
+2025-09-30 10:54:27,898 - INFO - EMAs calculated - Price: 3849.54, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.57
+2025-09-30 10:54:28,953 - INFO - EMAs calculated - Price: 3849.68, 20EMA: 3847.60, 200EMA: 3837.53, 21EMA: 3848.61
+2025-09-30 10:54:30,165 - INFO - EMAs calculated - Price: 3849.61, 20EMA: 3847.60, 200EMA: 3837.53, 21EMA: 3848.59
+2025-09-30 10:54:37,438 - INFO - EMAs calculated - Price: 3849.16, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:54:37,911 - INFO - EMAs calculated - Price: 3849.16, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:54:38,963 - INFO - EMAs calculated - Price: 3849.16, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:54:40,246 - INFO - EMAs calculated - Price: 3849.16, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:54:47,475 - INFO - EMAs calculated - Price: 3849.08, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.46
+2025-09-30 10:54:47,921 - INFO - EMAs calculated - Price: 3848.88, 20EMA: 3847.53, 200EMA: 3837.53, 21EMA: 3848.41
+2025-09-30 10:54:48,972 - INFO - EMAs calculated - Price: 3848.87, 20EMA: 3847.53, 200EMA: 3837.53, 21EMA: 3848.41
+2025-09-30 10:54:50,586 - INFO - EMAs calculated - Price: 3848.75, 20EMA: 3847.52, 200EMA: 3837.52, 21EMA: 3848.38
+2025-09-30 10:54:57,487 - INFO - EMAs calculated - Price: 3849.02, 20EMA: 3847.54, 200EMA: 3837.53, 21EMA: 3848.44
+2025-09-30 10:54:57,931 - INFO - EMAs calculated - Price: 3849.01, 20EMA: 3847.54, 200EMA: 3837.53, 21EMA: 3848.44
+2025-09-30 10:54:58,982 - INFO - EMAs calculated - Price: 3848.97, 20EMA: 3847.54, 200EMA: 3837.53, 21EMA: 3848.43
+2025-09-30 10:55:01,305 - INFO - EMAs calculated - Price: 3848.95, 20EMA: 3847.53, 200EMA: 3837.53, 21EMA: 3848.43
+2025-09-30 10:55:07,498 - INFO - EMAs calculated - Price: 3849.10, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.46
+2025-09-30 10:55:07,940 - INFO - EMAs calculated - Price: 3849.10, 20EMA: 3847.55, 200EMA: 3837.53, 21EMA: 3848.46
+2025-09-30 10:55:08,991 - INFO - EMAs calculated - Price: 3849.22, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:55:11,317 - INFO - EMAs calculated - Price: 3849.33, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.52
+2025-09-30 10:55:17,508 - INFO - EMAs calculated - Price: 3849.38, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.53
+2025-09-30 10:55:17,950 - INFO - EMAs calculated - Price: 3849.40, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.54
+2025-09-30 10:55:19,001 - INFO - EMAs calculated - Price: 3849.48, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.56
+2025-09-30 10:55:21,327 - INFO - EMAs calculated - Price: 3849.33, 20EMA: 3847.57, 200EMA: 3837.53, 21EMA: 3848.52
+2025-09-30 10:55:27,518 - INFO - EMAs calculated - Price: 3849.18, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:55:27,959 - INFO - EMAs calculated - Price: 3849.18, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:55:29,010 - INFO - EMAs calculated - Price: 3849.17, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:55:31,336 - INFO - EMAs calculated - Price: 3849.22, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.49
+2025-09-30 10:55:37,528 - INFO - EMAs calculated - Price: 3849.44, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.55
+2025-09-30 10:55:37,969 - INFO - EMAs calculated - Price: 3849.42, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.54
+2025-09-30 10:55:39,021 - INFO - EMAs calculated - Price: 3849.49, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.56
+2025-09-30 10:55:41,345 - INFO - EMAs calculated - Price: 3849.51, 20EMA: 3847.59, 200EMA: 3837.53, 21EMA: 3848.57
+2025-09-30 10:55:47,539 - INFO - EMAs calculated - Price: 3849.41, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.54
+2025-09-30 10:55:47,978 - INFO - EMAs calculated - Price: 3849.40, 20EMA: 3847.58, 200EMA: 3837.53, 21EMA: 3848.54
+2025-09-30 10:55:49,032 - INFO - EMAs calculated - Price: 3849.17, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.48
+2025-09-30 10:55:51,355 - INFO - EMAs calculated - Price: 3849.24, 20EMA: 3847.56, 200EMA: 3837.53, 21EMA: 3848.50
+2025-09-30 10:55:57,696 - INFO - EMAs calculated - Price: 3849.60, 20EMA: 3847.60, 200EMA: 3837.53, 21EMA: 3848.59
+2025-09-30 10:55:57,989 - INFO - EMAs calculated - Price: 3849.60, 20EMA: 3847.60, 200EMA: 3837.53, 21EMA: 3848.59
+2025-09-30 10:55:59,042 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.61, 200EMA: 3837.53, 21EMA: 3848.63
+2025-09-30 10:56:00,020 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.61, 200EMA: 3837.53, 21EMA: 3848.63
+2025-09-30 10:56:00,020 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.61, 200EMA: 3837.53, 21EMA: 3848.63
+2025-09-30 10:56:00,021 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.61, 200EMA: 3837.53, 21EMA: 3848.63
+2025-09-30 10:56:00,060 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.61, 200EMA: 3837.53, 21EMA: 3848.63
+2025-09-30 10:56:00,066 - INFO - Distances - 20EMA: 214 points, 200EMA: 1222 points
+2025-09-30 10:56:00,066 - INFO - Distances - 20EMA: 214 points, 200EMA: 1222 points
+2025-09-30 10:56:00,082 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 214/130, 200EMA: 1222/1400)
+2025-09-30 10:56:00,083 - INFO - Distances - 20EMA: 214 points, 200EMA: 1222 points
+2025-09-30 10:56:00,084 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 214/130, 200EMA: 1222/1400)
+2025-09-30 10:56:00,103 - INFO - Distances - 20EMA: 214 points, 200EMA: 1222 points
+2025-09-30 10:56:00,106 - INFO - Performance: 0:01:53 uptime, 0 trades, 0.00% success
+2025-09-30 10:56:00,107 - INFO - Waiting 120 seconds for next candle
+2025-09-30 10:56:00,108 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 214/130, 200EMA: 1222/1400)
+2025-09-30 10:56:00,109 - INFO - Candle range for GOLD# H1 is 947 points (<= 1100). Tradeable.
+2025-09-30 10:56:00,120 - INFO - Signal: HOLD, Reason: ❌ Distance thresholds not met (20EMA: 214/130, 200EMA: 1222/1400)
+2025-09-30 10:56:00,122 - INFO - Candle range for GOLD# H1 is 947 points (<= 1100). Tradeable.
+2025-09-30 10:56:00,126 - INFO - Performance: 0:01:52 uptime, 0 trades, 0.00% success
+2025-09-30 10:56:00,142 - INFO - Waiting 120 seconds for next candle
+2025-09-30 10:56:00,153 - INFO - Candle range for GOLD# H4 is 1402 points (<= 1800). Tradeable.
+2025-09-30 10:56:00,161 - INFO - Candle range for GOLD# H4 is 1402 points (<= 1800). Tradeable.
+2025-09-30 10:56:00,186 - INFO - Performance: 0:01:41 uptime, 0 trades, 0.00% success
+2025-09-30 10:56:00,194 - INFO - Performance: 0:01:40 uptime, 0 trades, 0.00% success
+2025-09-30 10:56:00,196 - INFO - Waiting 120 seconds for next candle
+2025-09-30 10:56:00,202 - INFO - Waiting 120 seconds for next candle
+2025-09-30 10:56:01,364 - INFO - EMAs calculated - Price: 3849.90, 20EMA: 3847.83, 200EMA: 3837.66, 21EMA: 3848.94
+2025-09-30 10:56:07,706 - INFO - EMAs calculated - Price: 3849.89, 20EMA: 3847.83, 200EMA: 3837.66, 21EMA: 3848.94
+2025-09-30 10:56:08,000 - INFO - EMAs calculated - Price: 3849.89, 20EMA: 3847.83, 200EMA: 3837.66, 21EMA: 3848.94
+2025-09-30 10:56:09,052 - INFO - EMAs calculated - Price: 3849.88, 20EMA: 3847.83, 200EMA: 3837.66, 21EMA: 3848.94
+2025-09-30 10:56:11,374 - INFO - EMAs calculated - Price: 3849.75, 20EMA: 3847.81, 200EMA: 3837.66, 21EMA: 3848.91

@@ -39,7 +39,7 @@ SCREENSHOTS_DIR = "screenshots/GOLD/"
 
 
 
-def wait_until_next_interval(interval_seconds: int = 10):
+def wait_until_next_interval(interval_seconds: int = 60):
     """
     Calculates the time until the start of the next exact interval
     and sleeps. This ensures the script runs at the top of each interval.
