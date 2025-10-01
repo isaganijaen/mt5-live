@@ -592,9 +592,9 @@ def start_strategy():
     position_manager.daemon = True # Allows the thread to exit when the main program exits
     position_manager.start()
 
-    take_profit_monitor = TakeProfitMonitor(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
-    take_profit_monitor.daemon = True
-    take_profit_monitor.start()
+    # take_profit_monitor = TakeProfitMonitor(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event)
+    # take_profit_monitor.daemon = True
+    # take_profit_monitor.start()
 
     # 4. Instantiate the strategy and run it
     my_strategy = M2AverageZone(config=config_settings, mt5_manager=mt5_manager, position_open_event=position_open_event,screenshot_tool=screenshot_tool)
@@ -605,7 +605,7 @@ def start_strategy():
     finally:
         # 5. Shutdown MT5 connection and stop the threads
         position_manager.stop()
-        take_profit_monitor.stop()
+        # take_profit_monitor.stop()
         mt5.shutdown()
         log_success("MetaTrader5 shutdown.")
 
