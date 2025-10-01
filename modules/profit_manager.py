@@ -86,10 +86,10 @@ class TakeProfitMonitor(threading.Thread):
             
         # Determine the closing price and order type based on the position type.
         if position.type == mt5.ORDER_TYPE_BUY:
-            close_price = tick.bid
+            close_price = mt5.symbol_info_tick(self.config.symbol).bid 
             close_type = mt5.ORDER_TYPE_SELL
         elif position.type == mt5.ORDER_TYPE_SELL:
-            close_price = tick.ask
+            close_price = mt5.symbol_info_tick(self.config.symbol).ask
             close_type = mt5.ORDER_TYPE_BUY
         else:
             log_error(f"Unknown position type: {position.type}")
@@ -102,9 +102,11 @@ class TakeProfitMonitor(threading.Thread):
             "volume": position.volume,
             "type": close_type,
             "price": close_price,
-            "deviation": self.config.deviation,
+            "deviation": 10,
             "magic": self.config.strategy_id,
-            "comment": "Take Profit Close"
+            "comment": "Take Profit Close",
+            "type_time": mt5.ORDER_TIME_GTC,
+            "type_filling": mt5.ORDER_FILLING_IOC,
         }
 
         result = mt5.order_send(request)
