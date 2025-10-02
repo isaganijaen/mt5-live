@@ -1,15 +1,21 @@
 # NEXT TODO
 
-1. Like the strategy_12_demo.py - Update everys strategy and implement the `profit_manager.py` > `TakeProfitMonitor` thread to close all position when the target gets hit.
+1. Live Trading System:
+- From Demo save the signal BUY/SELL/HOLD to `signal table` in `MT5_Trades database` before executing order.
+- From Live Trading System - No further analysis. Get the signal from the `signal table` in `MT5_Trades database`. Check if interval <= 10 seconds and if it is different from the previous signal. Execute the trades accordingly and clear the table in preparation of the next signal. After 1 minute and 0.5 seconds, check the table again for the new signal. If no data, repeat 10x until data received. If no signal, send email or sound alarm to notify that the demo from other account (same pc) is not working.
 
-2. strategy_15_demo.py - Try adding trailing stop by 75 points or based on High/Low volatility. When the order gets executed, we are expecting to push the price as quickly as possible as we are trading alongside the momentum. If it fails to reach the target within 7 candles/minutes, consolidation might be starting. It is alright to exit immediately with a small drawdown rather than waiting for the initial stop loss to get hit. When this trailing stop of 75 points gets hits, meaning that the consolidation already started. This will prevent the strategy to enter new trade as the 15-period EMA Consolidation Filter would have already caught up with the price. The 150 point SL is only a protection for a quick reversal ✅.
 
-3. With regard to the #2, we can use it to create a NEW STRATEGY with tighter SL=150 and TP=300, 350, 450, 600 or even no indefinite target at all. We will also crate a new trailing system that is dynamic based on the price movement point. For example, initially, all trades would have a 75 fix point trailing stop. When the price reached the 150 points (other's alread taking profit), the trailing stop would then switch to 7-period EMA Trailing Guide with trailing_stop_distance=70 which is our standard trailing points.
 
-4. 🟡 🎯 strategy_18_demo.py: OBSERVE this. This strategy has indefinite TP. Adjust the trailing stop to 300 or 320 points if performance dropped to give breathing room.
-
-5. **IMPORTANT**: 🟡 🎯 Use trading_hours_12mn_to_15pm.py to strategy_10_demo and strategy_12_demo.py or other super active trading strategies when deployed!
-
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
+&nbsp; 
 &nbsp; 
 &nbsp; 
 
@@ -30,32 +36,12 @@
 
 &nbsp; 
 &nbsp; 
-
-# Most Promising as of 2025-09-19 03:25 AM onward 
-
-* strategy_12_demo (SL=300 TP=150)
-* **strategy_21_demo** (EXACTLY like its predecessor: strategy_12_demo but with better RRR (SL=300 TP=220)). 🎯🔒 Will **deploy this to production** if it would be able to match or surpass its predecessors.
+ 
 
 &nbsp; 
 &nbsp; 
 
 
-# Performance Analysis by AI
-
-* strategy_02.py
-* strategy_12_demo.py
-&nbsp; 
-&nbsp; 
-
-✨ **Key Takeaway**: *Running both of them at the same time is a good diversification as they are trading on different timeframes. They have a no to small correlation.* 
-&nbsp; 
-&nbsp; 
-
-Trading in the 1-minute (M1) and 2-minute (M2) timeframes is a form of **scalping** or **high-frequency day trading**. This approach is characterized by speed, high volume of trades, and extremely tight risk management.
-
-Here is an overview of M1/M2 traders, common average annual returns, and how your strategies compare.
-
----
 
 ## Who Trades on 1-Minute and 2-Minute Timeframes?
 
@@ -170,3 +156,18 @@ If the performance holds true, here is the projected result of running both stra
 | **Risk-Adjusted Performance (Sharpe)** | **12.09** | 3.76 | **Likely > 12.09** (Due to diversification) |
 
 **Overall Thought:** Running both strategies is the smarter choice. You combine the high efficiency and low drawdown of DEMO\_strategy\_02 with the exceptional consistency and higher net profit of Strategy 12. You are effectively creating a highly risk-adjusted portfolio that should have a combined annual return of **around 40%** with a maximum expected drawdown well within your $15\%$ tolerance.
+
+
+
+---
+
+# COMPLETED TODO's
+* Like the strategy_12_demo.py - Update everys strategy and implement the `profit_manager.py` > `TakeProfitMonitor` thread to close all position when the target gets hit.
+
+* strategy_15_demo.py - Try adding trailing stop by 75 points or based on High/Low volatility. When the order gets executed, we are expecting to push the price as quickly as possible as we are trading alongside the momentum. If it fails to reach the target within 7 candles/minutes, consolidation might be starting. It is alright to exit immediately with a small drawdown rather than waiting for the initial stop loss to get hit. When this trailing stop of 75 points gets hits, meaning that the consolidation already started. This will prevent the strategy to enter new trade as the 15-period EMA Consolidation Filter would have already caught up with the price. The 150 point SL is only a protection for a quick reversal ✅.
+
+* With regard to the #2, we can use it to create a NEW STRATEGY with tighter SL=150 and TP=300, 350, 450, 600 or even no indefinite target at all. We will also crate a new trailing system that is dynamic based on the price movement point. For example, initially, all trades would have a 75 fix point trailing stop. When the price reached the 150 points (other's alread taking profit), the trailing stop would then switch to 7-period EMA Trailing Guide with trailing_stop_distance=70 which is our standard trailing points.
+
+* 🟡 🎯 strategy_18_demo.py: OBSERVE this. This strategy has indefinite TP. Adjust the trailing stop to 300 or 320 points if performance dropped to give breathing room.
+
+* **IMPORTANT**: 🟡 🎯 Use trading_hours_12mn_to_15pm.py to strategy_10_demo and strategy_12_demo.py or other super active trading strategies when deployed!
