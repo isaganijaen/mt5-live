@@ -27,6 +27,7 @@ REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
 start "13" cmd /k "python strategy_13_demo.py"
+start "20" cmd /k "python strategy_20_demo.py" - Best in 1-4am and 10-5pm only 🟡
 start "26" cmd /k "python strategy_26.py"
 start "28" cmd /k "python strategy_28.py"
 start "42" cmd /k "python m2_3LH_1021_t300.py"
@@ -73,7 +74,7 @@ REM start "16" cmd /k "python strategy_16_demo.py" - Best in 1-4am and 10-5pm on
 REM start "17" ARCHIVED 
 REM start "18" cmd /k "python strategy_18_demo.py"
 REM start "19" cmd /k "python strategy_19_demo.py" - Best in 1-4am and 10-5pm only 🟡
-REM start "20" cmd /k "python strategy_20_demo.py" - Best in 1-4am and 10-5pm only 🟡
+
 REM start "21" cmd /k "python strategy_21_demo.py"
 REM start "22" cmd /k "python strategy_22_demo.py"
 REM start "23" cmd /k "python strategy_23_demo.py" - Best in 1-4am and 10-5pm only 🟡
