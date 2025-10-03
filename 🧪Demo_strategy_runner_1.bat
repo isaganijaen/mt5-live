@@ -29,28 +29,18 @@ REM -------------------------------------------------------------
 start "13" cmd /k "python strategy_13_demo.py"
 start "26" cmd /k "python strategy_26.py"
 start "28" cmd /k "python strategy_28.py"
-
-
-
-
-REM -------------------------------------------------------------
-REM ---   ⚠️ 39 ONWARD: See Demo_strategy_runner_2.bat          ---
-REM start "39"  ......
-REM .
-REM .
-REM .
-
-
-
-REM -------------------------------------------------------------
-REM ---         CURRENT PROFITABLE STRATEGIES                 ---
-REM -------------------------------------------------------------
-
-
-
-
-REM start "9" cmd /k "python strategy_09_demo.py" 
-
+start "42" cmd /k "python m2_3LH_1021_t300.py"
+start "43" cmd /k "python m2_3LH_1021_t350.py"
+start "44" cmd /k "python m2_3LH_1021_tinf.py"
+start "46" cmd /k "python m2_3LH_1021_t150.py"
+start "48" cmd /k "python m2_3LH1021_ST150.py"
+start "50" cmd /k "python m2_3LH_r150r200.py"
+start "52" cmd /k "python m2_3LH_S150_tinf.py"
+start "54" cmd /k "python m2_3S150TinfTS21.py"
+start "55/90" cmd /k "python m1_3S300TinfTS21.py"
+start "56/91" cmd /k "python m2_3S300TinfTS21.py"
+start "61" cmd /k "python m1_3S300T450TS21.py"
+start "62" cmd /k "python strategy_01_1am_4am_10am_5pm.py"
 
 
 
@@ -72,6 +62,7 @@ REM start "7" cmd /k "python strategy_07_demo.py"
 REM start "8" ARCHIVED 
 REM start "Str-09" - MOVED to Profitiable Section
 REM start "Str-10" - MOVED to Profitiable Section
+REM start "9" cmd /k "python strategy_09_demo.py" 
 REM start "10" cmd /k "python strategy_10_demo.py" - Best in 1-4am and 10-5pm only 🟡
 REM start "11" cmd /k "python strategy_11_demo.py"
 REM start "12" cmd /k "python strategy_12_demo.py"
@@ -101,6 +92,21 @@ REM start "35" cmd /k "python strategy_35.py"
 REM start "36" cmd /k "python strategy_36.py"
 REM start "37" cmd /k "python strategy_37.py"
 REM start "38" cmd /k "python strategy_38.py"
+
+REM start "39" cmd /k "python m1_3LH_1021_t300.py"
+REM start "40" cmd /k "python m1_3LH_1021_t350.py"
+REM start "41" cmd /k "python m1_3LH_1021_tinf.py"
+REM start "45" cmd /k "python m1_3LH_1021_t150.py"
+REM start "47" cmd /k "python m1_3LH1021_ST150.py"
+REM start "49" cmd /k "python m1_3LH_r150r200.py"
+REM start "51" cmd /k "python m1_3LH_S150_tinf.py"
+REM start "53" cmd /k "python m1_3S150TinfTS21.py"  - Best in 1-4am and 10-5pm only 🟡
+
+REM start "57" cmd /k "python m15_S350T350.py"
+REM start "58" cmd /k "python m15_S350T600.py"
+REM start "59" cmd /k "python m15_S350T16k.py"
+REM start "60" cmd /k "python m1_3S300T350TS21.py"
+
 
 
 

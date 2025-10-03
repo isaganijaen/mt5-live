@@ -19,32 +19,7 @@ REM Start a new terminal for each script
 REM -------------------------------------------------------------
 REM ---     BASELINE STAGE (Initial Data Collection)          ---
 REM -------------------------------------------------------------
-
-REM start "39" cmd /k "python m1_3LH_1021_t300.py"
-REM start "40" cmd /k "python m1_3LH_1021_t350.py"
-REM start "41" cmd /k "python m1_3LH_1021_tinf.py"
-start "42" cmd /k "python m2_3LH_1021_t300.py"
-start "43" cmd /k "python m2_3LH_1021_t350.py"
-start "44" cmd /k "python m2_3LH_1021_tinf.py"
-REM start "45" cmd /k "python m1_3LH_1021_t150.py"
-start "46" cmd /k "python m2_3LH_1021_t150.py"
-REM start "47" cmd /k "python m1_3LH1021_ST150.py"
-start "48" cmd /k "python m2_3LH1021_ST150.py"
-REM start "49" cmd /k "python m1_3LH_r150r200.py"
-start "50" cmd /k "python m2_3LH_r150r200.py"
-REM start "51" cmd /k "python m1_3LH_S150_tinf.py"
-start "52" cmd /k "python m2_3LH_S150_tinf.py"
-REM start "53" cmd /k "python m1_3S150TinfTS21.py"  - Best in 1-4am and 10-5pm only 🟡
-start "54" cmd /k "python m2_3S150TinfTS21.py"
-start "55/90" cmd /k "python m1_3S300TinfTS21.py"
-start "56/91" cmd /k "python m2_3S300TinfTS21.py"
-REM start "57" cmd /k "python m15_S350T350.py"
-REM start "58" cmd /k "python m15_S350T600.py"
-REM start "59" cmd /k "python m15_S350T16k.py"
-REM start "60" cmd /k "python m1_3S300T350TS21.py"
-start "61" cmd /k "python m1_3S300T450TS21.py"
-start "62" cmd /k "python strategy_01_1am_4am_10am_5pm.py"
-
+REM TBD. See Demo_strategy_runner_1.bat for initial strategies.
 
 
 
