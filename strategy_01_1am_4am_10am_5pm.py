@@ -439,7 +439,7 @@ def execute_trade(trade_type, indicators, distance_20, signal):
         "price": current_price,
         "deviation": deviation,
         "magic": MAGIC_NUMBER,
-        "comment": f"{production_status}_strgy_01_1am", 
+        "comment": f"strgy_01_1am_4am", 
         "type_time": mt5.ORDER_TIME_GTC,
         "type_filling": mt5.ORDER_FILLING_IOC,
         "sl": sl_price,
